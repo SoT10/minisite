@@ -15,8 +15,34 @@
 <body>
 
 {% block navbar %}
-<nav id="nav">
+<nav>
+    <div class="navbar_logo">
+        <img src="/static/assets/logo.png">
+    </div>
+    <div class="navbar_links">
+        <ul>
+            <li><a href="">Главная</a></li>
+            <li><a href="">О нас</a></li>
+            <li><a href="">Блог</a></li>
+            <li><a href="">Каталог</a></li>
+            <li><a href="">Контакты</a></li>
+            <li><a href="">Как сделать</a></li>
+        </ul>
+    </div>
+
+    
 </nav>
+
+<div class="sub_nav">
+        <div class="sub_nav_left">
+            MINISFORUM RUSSIA (нужен красивый шрифт)
+        </div>
+        <div class="sub_nav_rigth">
+            <img src="/static/assets/search.svg">
+            <img src="/static/assets/account.svg">
+            <img src="/static/assets/shop.svg">
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}

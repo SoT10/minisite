@@ -1,0 +1,66 @@
+* {
+	margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+/*Начало блока хедер*/
+nav {
+	background-color: #222629;
+	padding: 20px;
+	gap: 10px;
+	align-items: center;
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+}
+
+.navbar_links ul {
+	list-style-type: none;
+}
+
+.navbar_links ul {
+	justify-items: center;
+	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+}
+
+.navbar_links a {
+	padding: 10px;
+	color: white;
+	font-size: 23px;
+}
+
+.navbar_icons {
+	margin-right: 40px;
+	display: flex;
+	gap: 20px;
+	justify-content: flex-end;
+	/*grid-template-columns: repeat(3, 1fr);*/
+}
+
+.navbar_logo {
+	text-align: center;
+}
+
+.sub_nav {
+	display: grid;
+	padding: 20px;
+	align-items: center;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.sub_nav_rigth img {
+	width: 40px;
+}
+
+.sub_nav_rigth {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 10px;
+}
+/*Конец блока хедер*/
