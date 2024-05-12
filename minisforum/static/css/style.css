@@ -91,28 +91,28 @@ nav {
     top: 0px;
     left: 0px;
 }
-footer {
+/*НАчало блока footer*/
+
+.footer {
 	background-color: #222629;
 	padding: 20px;
 	gap: 10px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(2, 2fr 1fr);
-	grid-column-gap: 40px;
-	grid-row-gap: 40px;
 	}
 
-.fotofooter {
+.aboutUS {
 	padding: 10px;
 	border: 1px;
 }
 
-.fotofooter {
+.Support {
 	padding: 10px;
 	border: 1px;
 }
 
-.fotofooter {
+.social {
 	padding: 10px;
 	border: 1px;
 }
+/*Конец блока footer*/
