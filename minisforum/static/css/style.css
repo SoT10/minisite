@@ -7,14 +7,31 @@
     color: black;
 }
 
+body {
+	margin-top: 75px;
+	
+}
+
+.content {
+	padding: 0px 110px 0px 110px;
+	background-color: #222629;
+	overflow: hidden;
+}
+
 /*Начало блока хедер*/
 nav {
-	background-color: #222629;
-	padding: 20px;
+	z-index: 999;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 75px;
+	width: 100%;
+	background-color: #474A4F;
 	gap: 10px;
 	align-items: center;
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;
+
 }
 
 .navbar_links ul {
@@ -29,41 +46,181 @@ nav {
 }
 
 .navbar_links a {
+	line-height: 15.46px;
 	padding: 10px;
 	color: white;
-	font-size: 23px;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.navbar_links a:hover {
+	text-decoration: underline;
+	color: #87C232;
 }
 
 .navbar_icons {
-	margin-right: 40px;
 	display: flex;
-	gap: 20px;
-	justify-content: flex-end;
-	/*grid-template-columns: repeat(3, 1fr);*/
+	gap: 30px;
+	justify-content: center;
 }
 
 .navbar_logo {
 	text-align: center;
+	height: 75px;
 }
 
 .sub_nav {
 	display: grid;
-	padding: 20px;
 	align-items: center;
 	grid-template-columns: repeat(2, 1fr);
 }
 
-.sub_nav_rigth img {
-	width: 40px;
+/*Конец блока хедер*/
+
+
+
+
+/*Начало блока блог*/
+.blog1 {
+	padding: 0px 110px 0px 110px;
+	background-color: white;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
 }
 
-.sub_nav_rigth {
+.blog1_left {
+	font-family: 'Jura';
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 80px;
+	letter-spacing: 3.5999999046325684px;
+	
+}
+
+.blog1_right {
+	display: flex;
+	gap: 15px;
+	justify-content: flex-end;
+}
+
+.blog1_right input {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 27.2px;
+	border-radius: 8px;
+	border: solid 1px #1A1A1A1F;
+	width: 320px;
+	padding: 0px 10px 0px 10px;
+}
+
+.blog1_right button {
+	background-color: #87C232;
+	border-radius: 24px;
+	font-size: 15.27px;
+	line-height: 27.2px;
+	font-weight: 700;
+	font-family: "Inter";
+	border: none;
+	align-items: center;
+	color: white;
+	display: flex;
+	gap: 10px;
+	padding: 5px 15px 5px 15px;
+}
+
+.blog2 {
+	background-color: #6E92406B;
+	border-radius: 24px;
+	padding: 30px;
+	margin: 40px 30px 40px 30px
+}
+
+.blog2_header {
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
-	gap: 10px;
+	position: relative;
+	margin-bottom: 20px;
 }
-/*Конец блока хедер*/
+
+.blog2_header_left date, .blog3_aricle date {
+	display: flex;
+	gap: 10px;
+	color: #6E9240;
+	background-color: white;
+	border-radius: 30px;
+	align-items: center;
+	padding: 10px 20px 10px 20px;
+}
+
+.blog2_header_right {
+	position: absolute;
+	width: 100%;
+	font-size: 40px;
+	font-weight: 500;
+	line-height: 32px;
+	text-align: center;	
+	color: white;
+}
+
+.blog2_under {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.blog2_under_img {
+	background-image: url("/static/assets/download (1).webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 375px;
+}
+
+.blog2_under_text {
+	font-size: 28px;
+	font-weight: 500;
+	line-height: 32px;
+	color: white;
+	text-align: center;
+}
+
+.blog3 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 70px;
+}
+
+.blog3_aricle_date {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.blog3_aricle_img {
+	background-image: url("/static/assets/download (1).webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 420px;
+	border-radius: 24px;
+}
+
+.blog3_aricle_text {
+	font-size: 28px;
+	line-height: 32px;
+	font-weight: 500;
+	text-align: center;
+	color: white;
+}
+
+.blog3_aricle date {
+	width: 167px;
+	justify-content: center;
+}
+
+/*Конец блока блог*/
+
+
+
+
 .photoabout {
     position: relative;
 }
