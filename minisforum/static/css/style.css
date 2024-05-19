@@ -285,7 +285,7 @@ nav {
 
 /*начало блока контакты*/
 .contact1 {
-	padding: 60px 120px 60px 120px;
+	padding: 60px 200px;
 }
 
 .contact1_up {
@@ -300,11 +300,15 @@ nav {
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
     justify-items: center;
-    padding: 100px 0px;
+    padding: 100px 200px;
 }
 
 .contact2_left {
 	padding: 60px 120px 60px 120px;
+}
+
+.contact2_right {
+	text-align: right;
 }
 
 .contact2_1 {
@@ -355,28 +359,42 @@ nav {
 	padding: 10px 16px;
 	width: 100%;
 	height: 160px;
+	resize: none;
+	margin-bottom: 24px;
+}
+
+.contact2_right button {
+	padding: 5px 14px 5px 14px;
+	border: 2px solid white;
+	border-radius: 6px;
+	font-size: 14;
+	font-weight: 600;
+	background-color: white;
 }
 /*конец блока контакты*/
 
 /*НАчало блока footer*/
 
 .footer {
-	background-color: #edf0f3;
-	padding: 20px;
+	background-color: white;
+	padding: 100px 200px;
 	gap: 20px;
 	display: grid;
 	grid-template-columns: 3fr 1fr 1fr 1fr;
 	justify-items: start;
-	}
+}
 
 .aboutus {
 	padding: 10px;
 }
 
+.aboutus img {
+	margin-bottom: 20px;
+}
+
 .footer_text_aboutus{
 	font-family: "Roboto", sans-serif;
 	text-align: justify;
-	padding: 10px;
 }
 
 .link {
