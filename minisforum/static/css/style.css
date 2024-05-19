@@ -361,25 +361,38 @@ nav {
 /*НАчало блока footer*/
 
 .footer {
-	background-color: #222629;
+	background-color: #edf0f3;
 	padding: 20px;
-	gap: 10px;
+	gap: 20px;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 3fr 1fr 1fr 1fr;
+	justify-items: start;
+	}
+
+.aboutus {
+	padding: 10px;
 }
 
-.aboutUS {
+.footer_text_aboutus{
+	font-family: "Roboto", sans-serif;
+	text-align: justify;
 	padding: 10px;
-	border: 1px;
 }
 
-.Support {
-	padding: 10px;
-	border: 1px;
+.link {
+	text-align: center;
+	display: flex;
+	gap: 20px;
 }
 
-.social {
+.footer_client ul, .Support ul, .footer_about ul, .footer_client ul {
+	list-style-type: none;
 	padding: 10px;
 	border: 1px;
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+	text-align: left;	
+	display: grid;
+	gap: 10px;
 }
 /*Конец блока footer*/
