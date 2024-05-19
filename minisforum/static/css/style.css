@@ -310,23 +310,25 @@ nav {
 .home_slider1_text {
 	background-color: rgba(0, 0, 0, .3);
 	border-radius: 100px;
-	
 	text-align: center;
 	padding: 30px;
 }
 
 .home_slider1_text_1 {
+	line-height: 70px;
 	font-size: 60px;
 	color: white;
 }
 
 .home_slider1_text_2 {
+	line-height: 60px;
 	font-size: 32px;
 	font-weight: 500;
 	color: white;
 }
 
 .home_slider1_text_3 {
+	line-height: 30px;
 	font-size: 16px;
 	color: white;
 }
