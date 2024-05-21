@@ -11,9 +11,11 @@
 			<div class="home_slider1_text_3">Лидер высокопроизводительных планшетов на базе Windows<br>Оснащен флагманским процессором AMD нового поколения Ryzen™ 7 8840U. Закажите сейчас и получите подарки от Minisforum!</div>	
 		</div>
 		<button>ЗАКАЗАТЬ</button>
+	</div>
+	<div class="home_arrows">
+		<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(4)">
+		<img id="arrow_right" src="/static/assets/home/arrow.svg" onclick="home_next_slide(2)">
 	</div>	
-	<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(4)">
-	<img id="arrow_right" src="/static/assets/home/arrow.svg" onclick="home_next_slide(2)">
 </div>
 
 <div class="home_slider" id="home_slider2">
@@ -25,8 +27,10 @@
 		</div>
 		<button>ЗАКАЗАТЬ</button>
 	</div>	
-	<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(1)">
-	<img id="arrow_right" src="/static/assets/home/arrow.svg" onclick="home_next_slide(3)">
+	<div class="home_arrows">
+		<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(1)">
+		<img id="arrow_right" src="/static/assets/home/arrow.svg" onclick="home_next_slide(3)">
+	</div>
 </div>
 
 <div class="home_slider" id="home_slider3">
@@ -38,8 +42,10 @@
 		</div>
 		<button>ЗАКАЗАТЬ</button>
 	</div>	
-	<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(2)">
-	<img id="arrow_right" src="/static/assets/home/arrow.svg" onclick="home_next_slide(4)">
+	<div class="home_arrows">
+		<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(2)">
+		<img id="arrow_right" src="/static/assets/home/arrow.svg" onclick="home_next_slide(4)">
+	</div>
 </div>
 
 <div class="home_slider" id="home_slider4">
@@ -51,8 +57,10 @@
 		</div>
 		<button>ЗАКАЗАТЬ</button>
 	</div>	
-	<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(3)">
-	<img id="arrow_right" src="/static/assets/home/arrow.svg" onclick="home_next_slide(1)">
+	<div class="home_arrows">
+		<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(3)">
+		<img id="arrow_right" src="/static/assets/home/arrow.svg" onclick="home_next_slide(1)">
+	</div>
 </div>
 
 <div class="home2">
@@ -74,12 +82,18 @@
 			<div class="home3_tabl_card_text">Мини-ПК Minisforum HX99G AMD Ryzen 9 6900HX AMD Radeon RX 6650M RAM DDR5 32GB 1TB SSD</div><hr>
 			<div class="home3_tabl_card_price">105,000.00₽</div>
 			<div class="home3_tabl_card_icons">
-				<img class="home_lupa1" src="/static/assets/home/lupa1.svg">
-		        <img class="home_lupa2" style="display: none;" src="/static/assets/home/lupa2.svg">
-		        <img class="home_heart1" src="/static/assets/home/heart1.svg">
-		        <img class="home_heart2" style="display: none;" src="/static/assets/home/heart2.svg">
-		        <img class="home_korzina1" src="/static/assets/home/korzina1.svg">
-		        <img class="home_korzina2" style="display: none;" src="/static/assets/home/korzina2.svg">
+				<div class="home3_tabl_card_icons_cont"> 
+					<img class="home_lupa1 home_black_ico" src="/static/assets/home/lupa1.svg">
+			        <img class="home_lupa2 home_white_ico" src="/static/assets/home/lupa2.svg">
+		        </div>
+				<div class="home3_tabl_card_icons_cont"> 
+			        <img class="home_heart1 home_black_ico" src="/static/assets/home/heart1.svg">
+			        <img class="home_heart2 home_white_ico" src="/static/assets/home/heart2.svg">
+			    </div>
+		        <div class="home3_tabl_card_icons_cont"> 
+			        <img class="home_korzina1 home_black_ico" src="/static/assets/home/korzina1.svg">
+			        <img class="home_korzina2 home_white_ico" src="/static/assets/home/korzina2.svg">
+				</div>
 			</div>
 		</div>
 		<div class="home3_tabl_card">
