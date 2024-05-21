@@ -62,3 +62,45 @@ function home_return_slide(number){
 		slide4.style.display="block"
 	}
 };
+
+document.querySelectorAll('.home_lupa1').forEach(function(img) {
+    img.addEventListener('mouseenter', function() {
+        this.style.display = 'none';
+        this.nextElementSibling.style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.home_lupa2').forEach(function(img) {
+    img.addEventListener('mouseleave', function() {
+        this.style.display = 'none';
+        this.previousElementSibling.style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.home_heart1').forEach(function(img) {
+    img.addEventListener('mouseenter', function() {
+        this.style.display = 'none';
+        this.nextElementSibling.style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.home_heart2').forEach(function(img) {
+    img.addEventListener('mouseleave', function() {
+        this.style.display = 'none';
+        this.previousElementSibling.style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.home_korzina1').forEach(function(img) {
+    img.addEventListener('mouseenter', function() {
+        this.style.display = 'none';
+        this.nextElementSibling.style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.home_korzina2').forEach(function(img) {
+    img.addEventListener('mouseleave', function() {
+        this.style.display = 'none';
+        this.previousElementSibling.style.display = 'block';
+    });
+});

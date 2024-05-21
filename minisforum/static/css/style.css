@@ -64,17 +64,22 @@ nav {
 	justify-content: center;
 }
 
-.navbar_logo img {
-	padding: 20px 20px;
+.navbar_logo {
 	text-align: center;
 	height: 75px;
-	width: 250px;
 }
 
 .sub_nav {
 	display: grid;
 	align-items: center;
 	grid-template-columns: repeat(2, 1fr);
+}
+
+.navbar_logo img {
+  padding: 20px 20px;
+  text-align: center;
+  height: 75px;
+  width: 250px;
 }
 
 /*Конец блока хедер*/
@@ -460,6 +465,27 @@ nav {
 .home3_tabl_card_price {
 	font-size: 16px;
 	font-weight: 600;
+}
+
+.home3_tabl_card_icons {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.home3_tabl_card_icons img {
+	width: 45px;
+	height: 45px;
+	border: solid 1px #767676;
+	padding: 10px;
+	border-radius: 25px;
+	transition: background-color 0.5s;
+}
+
+.home3_tabl_card_icons img:hover {
+	cursor: pointer;
+	background-color: black;
 }
 /*Конец блока home*/
 
