@@ -639,8 +639,8 @@ nav {
 	grid-template-columns: repeat(4, 1fr)
 }
 
-.catalog_right_product_1, .catalog_right_product_2, .catalog_right_product_3, .catalog_right_product_4, .catalog_right_product_5, .catalog_right_product_6, .catalog_right_product_7, .catalog_right_product_8, .catalog_right_product_9, .catalog_right_product_10,.catalog_right_product_11, .catalog_right_product_12, .catalog_right_product_13, .catalog_right_product_14, .catalog_right_product_15, .catalog_right_product_16, .catalog_right_product_17, .catalog_right_product_18 {
-	width: 10px;
-	height: 10px;
+.catalog_right_product_1 img, .catalog_right_product_2 img, .catalog_right_product_3 img, .catalog_right_product_4 img, .catalog_right_product_5 img, .catalog_right_product_6 img, .catalog_right_product_7 img, .catalog_right_product_8 img, .catalog_right_product_9 img, .catalog_right_product_10 img,.catalog_right_product_11 img, .catalog_right_product_12 img, .catalog_right_product_13 img, .catalog_right_product_14 img, .catalog_right_product_15 img, .catalog_right_product_16 img, .catalog_right_product_17 img, .catalog_right_product_18 img {
+	width: 100px;
+	height: 100px;
 }
 /*Конец блока Каталог*/
