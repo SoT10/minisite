@@ -64,9 +64,11 @@ nav {
 	justify-content: center;
 }
 
-.navbar_logo {
+.navbar_logo img {
+	padding: 20px 20px;
 	text-align: center;
 	height: 75px;
+	width: 250px;
 }
 
 .sub_nav {
