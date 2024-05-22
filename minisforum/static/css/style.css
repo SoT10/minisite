@@ -173,17 +173,6 @@
 	transition: opacity 0.5s;
 	background-color: rgba(0, 0, 0, 0.7);
 }
-/*
-.dark_back {
-	transition: background-color 0.5s;
-	background-color: rgba(0, 0, 0, 0.7);
-}
-
-.light_back {
-	transition: background-color 0.5s;
-	background-color: rgba(0, 0, 0, 0);
-}
-*/
 
 .shop_slide_out {
 	transform: translateX(100%);
@@ -193,6 +182,31 @@
 .shop_slide_in {
 	transform: translateX(0%);
 	opacity: 1;
+}
+
+.full_shop_down {
+	box-shadow: 0 -1px 10px #0000001a;
+	padding: 10px 20px;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+.full_shop_down button {
+	color: #232323;
+	background-color: white;
+	border-radius: 6px;
+	transition: all 0.2s;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 5px 14px;
+	border: solid 2px #767676;
+}
+
+.full_shop_down button:hover {
+	cursor: pointer;
 }
 /*Конец блока shop*/
 
@@ -616,6 +630,7 @@ nav {
 }
 
 .home2_right button {
+	transition: all 0.2s;
 	margin-top: 20px;
 	font-size: 18px;
 	font-weight: 600;
