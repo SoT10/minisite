@@ -48,26 +48,30 @@
 {% endblock %}
 
 {% block footer %}
-<div class="shop">
+
+<div class="shop" id="shop" onclick="show_close_shop()">
     <span class="count_want">0</span>
     <span class="xoo-wsc-icon-basket1"></span><!-- корзина -->
 </div>
 
-<div class="full_shop">
-    <div class="full_shop_header">
-        <div class="full_shop_header_top">
-            <span class="xoo-wsc-icon-bag2"></span>
-            <span class="full_shop_header_top_text">Ваша корзина</span>
+<div class="dark_back" id="dark_back" onclick="close_shop()"></div>
+<div class="shop_cont shop_slide_out" id="shop_cont">
+    <div class="full_shop shop_slide_out" id="full_shop">
+        <div class="full_shop_header">
+            <div class="full_shop_header_top">
+                <span class="xoo-wsc-icon-bag2"></span>
+                <span class="full_shop_header_top_text">Ваша корзина</span>
+            </div>
         </div>
-    </div>
-    <div class="full_shop_center">
-        <div class="full_shop_center_empty">
-            <span>Ваша корзина пустая</span>
-            <button>В магазин</button>
+        <div class="full_shop_center">
+            <div class="full_shop_center_empty">
+                <span>Ваша корзина пустая</span>
+                <button>В магазин</button>
+            </div>
         </div>
-    </div>
-    <div class="full_shop_down">
-        
+        <div class="full_shop_down">
+            
+        </div>
     </div>
 </div>
 

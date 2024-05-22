@@ -51,10 +51,21 @@
 	content: "\e910";
 }
 
-.shop {
+.shop_cont {
 	position: fixed;
-	bottom: 12px;
+	opacity: 0;
+	top: 0px;
+	right: 0px;
+	width: 320px;
+	height: 100%;
+	z-index: 1;
+}
+
+.shop {
+	z-index: 2;
+	position: fixed;
 	right: 12px;
+	bottom: 12px;
 	background-color: white;
 	display: flex;
 	height: 60px;
@@ -149,13 +160,43 @@
 	background-color: #0055CC;
 	cursor: pointer;
 }
+
+.dark_back {
+	position: fixed;
+	opacity: 0;
+	z-index: 1;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	transition: opacity 0.5s;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+/*
+.dark_back {
+	transition: background-color 0.5s;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.light_back {
+	transition: background-color 0.5s;
+	background-color: rgba(0, 0, 0, 0);
+}
+*/
+
+.shop_slide_out {
+	transform: translateX(100%);
+	opacity: 0;
+}
+
+.shop_slide_in {
+	transform: translateX(0%);
+	opacity: 1;
+}
 /*Конец блока shop*/
 
 /*Начало блока хедер*/
 nav {
-	z-index: 999;
-	top: 0px;
-	left: 0px;
 	height: 75px;
 	width: 100%;
 	background-color: #474A4F;
