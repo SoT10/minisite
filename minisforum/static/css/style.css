@@ -163,6 +163,7 @@
 
 .dark_back {
 	position: fixed;
+	display: none;
 	opacity: 0;
 	z-index: 1;
 	top: 0px;
@@ -506,6 +507,12 @@ nav {
 	color: white;
 	padding: 10px 20px;
 	margin-top: 20px;
+	transition: all 0.2s;
+}
+
+.home_slider button:hover {
+	background-color: #0055CC;
+    cursor: pointer;
 }
 
 .home_slider1_content {
