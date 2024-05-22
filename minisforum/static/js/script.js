@@ -1,3 +1,5 @@
+/*Начало блока home*/
+
 const home_next = document.getElementById('arrow_right');
 const home_return = document.getElementById('arrow_left');
 
@@ -62,45 +64,42 @@ function home_return_slide(number){
 		slide4.style.display="block"
 	}
 };
+/*Конец блока home*/
 
-document.querySelectorAll('.home_lupa1').forEach(function(img) {
-    img.addEventListener('mouseenter', function() {
-        this.style.display = 'none';
-        this.nextElementSibling.style.display = 'block';
-    });
-});
+/*начало блока shop*/
+function show_close_shop() {
+	var shop_cont=document.getElementById('shop_cont');
+	var full_shop=document.getElementById('full_shop');
+	var shop=document.getElementById('shop');
+	var dark_back=document.getElementById('dark_back');
+	if (dark_back.style.opacity=="1") {
+		dark_back.style.opacity="0"
+		shop_cont.classList.remove('shop_slide_in')
+		shop_cont.classList.add("shop_slide_out")
+		full_shop.classList.remove('shop_slide_in')
+		full_shop.classList.add("shop_slide_out")
+		shop.style.right="12px"
+	} else {
+		dark_back.style.opacity="1"
+		shop_cont.classList.remove('shop_slide_out')
+		shop_cont.classList.add("shop_slide_in")
+		full_shop.classList.remove('shop_slide_out')
+		full_shop.classList.add("shop_slide_in")
+		shop.style.right="344px"
+	}
+}
 
-document.querySelectorAll('.home_lupa2').forEach(function(img) {
-    img.addEventListener('mouseleave', function() {
-        this.style.display = 'none';
-        this.previousElementSibling.style.display = 'block';
-    });
-});
+function close_shop() {
+	var shop_cont=document.getElementById('shop_cont');
+	var full_shop=document.getElementById('full_shop');
+	var shop=document.getElementById('shop');
+	var dark_back=document.getElementById('dark_back');
+	dark_back.style.opacity="0"
+	shop_cont.classList.remove('shop_slide_in')
+	shop_cont.classList.add("shop_slide_out")
+	full_shop.classList.remove('shop_slide_in')
+	full_shop.classList.add("shop_slide_out")
+	shop.style.right="12px"
+}
+/*конец блока shop*/
 
-document.querySelectorAll('.home_heart1').forEach(function(img) {
-    img.addEventListener('mouseenter', function() {
-        this.style.display = 'none';
-        this.nextElementSibling.style.display = 'block';
-    });
-});
-
-document.querySelectorAll('.home_heart2').forEach(function(img) {
-    img.addEventListener('mouseleave', function() {
-        this.style.display = 'none';
-        this.previousElementSibling.style.display = 'block';
-    });
-});
-
-document.querySelectorAll('.home_korzina1').forEach(function(img) {
-    img.addEventListener('mouseenter', function() {
-        this.style.display = 'none';
-        this.nextElementSibling.style.display = 'block';
-    });
-});
-
-document.querySelectorAll('.home_korzina2').forEach(function(img) {
-    img.addEventListener('mouseleave', function() {
-        this.style.display = 'none';
-        this.previousElementSibling.style.display = 'block';
-    });
-});
