@@ -79,7 +79,9 @@ function show_close_shop() {
 		full_shop.classList.remove('shop_slide_in')
 		full_shop.classList.add("shop_slide_out")
 		shop.style.right="12px"
+		dark_back.style.display="none"
 	} else {
+		dark_back.style.display="block"
 		dark_back.style.opacity="1"
 		shop_cont.classList.remove('shop_slide_out')
 		shop_cont.classList.add("shop_slide_in")
@@ -100,6 +102,7 @@ function close_shop() {
 	full_shop.classList.remove('shop_slide_in')
 	full_shop.classList.add("shop_slide_out")
 	shop.style.right="12px"
+	dark_back.style.display="none"
 }
 /*конец блока shop*/
 
