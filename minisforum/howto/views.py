@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 
-def home(request):
+def howto(request):
     context = {
-        'title': 'Minisforum',
+        'title': 'Как сделать',
     }
-    template_name = 'home/home.html'
+    template_name = 'howto/howto.html'
     return render(request, template_name, context)
