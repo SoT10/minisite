@@ -64,6 +64,30 @@ function home_return_slide(number){
 		slide4.style.display="block"
 	}
 };
+
+function add_to_korzina() {
+	var shop_cont=document.getElementById('shop_cont');
+	var full_shop=document.getElementById('full_shop');
+	var shop=document.getElementById('shop');
+	var dark_back=document.getElementById('dark_back');
+	if (dark_back.style.opacity=="1") {
+		dark_back.style.opacity="0"
+		shop_cont.classList.remove('shop_slide_in')
+		shop_cont.classList.add("shop_slide_out")
+		full_shop.classList.remove('shop_slide_in')
+		full_shop.classList.add("shop_slide_out")
+		shop.style.right="12px"
+		dark_back.style.display="none"
+	} else {
+		dark_back.style.display="block"
+		dark_back.style.opacity="1"
+		shop_cont.classList.remove('shop_slide_out')
+		shop_cont.classList.add("shop_slide_in")
+		full_shop.classList.remove('shop_slide_out')
+		full_shop.classList.add("shop_slide_in")
+		shop.style.right="344px"
+	}
+}
 /*Конец блока home*/
 
 /*начало блока shop*/
