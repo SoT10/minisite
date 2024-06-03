@@ -23,6 +23,7 @@ from blog.views import blog
 from catalog.views import catalog
 from contact.views import contact
 from howto.views import howto
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +33,10 @@ urlpatterns = [
     path('catalog/', include('catalog.urls'), name='catalog'),
     path('contact/', include('contact.urls'), name='contact'),
     path('howto/', include('howto.urls'), name='howto'),
+
+
+
+    path('set_cookie/', views.set_cookie_view),
+    path('get_cookie/', views.get_cookie_view),
+    path('delete_cookie/', views.delete_cookie_view),
 ]
