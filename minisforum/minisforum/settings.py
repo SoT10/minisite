@@ -76,12 +76,8 @@ WSGI_APPLICATION = 'minisforum.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'minisite',
-        'USER': 'admin2024',
-        'PASSWORD': 'R00x8dDRx84b',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
