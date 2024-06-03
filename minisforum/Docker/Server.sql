@@ -1,13 +1,22 @@
-CREATE DATABASE minisite;
-\c minisite;
+-- Подключаемся к базе данных по умолчанию
+\c postgres
 
-CREATE TABLE "users" (
-  "id" BIGSERIAL PRIMARY KEY,
-  "email" VARCHAR(30),
-  "password" VARCHAR(30)
+-- Удаляем базу данных minisite, если она существует (если она не нужна)
+DROP DATABASE IF EXISTS minisite;
+
+-- Создаем базу данных minisite
+CREATE DATABASE minisite;
+
+-- Подключаемся к базе данных minisite
+\c minisite
+
+CREATE TABLE IF NOT EXISTS users (
+    "id" SERIAL PRIMARY KEY,
+    "email" VARCHAR(255) NOT NULL UNIQUE,
+    "password" VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE "shop" (
-  "id" BIGSERIAL PRIMARY KEY,
-  "price" VARCHAR(30)
+CREATE TABLE IF NOT EXISTS shop (
+    "id" BIGSERIAL PRIMARY KEY,
+    "price" VARCHAR (30) NOT NULL
 );
