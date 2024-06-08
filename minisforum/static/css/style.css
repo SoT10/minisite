@@ -842,6 +842,89 @@ nav {
 }
 /*конец блока каталог*/
 
+/*Начало блока my_accaunt*/
+
+.my_accaunt {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 48px 260px;
+	gap: 140px;
+}
+
+.my_accaunt_registration, .my_accaunt_login {
+	text-align: center;
+}
+
+.my_accaunt_registration_up, .my_accaunt_login_up {
+	font-weight: 600;
+	font-size: 50px;
+	margin-bottom: 40px;
+	color: #222222;
+	text-align: center;
+}
+
+.my_accaunt_login_inputs, .my_accaunt_registration_inputs {
+	color: #232323;
+	font-size: 14px;
+	text-align: left;
+}
+
+.my_accaunt_login_inputs_labels, .my_accaunt_registration_inputs_labels {
+	display: block;
+	margin-bottom: 6px;
+}
+
+.my_accaunt_login_inputs input, .my_accaunt_registration_inputs input {
+	border-radius: 6px;
+	color: #757575;
+	border: solid 1px #efefef;
+	box-shadow: none;
+	font-size: 14px;
+	line-height: 45px;
+	padding: 0px 16px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+
+.my_accaunt_registration_politic-privacy {
+	font-size: 14px;
+	margin-bottom: 20px;
+	text-align: left;
+	color: #232323;
+	font-weight: 500;
+}
+
+.my_accaunt_registration_politic-privacy a {
+	color: #767676;
+	text-decoration: none;
+}
+
+.my_accaunt_login button {
+	margin-top: 10px;
+}
+
+.my_accaunt_login button, .my_accaunt_registration button {
+	text-align: center;
+	cursor: pointer;
+	background-color: #222222;
+	font-weight: 600;
+	padding: 15px 25px;
+	text-transform: uppercase;
+	font-size: 14px;
+	box-shadow: 0 7px 50px 0 rgba(41,100,216,0.2);
+	transition: all 0.2s;
+	border-radius: 6px;
+	color: white;
+	border: none;
+	min-width: 130px;
+}
+
+.my_accaunt_login button:hover, .my_accaunt_registration button:hover {
+	background-color: #2EA3F2;
+}
+
+/*Конец блока my_accaunt*/
+
 /*НАчало блока footer*/
 
 .footer {
