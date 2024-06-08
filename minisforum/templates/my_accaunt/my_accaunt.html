@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="my_accaunt">
-	<div class="my_accaunt_login">
+	<form class="my_accaunt_login">
 		<div class="my_accaunt_login_up">
 			Вход
 		</div>
@@ -15,25 +15,34 @@
 			<input name="password" type="password" required>
 		</div>
 		<button>Войти</button>
-	</div>
+	</form>
 
-	<div class="my_accaunt_registration">
-		<div class="my_accaunt_registration_up">
-			Регистрация
-		</div>
-		<div class="my_accaunt_registration_inputs">
-			<div class="my_accaunt_registration_inputs_labels">Ваш Email</div>
-			<input type="email" name="email">
-			<div class="my_accaunt_registration_inputs_labels">Ваш пароль</div>
-			<input name="password2" type="password" required>
-			<div class="my_accaunt_registration_inputs_labels">Повторите ваш пароль</div>
-			<input name="password2_repeat" type="password" required>
-		</div>
-		<div class="my_accaunt_registration_politic-privacy">
-			Ваши личные данные будут использоваться для поддержки вашего опыта с этим веб-сайтом, для управления доступом к вашей учетной записи и для других целей, описанных в нашей <a href="#">политике конфиденциальности</a>.
-		</div>
-		<button>Регистрация</button>
-	</div>
+
+	<form method="POST" class="my_accaunt_registration">
+        {% csrf_token %}
+        <div class="my_accaunt_registration_up">
+            Регистрация
+        </div>
+        <div class="my_accaunt_registration_inputs">
+            <div class="my_accaunt_registration_inputs_labels">Ваш Email</div>
+            {{ form.email }}
+            <div class="my_accaunt_registration_inputs_labels">Ваш пароль</div>
+            {{ form.password1 }}
+            <div class="my_accaunt_registration_inputs_labels">Повторите ваш пароль</div>
+            {{ form.password2 }}
+        </div>
+        <div class="my_accaunt_registration_politic-privacy">
+            Ваши личные данные будут использоваться для поддержки вашего опыта с этим веб-сайтом, для управления доступом к вашей учетной записи и для других целей, описанных в нашей <a href="#">политике конфиденциальности</a>.
+        </div>
+        <button type="submit">Регистрация</button>
+        {% if messages %}
+		    <ul>
+		        {% for message in messages %}
+		            <li>{{ message }}</li>
+		        {% endfor %}
+		    </ul>
+		{% endif %}
+    </form>
 </div>
 
 {% endblock %}
