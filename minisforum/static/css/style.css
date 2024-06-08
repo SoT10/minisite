@@ -923,6 +923,11 @@ nav {
 	background-color: #2EA3F2;
 }
 
+.error-messages ul li {
+	margin-top: 20px;
+	color: red;
+}
+
 /*Конец блока my_accaunt*/
 
 /*НАчало блока footer*/
