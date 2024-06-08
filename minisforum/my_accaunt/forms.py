@@ -37,14 +37,11 @@ class UserRegisterForm(UserCreationForm):
         return email
 
 class UserLoginForm(AuthenticationForm):
-    class Meta:
-        model = User
-        fields = ['username', 'password']
-
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
 
+        print(username)
         if username and password:
             user = authenticate(username=username, password=password)
             if not user:

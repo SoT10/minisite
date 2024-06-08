@@ -11,11 +11,11 @@
 	    </div>
 	    <div class="my_accaunt_login_inputs">
 	        <div class="my_accaunt_login_inputs_labels">Ваш логин</div>
-	        {{ form.username }}
+	        {{ login_form.username }}
 	        <div class="my_accaunt_login_inputs_labels">Ваш пароль</div>
-	        {{ form.password1 }}
+	        {{ login_form.password }}
 	    </div>
-	    <button type="submit">Войти</button>
+	    <button type="submit" name="login_form_submit">Войти</button>
 	</form>
 
 
@@ -26,28 +26,28 @@
         </div>
         <div class="my_accaunt_registration_inputs">
             <div class="my_accaunt_registration_inputs_labels">Ваш Email</div>
-            {{ form.email }}
+            {{ reg_form.email }}
             <div class="my_accaunt_registration_inputs_labels">Ваш Логин</div>
-            {{ form.username }}
+            {{ reg_form.username }}
             <div class="my_accaunt_registration_inputs_labels">Ваш пароль</div>
-            {{ form.password1 }}
+            {{ reg_form.password1 }}
             <div class="my_accaunt_registration_inputs_labels">Повторите ваш пароль</div>
-            {{ form.password2 }}
+            {{ reg_form.password2 }}
         </div>
         <div class="my_accaunt_registration_politic-privacy">
             Ваши личные данные будут использоваться для поддержки вашего опыта с этим веб-сайтом, для управления доступом к вашей учетной записи и для других целей, описанных в нашей <a href="#">политике конфиденциальности</a>.
         </div>
-        <button type="submit">Регистрация</button>
+        <button type="submit" name="register_form_submit">Регистрация</button>
 
-        {% if form.errors %}
+        {% if reg_form.errors %}
 		    <div class="error-messages">
 		        <ul>
-		            {% for field in form %}
+		            {% for field in reg_form %}
 		                {% for error in field.errors %}
 		                    <li>{{ error }}</li>
 		                {% endfor %}
 		            {% endfor %}
-		            {% for error in form.non_field_errors %}
+		            {% for error in reg_form.non_field_errors %}
 		                <li>{{ error }}</li>
 		            {% endfor %}
 		        </ul>
