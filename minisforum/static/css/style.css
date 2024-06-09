@@ -1122,3 +1122,13 @@ nav {
   .back-side-img {
 	transform: rotateY(180deg);
   }
+
+  /*Анимация текста */
+
+  .gain-center{
+	transition: 1s; /* Время эффекта */
+	text-align: center; 
+  }
+  .gain-center:hover {
+	transform: scale(1.2); /* Увеличиваем масштаб */
+  }
