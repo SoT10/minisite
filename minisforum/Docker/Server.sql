@@ -20,5 +20,15 @@ CREATE TABLE IF NOT EXISTS zakazi (
     "username" VARCHAR(30),
     "date" DATE,
     "status" VARCHAR(15),
-    "itogo" VARCHAR(20)
+    "itogo" VARCHAR(20),
+    "zakaz" VARCHAR(10)
 );
+
+/*CREATE TABLE IF NOT EXISTS adress (
+    "id" BIGSERIAL PRIMARY KEY,
+    "username" VARCHAR(30),
+    "date" DATE,
+    "status" VARCHAR(15),
+    "itogo" VARCHAR(20),
+    "zakaz" VARCHAR(10)
+);*/

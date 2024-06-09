@@ -971,6 +971,20 @@ nav {
 	font-weight: 600;
 }
 
+.my_accaunt1_zakazi_element {
+	font-size: 16px;
+	text-align: center;
+}
+
+.my_accaunt1_zakazi_element a {
+	text-decoration: underline;
+	font-weight: 600;
+}
+
+.my_accaunt1_zakazi_element a:hover {
+	color: #2EA3F2;
+}
+
 /*Конец блока my_accaunt*/
 
 /*НАчало блока footer*/

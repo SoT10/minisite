@@ -30,14 +30,16 @@ def my_accaunt(request):
         reg_form=UserRegisterForm()
         login_form = CustomAuthenticationForm()
     
+    user_orders = Zakazi.objects.filter(username=request.user.username)
     context = {
         'title': 'Мой аккаунт',
         'reg_form': reg_form,
-        'login_form': login_form
+        'login_form': login_form,
+
+        'user_orders': user_orders
     }
     template_name = 'my_accaunt/my_accaunt.html'
-    user_orders = Zakazi.objects.filter(username=request.user.username)
-    print(user_orders)
+    
 
     return render(request, template_name, context)
 

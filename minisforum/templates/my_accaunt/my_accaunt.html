@@ -111,7 +111,11 @@
 		<div class="my_accaunt1_zakazi_up">Итого</div>
 		<div class="my_accaunt1_zakazi_up">Действия</div>
 		{% for order in user_orders %}
-            <li>{{ order.id }} - {{ order.username }} - {{ order.date }} - {{ order.status }} - {{ order.itogo }}</li>
+            <p class="my_accaunt1_zakazi_element">Заказ № {{ order.id }}</p>
+        	<p class="my_accaunt1_zakazi_element">{{ order.date }}</p>
+        	<p class="my_accaunt1_zakazi_element">{{ order.status }}</p>
+        	<p class="my_accaunt1_zakazi_element">{{ order.itogo }} Р</p>
+        	<p class="my_accaunt1_zakazi_element"><a href="">Просмотр</a></p>
         {% endfor %}
 	</div>
 
