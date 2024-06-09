@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from .forms import UserRegisterForm
 from .validators import CustomAuthenticationForm
+from .models import Zakazi
 
 def my_accaunt(request):
     reg_form = UserRegisterForm()
@@ -24,9 +25,6 @@ def my_accaunt(request):
                 user = authenticate(request, username=username, password=password)
                 login(request, user)
                 request.session['username'] = username
-                print(login_form.is_valid())
-                print(request.session['username'])
-                print(request.user.is_authenticated)
                 return redirect('/my_accaunt')
     else:
         reg_form=UserRegisterForm()
@@ -38,4 +36,10 @@ def my_accaunt(request):
         'login_form': login_form
     }
     template_name = 'my_accaunt/my_accaunt.html'
+    user_orders = Zakazi.objects.filter(username=request.user.username)
+    print(user_orders)
+
     return render(request, template_name, context)
+
+    
+

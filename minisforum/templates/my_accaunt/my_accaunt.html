@@ -110,6 +110,9 @@
 		<div class="my_accaunt1_zakazi_up">Статус</div>
 		<div class="my_accaunt1_zakazi_up">Итого</div>
 		<div class="my_accaunt1_zakazi_up">Действия</div>
+		{% for order in user_orders %}
+            <li>{{ order.id }} - {{ order.username }} - {{ order.date }} - {{ order.status }} - {{ order.itogo }}</li>
+        {% endfor %}
 	</div>
 
 </div>
