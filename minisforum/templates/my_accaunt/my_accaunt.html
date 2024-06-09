@@ -93,10 +93,10 @@
 	    <p>Добро пожаловать, {{ request.user.username }}!</p>
 		</div>
 	<div class="my_accaunt1_btns">
-		<button>История заказов</button>
-		<button>Адреса</button>
-		<button>Анкета</button>
-		<button>Список желаний</button>
+		<button onclick="my_accaunt1_btns_zakazi()">История заказов</button>
+		<button onclick="my_accaunt1_btns_adress()">Адреса</button>
+		<button onclick="my_accaunt1_btns_anketa()">Анкета</button>
+		<button onclick="my_accaunt1_btns_wants()">Список желаний</button>
 		<form action="{% url 'my_accaunt:logout' %}" method="post">
 		    {% csrf_token %}
 		    <button type="submit">Выйти</button>
@@ -104,7 +104,7 @@
 	</div>
 
 
-	<div class="my_accaunt1_zakazi">
+	<div class="my_accaunt1_zakazi" id="my_accaunt1_zakazi">
 		<div class="my_accaunt1_zakazi_up">Заказ</div>
 		<div class="my_accaunt1_zakazi_up">Дата</div>
 		<div class="my_accaunt1_zakazi_up">Статус</div>
@@ -116,7 +116,43 @@
         	<p class="my_accaunt1_zakazi_element">{{ order.status }}</p>
         	<p class="my_accaunt1_zakazi_element">{{ order.itogo }} Р</p>
         	<p class="my_accaunt1_zakazi_element"><a href="">Просмотр</a></p>
-        {% endfor %}
+        {% endfor %} 
+	</div>
+
+	<div class="my_accaunt1_adress" id="my_accaunt1_adress" style="display: none;">
+		<div class="my_accaunt1_adress_head">Следующий адрес будет использован по умолчанию при оформлении заказов.</div>
+
+		<div class="my_accaunt1_adress_none-adress">Вы еще не добавили ваш адрес доставки. <button>Добавить?</button></div>
+
+		<form class="my_accaunt1_adress_add" method="post">
+			<div class="my_accaunt1_adress_add_head">Адрес доставки</div>
+			{% csrf_token %}
+	        <div>
+	            <label for="{{ adress_form.first_name.id_for_label }}">Имя</label>
+	            {{ adress_form.first_name }}
+	        </div>
+	        <div>
+	            <label for="{{ adress_form.last_name.id_for_label }}">Фамилия</label>
+	            {{ adress_form.last_name }}
+	        </div>
+	        <div>
+	            <label for="{{ adress_form.oblast.id_for_label }}">Область</label>
+	            {{ adress_form.oblast }}
+	        </div>
+	        <div>
+	            <label for="{{ adress_form.city.id_for_label }}">Населенный пункт</label>
+	            {{ adress_form.city }}
+	        </div>
+	        <div>
+	            <label for="{{ adress_form.adress.id_for_label }}">Адрес</label>
+	            {{ adress_form.adress }}
+	        </div>
+	        <div>
+	            <label for="{{ adress_form.postal_code.id_for_label }}">Почтовый индекс</label>
+	            {{ adress_form.postal_code }}
+	        </div>
+	        <button type="submit" name="adress_form_submit">Сохранить</button>
+		</form>
 	</div>
 
 </div>

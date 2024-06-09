@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from .validators import validate_custom_email
 from django.contrib.auth import authenticate, login
+from django.forms import ModelForm
+from .models import Adress
 
 class UserRegisterForm(UserCreationForm):
     email = forms.CharField(required=True, validators=[validate_custom_email])
@@ -50,3 +52,16 @@ class UserLoginForm(AuthenticationForm):
 
         print(self.cleaned_data)
         return self.cleaned_data
+
+class AdressForm(ModelForm):
+    class Meta:
+        model = Adress
+        fields = ['first_name', 'last_name', 'oblast', 'city', 'adress', 'postal_code']
+        labels = {
+            'first_name': 'Имя',
+            'last_name': 'Фамилия',
+            'oblast': 'Область',
+            'city': 'Населенный пункт',
+            'adress': 'Адрес',
+            'postal_code': 'Почтовый индекс',
+        }

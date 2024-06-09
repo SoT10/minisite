@@ -1,0 +1,28 @@
+/*добавить в my_accaunt*/
+.my_accaunt1_adress_head {
+	font-size: 18px;
+	margin-bottom: 40px;
+}
+
+.my_accaunt1_adress_none-adress {
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.my_accaunt1_adress_none-adress button {
+	font-size: 24px;
+	font-weight: 600;
+	background-color: white;
+	border: none;
+	color: #757575;
+}
+
+.my_accaunt1_adress_none-adress button:hover {
+	cursor: pointer;
+	color: #2EA3F2;
+}
+
+.my_accaunt1_adress_add_head {
+	font-size: 24px;
+	font-weight: 600;
+}

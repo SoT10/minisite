@@ -130,3 +130,20 @@ function close_shop() {
 }
 /*конец блока shop*/
 
+/*Начало блока my_accaunt*/
+function my_accaunt1_btns_zakazi(){
+	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
+	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
+
+	my_accaunt1_zakazi.style.display="grid";
+	my_accaunt1_adress.style.display="none";
+}
+
+function my_accaunt1_btns_adress(){
+	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
+	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
+
+	my_accaunt1_zakazi.style.display="none";
+	my_accaunt1_adress.style.display="block";
+}
+/*Конец блока my_accaunt*/

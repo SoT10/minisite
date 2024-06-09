@@ -24,11 +24,13 @@ CREATE TABLE IF NOT EXISTS zakazi (
     "zakaz" VARCHAR(10)
 );
 
-/*CREATE TABLE IF NOT EXISTS adress (
+CREATE TABLE IF NOT EXISTS adress (
     "id" BIGSERIAL PRIMARY KEY,
     "username" VARCHAR(30),
-    "date" DATE,
-    "status" VARCHAR(15),
-    "itogo" VARCHAR(20),
-    "zakaz" VARCHAR(10)
-);*/
+    "first_name" VARCHAR(15),
+    "last_name" VARCHAR(15),
+    "oblast" VARCHAR(30),
+    "city" VARCHAR(15),
+    "adress" VARCHAR(15),
+    "postal_code" VARCHAR(8)
+);

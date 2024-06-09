@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from .forms import UserRegisterForm
 from .validators import CustomAuthenticationForm
 from .models import Zakazi
+from .forms import AdressForm
+from .models import Adress
 
 def my_accaunt(request):
     reg_form = UserRegisterForm()
@@ -26,20 +28,40 @@ def my_accaunt(request):
                 login(request, user)
                 request.session['username'] = username
                 return redirect('/my_accaunt')
+        elif 'adress_form_submit' in request.POST:
+            adress_form = AdressForm(request.POST)
+            if adress_form.is_valid():
+                username = request.user.username
+                adress_data = adress_form.cleaned_data
+                Adress.objects.update_or_create(
+                    username=username,
+                    defaults={
+                        'first_name': adress_data['first_name'],
+                        'last_name': adress_data['last_name'],
+                        'oblast': adress_data['oblast'],
+                        'city': adress_data['city'],
+                        'adress': adress_data['adress'],
+                        'postal_code': adress_data['postal_code']
+                    })
+                return redirect('/my_accaunt')
+
+                
     else:
         reg_form=UserRegisterForm()
         login_form = CustomAuthenticationForm()
+        adress_form = AdressForm()
     
     user_orders = Zakazi.objects.filter(username=request.user.username)
+
     context = {
         'title': 'Мой аккаунт',
         'reg_form': reg_form,
         'login_form': login_form,
+        'adress_form': adress_form,
 
         'user_orders': user_orders
     }
     template_name = 'my_accaunt/my_accaunt.html'
-    
 
     return render(request, template_name, context)
 
