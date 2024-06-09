@@ -93,7 +93,7 @@
 	    <p>Добро пожаловать, {{ request.user.username }}!</p>
 		</div>
 	<div class="my_accaunt1_btns">
-		<button>Заказы</button>
+		<button>История заказов</button>
 		<button>Адреса</button>
 		<button>Анкета</button>
 		<button>Список желаний</button>
@@ -101,8 +101,17 @@
 		    {% csrf_token %}
 		    <button type="submit">Выйти</button>
 		</form>
-
 	</div>
+
+
+	<div class="my_accaunt1_zakazi">
+		<div class="my_accaunt1_zakazi_up">Заказ</div>
+		<div class="my_accaunt1_zakazi_up">Дата</div>
+		<div class="my_accaunt1_zakazi_up">Статус</div>
+		<div class="my_accaunt1_zakazi_up">Итого</div>
+		<div class="my_accaunt1_zakazi_up">Действия</div>
+	</div>
+
 </div>
 {% endif %}
 
