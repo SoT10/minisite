@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login
 from .forms import UserRegisterForm
+from .validators import CustomAuthenticationForm
 
 def my_accaunt(request):
     reg_form = UserRegisterForm()
@@ -13,16 +15,22 @@ def my_accaunt(request):
             if reg_form.is_valid():
                 reg_form.save()
                 messages.success(request, 'Ваш аккаунт был создан! Теперь вы можете войти.')
-                return redirect('/')
+                return redirect('/my_accaunt')
         elif 'login_form_submit' in request.POST:
-            login_form = AuthenticationForm(request, request.POST)
-            print(0)
+            login_form = CustomAuthenticationForm(data=request.POST)
             if login_form.is_valid():
-                # Обработка успешного входа
-                print(1)
-                return redirect('/')
-            else:
-                print(2)
+                username = login_form.cleaned_data.get('username')
+                password = login_form.cleaned_data['password']
+                user = authenticate(request, username=username, password=password)
+                login(request, user)
+                request.session['username'] = username
+                print(login_form.is_valid())
+                print(request.session['username'])
+                print(request.user.is_authenticated)
+                return redirect('/my_accaunt')
+    else:
+        reg_form=UserRegisterForm()
+        login_form = CustomAuthenticationForm()
     
     context = {
         'title': 'Мой аккаунт',

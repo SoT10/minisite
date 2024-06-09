@@ -2,10 +2,11 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
+from .validators import validate_custom_email
 from django.contrib.auth import authenticate, login
 
 class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField()
+    email = forms.CharField(required=True, validators=[validate_custom_email])
 
     class Meta:
         model = User
@@ -40,12 +41,12 @@ class UserLoginForm(AuthenticationForm):
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
-
-        print(username)
         if username and password:
             user = authenticate(username=username, password=password)
             if not user:
                 self.add_error('username', "Неверное имя пользователя или пароль.")
             elif not user.is_active:
                 self.add_error('username', "Ваш аккаунт неактивен.")
+
+        print(self.cleaned_data)
         return self.cleaned_data
