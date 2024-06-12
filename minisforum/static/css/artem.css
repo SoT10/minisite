@@ -46,3 +46,24 @@
 .my_accaunt1_adress_add label {
 	margin-bottom: 14px;
 }
+
+.my_accaunt1_adress_add button {
+	text-align: center;
+    cursor: pointer;
+    background-color: #222222;
+    font-weight: 600;
+    padding: 15px 25px;
+    text-transform: uppercase;
+    font-size: 14px;
+    box-shadow: 0 7px 50px 0 rgba(41, 100, 216, 0.2);
+    transition: all 0.2s;
+    border-radius: 6px;
+    color: white;
+    border: none;
+    min-width: 130px;
+    margin-top: 24px;
+}
+
+.my_accaunt1_adress_add button:hover {
+	background-color: #2EA3F2;
+}
