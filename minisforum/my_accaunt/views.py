@@ -52,6 +52,12 @@ def my_accaunt(request):
         adress_form = AdressForm()
     
     user_orders = Zakazi.objects.filter(username=request.user.username)
+    user_adress = Adress.objects.filter(username=request.user.username)
+
+    if not user_adress:
+        user_adress = "Вы еще не добавили ваш адрес доставки. <button onclick='show_adress()'>Добавить?</button>"
+    else:
+        user_adress = None
 
     context = {
         'title': 'Мой аккаунт',
@@ -59,7 +65,8 @@ def my_accaunt(request):
         'login_form': login_form,
         'adress_form': adress_form,
 
-        'user_orders': user_orders
+        'user_orders': user_orders,
+        'user_adress': user_adress
     }
     template_name = 'my_accaunt/my_accaunt.html'
 

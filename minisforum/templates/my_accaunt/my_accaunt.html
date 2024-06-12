@@ -121,10 +121,13 @@
 
 	<div class="my_accaunt1_adress" id="my_accaunt1_adress" style="display: none;">
 		<div class="my_accaunt1_adress_head">Следующий адрес будет использован по умолчанию при оформлении заказов.</div>
+		<div class="my_accaunt1_adress_none-adress" id="my_accaunt1_adress_none-adress">
+			{% if user_adress %}
+				{{ user_adress|safe }}
+			{% endif %}
+		</div>
 
-		<div class="my_accaunt1_adress_none-adress">Вы еще не добавили ваш адрес доставки. <button>Добавить?</button></div>
-
-		<form class="my_accaunt1_adress_add" method="post">
+		<form class="my_accaunt1_adress_add" id="my_accaunt1_adress_add" method="post" style="display:none;">
 			<div class="my_accaunt1_adress_add_head">Адрес доставки</div>
 			{% csrf_token %}
 	        <div>

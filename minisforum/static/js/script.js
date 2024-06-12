@@ -146,4 +146,11 @@ function my_accaunt1_btns_adress(){
 	my_accaunt1_zakazi.style.display="none";
 	my_accaunt1_adress.style.display="block";
 }
+
+function show_adress() {
+	var my_accaunt1_adress_none_adress = document.getElementById('my_accaunt1_adress_none-adress')
+	var my_accaunt1_adress_add = document.getElementById('my_accaunt1_adress_add')
+	my_accaunt1_adress_add.style.display = "block"
+	my_accaunt1_adress_none_adress.style.display = "none"
+}
 /*Конец блока my_accaunt*/
