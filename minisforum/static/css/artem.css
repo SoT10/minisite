@@ -30,3 +30,19 @@
 .my_accaunt1_adress_add_head {
 	margin-bottom: 24px;
 }
+
+.my_accaunt1_adress_add input {
+	border-radius: 6px;
+    color: #757575;
+    border: solid 1px #efefef;
+    box-shadow: none;
+    font-size: 14px;
+    line-height: 45px;
+    padding: 0px 16px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.my_accaunt1_adress_add label {
+	margin-bottom: 14px;
+}
