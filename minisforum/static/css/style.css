@@ -284,6 +284,10 @@ nav {
 	align-items: center;
 }
 
+.content {
+	background-color: #789294;
+}
+
 .blog1_left {
 	font-family: 'Jura';
 	font-size: 40px;
@@ -384,6 +388,10 @@ nav {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 70px;
+	margin-top: 30px;
+	margin-left: 30px;
+	margin-right: 30px;
+	padding: 50px;
 }
 
 .blog3_aricle_date {
@@ -420,22 +428,28 @@ nav {
     background-repeat: no-repeat;
 	width: 100%;
 	height: 810px;
-	background-image: url("/static/assets/about/header.svg");
+	background-image: url("/static/assets/about/about main.jpg");
 }
 
 .about1_text {
-	color: white;
+	color: rgb(48, 48, 48);
 	font-size: 100px;
 	line-height: 114px;
 	font-weight: 400;
 	text-align: right;
 	padding: 150px 150px 0px 0px;
+	margin-right: 50px;
+	text-shadow: 1px -1px hsla(0, 0%, 30%, .6),
+             2px -2px hsla(0, 0%, 30%, .7),
+             3px -3px hsla(0, 0%, 32%, .8),
+             4px -4px hsla(0, 0%, 30%, .9),
+             5px -5px hsla(0, 0%, 30%, 1.0);
 
 }
 
 .about2_content {
 	padding: 40px 50px 40px 50px;
-	background-color: #474A4F;
+	background-color: #ffffff;
 	border-radius: 15px;
 }
 
@@ -473,7 +487,7 @@ nav {
 	font-size: 32px;
 	font-weight: 400;
 	line-height: 28px;
-	color: white;
+	color: rgb(22, 22, 22);
 }
 
 /*Конец блока о нас*/
@@ -1132,3 +1146,165 @@ nav {
   .gain-center:hover {
 	transform: scale(1.2); /* Увеличиваем масштаб */
   }
+
+  .gain-center_about{
+	transition: 1s; /* Время эффекта */
+	text-align: right; 
+  }
+  .gain-center_about:hover {
+	transform: scale(1.2); /* Увеличиваем масштаб */
+  }
+
+  /* Общие стили */
+*, *:after, *:before { 
+	border-box; 
+	box-sizing: border-box; 
+}
+.clearfix:before, .clearfix:after { 
+	content: ''; 
+	display: table; 
+}
+.clearfix:after { 
+	clear: both; 
+}
+.hover-text-one {
+	overflow: hidden;
+	margin: 0;
+	width: 100%;
+	list-style: none;
+	text-align: center;
+}
+.hover-text-one figure {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	overflow: hidden;
+	background: #141718;
+	text-align: center;
+	cursor: pointer;
+}
+.hover-text-one figure img {
+	position: relative;
+	display: block;
+	min-height: 100%;
+	opacity: 0.8;
+}
+.hover-text-one figure figcaption {
+	padding: 2em;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.25em;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.hover-text-one figure figcaption::before,
+.hover-text-one figure figcaption::after {
+	pointer-events: none;
+}
+.hover-text-one figure figcaption{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.hover-text-one figure h3 {
+	word-spacing: -0.15em;
+	font-weight: 600;
+}
+.hover-text-one figure h3 span {
+	font-weight: 800;
+}
+.hover-text-one figure h3,
+.hover-text-one figure p {
+	margin-top: 25px;
+}
+.hover-text-one figure p {
+	letter-spacing: 1px;
+	font-size: 80%;
+	font-weight: 400;
+	color: #000000;
+}
+
+/* Эффект при наведении */
+figure.effect-text-three {
+	background: #789294;
+}
+figure.effect-text-three img {
+	width: -webkit-calc(100% + 20px);
+	width: calc(100% + 20px);
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	transform: scale(1.1);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+figure.effect-text-three:hover img {
+	opacity: 0.4;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+figure.effect-text-three figcaption {
+	text-align: left;
+}
+figure.effect-text-three h3 {
+	position: relative;
+	overflow: hidden;
+	padding: 0.5em 0;
+}
+figure.effect-text-three h3::after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background: #fff;
+	content: '';
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(-100%,0,0);
+	transform: translate3d(-100%,0,0);
+}
+figure.effect-text-three:hover h3::after {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+figure.effect-text-three p {
+	padding: 1em 0;
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(100%,0,0);
+	transform: translate3d(100%,0,0);
+}
+figure.effect-text-three:hover p {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+figure.effect-text-three a {
+    display: block;
+    text-decoration: none;
+	text-align: center;
+	margin-left: 20px ;
+    padding: 20px;
+    color: bisque;
+    background: rgba(70, 70, 70, 100);
+    border-radius: 5px;
+    margin: 0 auto;
+    transition: all 0.4s ease-in-out;
+	padding: 1em 0;
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(100%,0,0);
+	transform: translate3d(100%,0,0);
+}
+figure.effect-text-three:hover a {
+    background: #454545;
+    color: bisque;
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
