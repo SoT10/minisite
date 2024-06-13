@@ -22,7 +22,7 @@ class CustomNumericPasswordValidator(CommonPasswordValidator):
             super().validate(password, user)
         except ValidationError:
             raise ValidationError(
-                _("Пароль не должен состоять только из цифр."),
+                _("Пароль не должен состоять только из цифр или только из букв."),
                 code='password_entirely_numeric',
             )
 

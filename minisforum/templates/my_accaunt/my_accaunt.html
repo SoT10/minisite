@@ -31,14 +31,6 @@
 		        </ul>
 		    </div>
 		{% endif %}
-
-        {% if messages %}
-		    <ul>
-		        {% for message in messages %}
-		            <li>{{ message }}</li>
-		        {% endfor %}
-		    </ul>
-		{% endif %}
 	</form>
 
 
@@ -127,7 +119,7 @@
 		    {% endif %}
 		</div>
 
-		<form class="my_accaunt1_adress_add" id="my_accaunt1_adress_add" method="post" {% if заказчика in user_adress %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+		<form class="my_accaunt1_adress_add" id="my_accaunt1_adress_add" method="post" {% if "Адрес заказчика" in user_adress %} style="display: block;" {% else %} style="display: none;" {% endif %}>
 		    <div class="my_accaunt1_adress_add_head">Изменить адрес доставки</div>
 		    {% csrf_token %}
 		    <div>
@@ -158,7 +150,7 @@
 		</form>
 	</div>
 
-	<form class="my_accaunt1_anketa" id="my_accaunt1_anketa" method="post" style="display:none;">
+	<form class="my_accaunt1_anketa" id="my_accaunt1_anketa" method="post" style="display: none;">
 	        {% csrf_token %}
 	        <label for="{{ anketa_form.email.id_for_label }}">Электронная почта</label>
 	        {{ anketa_form.email }}
@@ -170,6 +162,27 @@
 	        {{ anketa_form.new_password1 }}
 	        <label for="{{ anketa_form.new_password2.id_for_label }}">Повторите новый пароль</label>
 	        {{ anketa_form.new_password2 }}
+		    {% if anketa_form.errors %}
+			    <div class="error-messages">
+			        <ul>
+			            {% for field in anketa_form %}
+			                {% for error in field.errors %}
+			                    <li>{{ error }}</li>
+			                {% endfor %}
+			            {% endfor %}
+			            {% for error in anketa_form.non_field_errors %}
+			                <li>{{ error }}</li>
+			            {% endfor %}
+			        </ul>
+			    </div>
+			{% endif %}
+			{% if messages %}
+			    <ul>
+			        {% for message in messages %}
+			            <li>{{ message }}</li>
+			        {% endfor %}
+			    </ul>
+			{% endif %}
         <button type="submit" name="anketa_form_submit">Сохранить изменения</button>
 	</form>
 

@@ -11,7 +11,8 @@ def my_accaunt(request):
     user = request.user
     reg_form = UserRegisterForm()
     login_form = AuthenticationForm()
-    adress_form = None
+    adress_form = AdressForm()
+    anketa_form = AnketaForm()
 
     if request.method == 'POST':
         if 'register_form_submit' in request.POST:
@@ -44,7 +45,7 @@ def my_accaunt(request):
                         'adress': adress_data['adress'],
                         'postal_code': adress_data['postal_code']
                     })
-                return redirect('/my_accaunt#adress')
+                return redirect('/my_accaunt')
         elif 'anketa_form_submit' in request.POST:
             anketa_form = AnketaForm(request.POST, instance=request.user)
             if anketa_form.is_valid():
@@ -55,28 +56,29 @@ def my_accaunt(request):
                 new_password1 = anketa_form.cleaned_data['new_password1']
                 new_password2 = anketa_form.cleaned_data['new_password2']
 
-                
                 user.email = email
-                user.username = username
+                user.username = new_username if new_username else user.username
 
-                # Если указаны старый и новый пароли, меняем пароль пользователя
-                if old_password and new_password1 and new_password2:
+                if new_password1 and new_password2:
                     if user.check_password(old_password):
                         if new_password1 == new_password2:
                             user.set_password(new_password1)
-                            update_session_auth_hash(request, user)  # Обновляем сессионный ключ после смены пароля
-                
+                            update_session_auth_hash(request, user)
+                            messages.success(request, 'Пароль обновлен')
+
+                messages.success(request, 'Электронная почта и логин успешно обновлены')
                 user.save()
 
                 return redirect('/my_accaunt')
                 
     else:
-        reg_form=UserRegisterForm()
+        reg_form = UserRegisterForm()
         login_form = CustomAuthenticationForm()
-        adress_form = AdressForm()
+        try:
+            anketa_form = AnketaForm(instance=user, initial={'email': user.email, 'username': user.username})
+        except AttributeError as e:
+            pass
 
-        # anketa_form = AnketaForm(instance=user, initial={'email': user.email, 'username': user.username})
-    
     user_orders = Zakazi.objects.filter(username=request.user.username)
     user_adress_instance = Adress.objects.filter(username=request.user.username).first()
 
@@ -91,14 +93,13 @@ def my_accaunt(request):
         'reg_form': reg_form,
         'login_form': login_form,
         'adress_form': adress_form,
-        # 'anketa_form': anketa_form,
-
         'user_orders': user_orders,
         'user_adress': user_adress
     }
-    template_name = 'my_accaunt/my_accaunt.html'
 
-    return render(request, template_name, context)
-
+    try:
+        context.update({'anketa_form':anketa_form})
+    except AttributeError as e:
+        pass
     
-
+    return render(request, 'my_accaunt/my_accaunt.html', context)

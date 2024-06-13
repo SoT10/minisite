@@ -12,7 +12,7 @@ CREATE DATABASE minisite;
 
 CREATE TABLE IF NOT EXISTS shop (
     "id" BIGSERIAL PRIMARY KEY,
-    "price" VARCHAR (30) NOT NULL
+    "price" DECIMAL(10, 2) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS zakazi (
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS zakazi (
     "username" VARCHAR(30),
     "date" DATE,
     "status" VARCHAR(15),
-    "itogo" VARCHAR(20),
+    "itogo" DECIMAL(10, 2),
     "zakaz" VARCHAR(10)
 );
 
