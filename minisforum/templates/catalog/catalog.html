@@ -26,6 +26,9 @@
                 <li><a href="">Есть в наличии</a><div class="catalog_left_categories_img">2</div></li>
                 <li><a href="">Предзаказ</a><div class="catalog_left_categories_img">17</div></li>
                 <li><a href="">Все продукты minisforum</a><div class="catalog_left_categories_img">19</div></li>
+                {% for category in categories %}
+                <li><a href="">{{ category.category }}</a><div class="catalog_left_categories_img">{{ category.count }}</div></li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -241,6 +244,26 @@
                     <a href="product1"><div class="gain-center">DeskMini UM350</div></a>
                 </div>
             </div>
+
+
+
+            {% for product in products %}
+            <div class="catalog_right_product_18">
+                <div class="rotate-block">
+                    <div class="change-img">
+                        <div class="front-side-img"><img src="{{ product.image }}" alt=" {{ product.product_name }}"></div>
+                        <div class="back-side-img"><img src="/static/assets/catalog/amd/Desk mini UM350 1.jpg" alt=""></div>
+                    </div>
+                </div>                
+                <div class="catalog_right_product_text">
+                    <a href="product1"><div class="gain-center">{{ product.product_name }}</div></a>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+
         </div>
     </div>
 </div>

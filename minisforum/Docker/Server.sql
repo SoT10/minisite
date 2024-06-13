@@ -10,9 +10,15 @@ CREATE DATABASE minisite;
 -- Подключаемся к базе данных minisite
 \c minisite
 
-CREATE TABLE IF NOT EXISTS shop (
-    "id" BIGSERIAL PRIMARY KEY,
-    "price" DECIMAL(10, 2) NOT NULL
+CREATE TABLE IF NOT EXISTS products (
+    "product_id" BIGSERIAL PRIMARY KEY,
+    "product_name" VARCHAR(100) NOT NULL,
+    "category" VARCHAR(50),
+    "price" DECIMAL(10, 2) NOT NULL,
+    "kolvo" INT,
+    "description" TEXT,
+    "image" VARCHAR(255),
+    "back_image" VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS zakazi (
