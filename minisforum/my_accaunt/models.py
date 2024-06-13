@@ -15,12 +15,12 @@ class Zakazi(models.Model):
         return f"Order {self.id} by {self.username}"
 
 class Adress(models.Model):
-    username = models.CharField(max_length=150, unique=True)
+    username = models.CharField(max_length=30, unique=True)
     first_name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
     oblast = models.CharField(max_length=30)
     city = models.CharField(max_length=15)
-    adress = models.CharField(max_length=15)
+    adress = models.CharField(max_length=80)
     postal_code = models.CharField(max_length=8)
 
     class Meta:

@@ -31,6 +31,6 @@ CREATE TABLE IF NOT EXISTS adress (
     "last_name" VARCHAR(15),
     "oblast" VARCHAR(30),
     "city" VARCHAR(15),
-    "adress" VARCHAR(15),
+    "adress" VARCHAR(80),
     "postal_code" VARCHAR(8)
 );

@@ -6,6 +6,7 @@ from .validators import validate_custom_email
 from django.contrib.auth import authenticate, login
 from django.forms import ModelForm
 from .models import Adress
+from django.contrib.auth.forms import UserChangeForm
 
 class UserRegisterForm(UserCreationForm):
     email = forms.CharField(required=True, validators=[validate_custom_email])
@@ -39,20 +40,6 @@ class UserRegisterForm(UserCreationForm):
             self.add_error('email', "Этот email уже используется.")
         return email
 
-class UserLoginForm(AuthenticationForm):
-    def clean(self):
-        username = self.cleaned_data.get('username')
-        password = self.cleaned_data.get('password')
-        if username and password:
-            user = authenticate(username=username, password=password)
-            if not user:
-                self.add_error('username', "Неверное имя пользователя или пароль.")
-            elif not user.is_active:
-                self.add_error('username', "Ваш аккаунт неактивен.")
-
-        print(self.cleaned_data)
-        return self.cleaned_data
-
 class AdressForm(ModelForm):
     class Meta:
         model = Adress
@@ -64,4 +51,17 @@ class AdressForm(ModelForm):
             'city': 'Населенный пункт',
             'adress': 'Адрес',
             'postal_code': 'Почтовый индекс',
+        }
+
+class AnketaForm(UserChangeForm):
+    old_password = forms.CharField(label="Старый пароль", widget=forms.PasswordInput, required=False)
+    username = forms.CharField(label="Логин", required=False)
+    new_password1 = forms.CharField(label="Новый пароль", widget=forms.PasswordInput, required=False)
+    new_password2 = forms.CharField(label="Подтвердите новый пароль", widget=forms.PasswordInput, required=False)
+
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'old_password', 'new_password1', 'new_password2']
+        labels = {
+            'email': 'Электронная почта','username': 'Логин',
         }

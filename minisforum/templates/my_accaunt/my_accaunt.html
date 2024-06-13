@@ -123,40 +123,55 @@
 		<div class="my_accaunt1_adress_head">Следующий адрес будет использован по умолчанию при оформлении заказов.</div>
 		<div class="my_accaunt1_adress_none-adress" id="my_accaunt1_adress_none-adress">
 			{% if user_adress %}
-				{{ user_adress|safe }}
-			{% endif %}
+			    {{ user_adress|safe }}
+		    {% endif %}
 		</div>
 
-		<form class="my_accaunt1_adress_add" id="my_accaunt1_adress_add" method="post" style="display:none;">
-			<div class="my_accaunt1_adress_add_head">Адрес доставки</div>
-			{% csrf_token %}
-	        <div>
-	            <label for="{{ adress_form.first_name.id_for_label }}">Имя</label>
-	            {{ adress_form.first_name }}
-	        </div>
-	        <div>
-	            <label for="{{ adress_form.last_name.id_for_label }}">Фамилия</label>
-	            {{ adress_form.last_name }}
-	        </div>
-	        <div>
-	            <label for="{{ adress_form.oblast.id_for_label }}">Область</label>
-	            {{ adress_form.oblast }}
-	        </div>
-	        <div>
-	            <label for="{{ adress_form.city.id_for_label }}">Населенный пункт</label>
-	            {{ adress_form.city }}
-	        </div>
-	        <div>
-	            <label for="{{ adress_form.adress.id_for_label }}">Адрес</label>
-	            {{ adress_form.adress }}
-	        </div>
-	        <div>
-	            <label for="{{ adress_form.postal_code.id_for_label }}">Почтовый индекс</label>
-	            {{ adress_form.postal_code }}
-	        </div>
-	        <button type="submit" name="adress_form_submit">Сохранить</button>
+		<form class="my_accaunt1_adress_add" id="my_accaunt1_adress_add" method="post" {% if заказчика in user_adress %} style="display: block;" {% else %} style="display: none;" {% endif %}>
+		    <div class="my_accaunt1_adress_add_head">Изменить адрес доставки</div>
+		    {% csrf_token %}
+		    <div>
+		        <label for="{{ adress_form.first_name.id_for_label }}">Имя</label>
+		        {{ adress_form.first_name }}
+		    </div>
+		    <div>
+		        <label for="{{ adress_form.last_name.id_for_label }}">Фамилия</label>
+		        {{ adress_form.last_name }}
+		    </div>
+		    <div>
+		        <label for="{{ adress_form.oblast.id_for_label }}">Область/край</label>
+		        {{ adress_form.oblast }}
+		    </div>
+		    <div>
+		        <label for="{{ adress_form.city.id_for_label }}">Населенный пункт</label>
+		        {{ adress_form.city }}
+		    </div>
+		    <div>
+		        <label for="{{ adress_form.adress.id_for_label }}">Название улицы, номер дома, номер квартиры</label>
+		        {{ adress_form.adress }}
+		    </div>
+		    <div>
+		        <label for="{{ adress_form.postal_code.id_for_label }}">Почтовый индекс</label>
+		        {{ adress_form.postal_code }}
+		    </div>
+		    <button type="submit" name="adress_form_submit">Сохранить</button>
 		</form>
 	</div>
+
+	<form class="my_accaunt1_anketa" id="my_accaunt1_anketa" method="post" style="display:none;">
+	        {% csrf_token %}
+	        <label for="{{ anketa_form.email.id_for_label }}">Электронная почта</label>
+	        {{ anketa_form.email }}
+	        <label for="{{ anketa_form.username.id_for_label }}">Логин</label>
+	        {{ anketa_form.username }}
+	        <label for="{{ anketa_form.old_password.id_for_label }}">Введите старый пароль</label>
+	        {{ anketa_form.old_password }}
+	        <label for="{{ anketa_form.new_password1.id_for_label }}">Введите новый пароль</label>
+	        {{ anketa_form.new_password1 }}
+	        <label for="{{ anketa_form.new_password2.id_for_label }}">Повторите новый пароль</label>
+	        {{ anketa_form.new_password2 }}
+        <button type="submit" name="anketa_form_submit">Сохранить изменения</button>
+	</form>
 
 </div>
 {% endif %}

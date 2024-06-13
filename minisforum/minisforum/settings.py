@@ -75,16 +75,16 @@ WSGI_APPLICATION = 'minisforum.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'minisite',
-#        'USER': 'postgres',
-#        'PASSWORD': '12345',
-#        'HOST': 'localhost',  # или адрес вашего сервера PostgreSQL
-#        'PORT': '5432',       # стандартный порт PostgreSQL
-#    }
-#}
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'minisite',
+       'USER': 'postgres',
+       'PASSWORD': '12345',
+       'HOST': 'localhost',  # или адрес вашего сервера PostgreSQL
+       'PORT': '5432',       # стандартный порт PostgreSQL
+   }
+}
 
 
 # Password validation

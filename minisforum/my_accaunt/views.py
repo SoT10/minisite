@@ -2,15 +2,16 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, AdressForm, AnketaForm
 from .validators import CustomAuthenticationForm
-from .models import Zakazi
-from .forms import AdressForm
-from .models import Adress
+from .models import Zakazi, Adress
+from django.contrib.auth import update_session_auth_hash
 
 def my_accaunt(request):
+    user = request.user
     reg_form = UserRegisterForm()
     login_form = AuthenticationForm()
+    adress_form = None
 
     if request.method == 'POST':
         if 'register_form_submit' in request.POST:
@@ -43,27 +44,54 @@ def my_accaunt(request):
                         'adress': adress_data['adress'],
                         'postal_code': adress_data['postal_code']
                     })
-                return redirect('/my_accaunt')
+                return redirect('/my_accaunt#adress')
+        elif 'anketa_form_submit' in request.POST:
+            anketa_form = AnketaForm(request.POST, instance=request.user)
+            if anketa_form.is_valid():
+                username = request.user.username
+                email = anketa_form.cleaned_data['email']
+                new_username = anketa_form.cleaned_data['username']
+                old_password = anketa_form.cleaned_data['old_password']
+                new_password1 = anketa_form.cleaned_data['new_password1']
+                new_password2 = anketa_form.cleaned_data['new_password2']
 
+                
+                user.email = email
+                user.username = username
+
+                # Если указаны старый и новый пароли, меняем пароль пользователя
+                if old_password and new_password1 and new_password2:
+                    if user.check_password(old_password):
+                        if new_password1 == new_password2:
+                            user.set_password(new_password1)
+                            update_session_auth_hash(request, user)  # Обновляем сессионный ключ после смены пароля
+                
+                user.save()
+
+                return redirect('/my_accaunt')
                 
     else:
         reg_form=UserRegisterForm()
         login_form = CustomAuthenticationForm()
         adress_form = AdressForm()
+
+        # anketa_form = AnketaForm(instance=user, initial={'email': user.email, 'username': user.username})
     
     user_orders = Zakazi.objects.filter(username=request.user.username)
-    user_adress = Adress.objects.filter(username=request.user.username)
+    user_adress_instance = Adress.objects.filter(username=request.user.username).first()
 
-    if not user_adress:
-        user_adress = "Вы еще не добавили ваш адрес доставки. <button onclick='show_adress()'>Добавить?</button>"
+    if user_adress_instance:
+        adress_form = AdressForm(instance=user_adress_instance)
+        user_adress = f"Адрес заказчика: {user_adress_instance.first_name} {user_adress_instance.last_name}, {user_adress_instance.oblast}, {user_adress_instance.city}, {user_adress_instance.adress}, {user_adress_instance.postal_code}<hr>"
     else:
-        user_adress = None
+        user_adress = "Вы еще не добавили ваш адрес доставки. <button onclick='show_adress()'>Добавить?</button>"
 
     context = {
         'title': 'Мой аккаунт',
         'reg_form': reg_form,
         'login_form': login_form,
         'adress_form': adress_form,
+        # 'anketa_form': anketa_form,
 
         'user_orders': user_orders,
         'user_adress': user_adress
