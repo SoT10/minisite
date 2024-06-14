@@ -20,21 +20,21 @@
                     Категории
                     <div class="cherta"><hr></div>                    
                 </div>
-                <li><a href="">Для игр</a><div class="catalog_left_categories_img">8</div></li>
+                <!-- <li><a href="">Для игр</a><div class="catalog_left_categories_img">8</div></li>
                 <li><a href="">Серия AMD</a><div class="catalog_left_categories_img">10</div></li>
                 <li><a href="">Серия Intel</a><div class="catalog_left_categories_img">9</div></li>
                 <li><a href="">Есть в наличии</a><div class="catalog_left_categories_img">2</div></li>
                 <li><a href="">Предзаказ</a><div class="catalog_left_categories_img">17</div></li>
-                <li><a href="">Все продукты minisforum</a><div class="catalog_left_categories_img">19</div></li>
+                <li><a href="">Все продукты minisforum</a><div class="catalog_left_categories_img">19</div></li> -->
                 {% for category in categories %}
-                <li><a href="">{{ category.category }}</a><div class="catalog_left_categories_img">{{ category.count }}</div></li>
+                <li><a href="?category={{ category.category }}">{{ category.category }}</a><div class="catalog_left_categories_img">{{ category.count }}</div></li>
                 {% endfor %}
             </ul>
         </div>
     </div>
     <div class="catalog_right">
         <div class="catalog_right_product">
-            <div class="catalog_right_product_1">
+            <!-- <div class="catalog_right_product_1">
                 <div class="rotate-block">
                     <div class="change-img">
                         <div class="front-side-img"><img src="/static/assets/catalog/intel/S100.png" alt=""></div>
@@ -243,7 +243,7 @@
                 <div class="catalog_right_product_text">
                     <a href="product1"><div class="gain-center">DeskMini UM350</div></a>
                 </div>
-            </div>
+            </div> -->
 
 
 
@@ -256,7 +256,7 @@
                     </div>
                 </div>                
                 <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">{{ product.product_name }}</div></a>
+                    <a href="product?product={{ product.product_name }}"><div class="gain-center">{{ product.product_name }}</div></a>
                 </div>
             </div>
             {% endfor %}

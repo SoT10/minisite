@@ -169,3 +169,26 @@ function my_accaunt1_btns_anketa() {
 	my_accaunt1_anketa.style.display="block";
 }
 /*Конец блока my_accaunt*/
+
+/*Начало блока product*/
+const zoomImage = document.querySelector('.zoom-image');
+const container = document.querySelector('.zoom-container');
+
+container.addEventListener('mousemove', function(e) {
+    const { left, top, width, height } = container.getBoundingClientRect();
+    const x = (e.clientX - left) / width * 100; 
+    const y = (e.clientY - top) / height * 100;
+
+    zoomImage.style.transform = `translate(-${x}%, -${y}%) scale(2)`; 
+});
+
+container.addEventListener('mouseleave', function() {
+    zoomImage.style.transform = 'translate(0, 0) scale(1)'; 
+});
+
+function change_image(element) {
+	var mainImg = document.getElementById('product_main_img')
+	mainImg.src=element.src
+}
+
+/*Конец блока product*/

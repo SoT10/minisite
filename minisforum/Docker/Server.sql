@@ -18,7 +18,16 @@ CREATE TABLE IF NOT EXISTS products (
     "kolvo" INT,
     "description" TEXT,
     "image" VARCHAR(255),
-    "back_image" VARCHAR(255)
+    "back_image" VARCHAR(255),
+    "image1" VARCHAR(255),
+    "image2" VARCHAR(255),
+    "image3" VARCHAR(255),
+    "image4" VARCHAR(255),
+    "image5" VARCHAR(255),
+    "image6" VARCHAR(255),
+    "date_added" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "in_stock" BOOLEAN DEFAULT TRUE,
+    "rating" FLOAT
 );
 
 CREATE TABLE IF NOT EXISTS zakazi (

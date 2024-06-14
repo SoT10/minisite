@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block content %}
+
+<div class="product">
+	<div class="product_left zoom-container">
+		<img src="/static/assets/3.webp" class="zoom-image" id="product_main_img">
+	</div>
+	<div class="product_right">
+		<div class="product_right_title">{{ product.product_name }}</div>
+		<div class="product_right_price">{{ product.price }}₽</div>
+		<div class="product_right_discription">{{ product.description }}</div>
+		<hr>
+
+		<form method="post">
+			{% csrf_token %}
+			{{ product_form.number }}
+			<button type="submit" name="product_form_submit">В КОРЗИНУ</button>
+		</form>
+
+		<div class="product_right_want">
+			<div class="product_right_want_heart"></div>
+			<div class="product_right_want_text">Добавить в список желаний</div>
+		</div>
+	</div>
+</div>
+
+<div class="product_img-mini">
+	{% if product.image1 is not Null %}
+	<img src="{{ product.image1 }}" onclick="change_image(this)">
+	{% endif %}
+	{% if product.image2 is not Null %}
+	<img src="{{ product.image2 }}" onclick="change_image(this)">
+	{% endif %}
+	{% if product.image3 is not Null %}
+	<img src="{{ product.image3 }}" onclick="change_image(this)">
+	{% endif %}
+	{% if product.image4 is not Null %}
+	<img src="{{ product.image4 }}" onclick="change_image(this)">
+	{% endif %}
+	{% if product.image5 is not Null %}
+	<img src="{{ product.image5 }}" onclick="change_image(this)">
+	{% endif %}
+	{% if product.image6 is not Null %}
+	<img src="{{ product.image6 }}" onclick="change_image(this)">
+	{% endif %}
+</div>
+
+
+{% endblock %}
