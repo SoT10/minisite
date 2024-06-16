@@ -191,4 +191,14 @@ function change_image(element) {
 	mainImg.src=element.src
 }
 
+function product_feedback_star_1_in() {
+	var product_feedback_star_1 = document.getElementById('product_feedback_star_1');
+	var product_feedback_star_2 = document.getElementById('product_feedback_star_2');
+	var product_feedback_star_3 = document.getElementById('product_feedback_star_3');
+	var product_feedback_star_4 = document.getElementById('product_feedback_star_4');
+	var product_feedback_star_5 = document.getElementById('product_feedback_star_5');
+
+	
+}
+
 /*Конец блока product*/

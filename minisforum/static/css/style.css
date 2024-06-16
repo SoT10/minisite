@@ -1389,13 +1389,54 @@ nav {
 	margin-bottom: 18px;
 }
 
+.product_feedback_stars a {
+	position: relative;
+	display: inline-block;
+	text-indent: -999em;
+	height: 1em;
+	width: 1em;
+}
+
 .product_feedback_star_1::before, .product_feedback_star_2::before, 
 .product_feedback_star_3::before, .product_feedback_star_4::before, 
 .product_feedback_star_5::before {
 	font-family: WooCommerce;
 	content: "\e021";
-	color: #767676;
+	color: #fcd800;
+	position: absolute;
+	display: block;
+	text-indent: 0;
 } 
+
+.product_feedback_star_1:hover::before,
+.product_feedback_star_1:hover ~ .product_feedback_star_2::before,
+.product_feedback_star_1:hover ~ .product_feedback_star_3::before,
+.product_feedback_star_1:hover ~ .product_feedback_star_4::before,
+.product_feedback_star_1:hover ~ .product_feedback_star_5::before {
+	content: "\e020";
+}
+
+.product_feedback_star_2:hover::before,
+.product_feedback_star_2:hover ~ .product_feedback_star_3::before,
+.product_feedback_star_2:hover ~ .product_feedback_star_4::before,
+.product_feedback_star_2:hover ~ .product_feedback_star_5::before {
+	content: "\e020";
+}
+
+.product_feedback_star_3:hover::before,
+.product_feedback_star_3:hover ~ .product_feedback_star_4::before,
+.product_feedback_star_3:hover ~ .product_feedback_star_5::before {
+	content: "\e020";
+}
+
+.product_feedback_star_4:hover::before,
+.product_feedback_star_4:hover ~ .product_feedback_star_5::before {
+	content: "\e020";
+}
+
+.product_feedback_star_5:hover::before {
+	content: "\e020";
+}
 
 .product_feedback textarea {
 	width: 100%;
