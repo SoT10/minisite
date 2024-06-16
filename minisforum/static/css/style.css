@@ -32,6 +32,14 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: 'WooCommerce';
+  src: url('fonts/woocommerce.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 [class^="xoo-wsc-icon-"], [class*=" xoo-wsc-icon-"] {
 	font-family: 'Woo-Side-Cart' !important;
 	speak: never;
@@ -1346,6 +1354,51 @@ nav {
 
 .product_img-mini img:hover {
 	cursor: pointer;
+}
+
+.product_feedback {
+	padding: 40px 204px;
+}
+
+.product_feedback hr {
+	margin-bottom: 24px;
+}
+
+.product_feedback_count {
+	text-align: center;
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 24px;
+}
+
+.product_feedback_head {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 40px;
+}
+
+.product_feedback_none_1 {
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 14px;
+}
+
+.product_feedback_none_2 {
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 18px;
+}
+
+.product_feedback_star_1::before, .product_feedback_star_2::before, 
+.product_feedback_star_3::before, .product_feedback_star_4::before, 
+.product_feedback_star_5::before {
+	font-family: WooCommerce;
+	content: "\e021";
+	color: #767676;
+} 
+
+.product_feedback textarea {
+	width: 100%;
 }
 
 /*Конец блока product*/

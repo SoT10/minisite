@@ -27,6 +27,12 @@
 </div>
 
 <div class="product_img-mini">
+	{% if product.image is not Null %}
+	<img src="{{ product.image }}" onclick="change_image(this)">
+	{% endif %}
+	{% if product.back_image is not Null %}
+	<img src="{{ product.back_image }}" onclick="change_image(this)">
+	{% endif %}
 	{% if product.image1 is not Null %}
 	<img src="{{ product.image1 }}" onclick="change_image(this)">
 	{% endif %}
@@ -45,6 +51,33 @@
 	{% if product.image6 is not Null %}
 	<img src="{{ product.image6 }}" onclick="change_image(this)">
 	{% endif %}
+</div>
+
+<div class="product_feedback">
+	<hr>
+	<div class="product_feedback_count">Отзывы (0)</div>
+	<div class="product_feedback_head">
+		Отзывы
+	</div>
+	<div class="product_feedback_none">
+		<div class="product_feedback_none_1">
+			Отзывов пока нет.
+		</div>
+		<div class="product_feedback_none_2">
+			Будьте первым, кто оставил отзыв на “{{ product.product_name }}”
+		</div>
+	</div>
+	<p class="product_feedback_stars">
+		<span>
+			<a class="product_feedback_star_1" href="#"></a>
+			<a class="product_feedback_star_2" href="#"></a>
+			<a class="product_feedback_star_3" href="#"></a>
+			<a class="product_feedback_star_4" href="#"></a>
+			<a class="product_feedback_star_5" href="#"></a>
+		</span>
+	</p>
+	<textarea placeholder="Ваш отзыв"></textarea>
+	<button>ОТПРАВИТЬ</button>
 </div>
 
 

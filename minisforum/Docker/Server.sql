@@ -9,7 +9,7 @@ CREATE DATABASE minisite;
 
 -- Подключаемся к базе данных minisite
 \c minisite
-
+/*
 CREATE TABLE IF NOT EXISTS products (
     "product_id" BIGSERIAL PRIMARY KEY,
     "product_name" VARCHAR(100) NOT NULL,
@@ -49,3 +49,4 @@ CREATE TABLE IF NOT EXISTS adress (
     "adress" VARCHAR(80),
     "postal_code" VARCHAR(8)
 );
+*/
