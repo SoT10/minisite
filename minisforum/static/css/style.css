@@ -1422,6 +1422,13 @@ nav {
 .product_feedback_plus {
 	display: grid;
 	grid-template-columns: auto auto;
+	justify-content: start;
+	gap: 20px;
+}
+
+.product_feedback_plus img {
+	border-radius: 100%;
+	border: 2px solid black;
 }
 
 .product_feedback_username {
