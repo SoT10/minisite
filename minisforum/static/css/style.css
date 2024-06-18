@@ -556,6 +556,8 @@ nav {
 	padding: 10px 20px;
 	margin-top: 20px;
 	transition: all 0.2s;
+	z-index: 1000;
+	position: relative;
 }
 
 .home_slider button:hover {
@@ -725,39 +727,51 @@ nav {
 	gap: 10px;
 	justify-content: center;
 	margin-top: 10px;
+	align-items: center;
 }
 
-.home3_tabl_card_icons img {
-	width: 45px;
-	height: 45px;
-	position: absolute;
-	border-radius: 50%;
-	border: solid 1px #767676;
-	padding: 5px;
-}
-
-.home_black_ico {
-	z-index: 1;
-	background-color: white;
-	transition: opacity 0.5s;
-}
-
-.home_white_ico {
-	background-color: black;
-	
-}
-
-.home_black_ico:hover {
-	opacity: 0;
-}
-
-.home3_tabl_card_icons_cont {
-	position: relative;
-	margin: 0px 25px;
-}
-
-.home3_tabl_card_icons img:hover {
+.home3_tabl_card_search:hover, .home3_tabl_card_heart:hover, .home3_tabl_card_shop:hover {
 	cursor: pointer;
+}
+
+.home3_tabl_card_search:hover::before, .home3_tabl_card_heart:hover::before, .home3_tabl_card_shop:hover::before {
+	background-color: black;
+	color: white;
+}
+
+.home3_tabl_card_search::before {
+	font-family: WooCommerce;
+  	content: "\e024";
+  	font-weight: 400;
+  	color: black;
+  	font-size: 35px;
+  	border-radius: 100%;
+  	border: solid 1px black;
+  	padding: 10px;
+  	transition: all 0.4s;
+}
+
+.home3_tabl_card_heart::before {
+	font-family: tinvwl-webfont;;
+  	content: "\e908";
+  	font-weight: 400;
+  	color: black;
+  	font-size: 55px;
+  	border-radius: 100%;
+  	border: solid 1px black;
+  	transition: all 0.4s;
+}
+
+.home3_tabl_card_shop::before {
+	font-family: tinvwl-webfont;;
+  	content: "\e913";
+  	font-weight: 400;
+  	color: black;
+  	font-size: 35px;
+  	border-radius: 100%;
+  	border: solid 1px black;
+  	padding: 10px;
+  	transition: all 0.4s;
 }
 
 /*Конец блока home*/
@@ -1408,7 +1422,7 @@ nav {
 
 .product_feedback_star::before, .product_feedback_star_user::before {
 	font-family: WooCommerce;
-	content: "\e021";
+	content: "\e021"; /*\e021*/
 	color: #fcd800;
 	position: absolute;
 	display: block;

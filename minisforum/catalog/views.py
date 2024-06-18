@@ -32,6 +32,8 @@ def product(request):
 
     if request.user.is_authenticated:
         user = request.user
+    else:
+        user = "Аноним"
 
     if 'product_form_submit' in request.POST:
         product_form=NumberForm(request.POST)
@@ -47,7 +49,10 @@ def product(request):
         if review_form.is_valid():
             review=review_form.save(commit=False)
             review.product=product
-            review.user_username = user.username
+            if user == "Аноним":
+                review.user_username = "Аноним"
+            else:
+                review.user_username = user.username
             review.save()
             update_product_rating(product)
             return redirect('/catalog/product?product=' + product_name)
