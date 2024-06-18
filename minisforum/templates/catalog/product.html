@@ -5,7 +5,7 @@
 
 <div class="product">
 	<div class="product_left zoom-container">
-		<img src="/static/assets/3.webp" class="zoom-image" id="product_main_img">
+		<img src="{{ product.image }}" class="zoom-image" id="product_main_img">
 	</div>
 	<div class="product_right">
 		<div class="product_right_title">{{ product.product_name }}</div>
@@ -53,32 +53,53 @@
 	{% endif %}
 </div>
 
-<div class="product_feedback">
-	<hr>
-	<div class="product_feedback_count">Отзывы (0)</div>
-	<div class="product_feedback_head">
-		Отзывы
-	</div>
-	<div class="product_feedback_none">
-		<div class="product_feedback_none_1">
-			Отзывов пока нет.
-		</div>
-		<div class="product_feedback_none_2">
-			Будьте первым, кто оставил отзыв на “{{ product.product_name }}”
-		</div>
-	</div>
-	<p class="product_feedback_stars">
-		<span>
-			<a class="product_feedback_star_1" href="#">1</a>
-			<a class="product_feedback_star_2" href="#">2</a>
-			<a class="product_feedback_star_3" href="#">3</a>
-			<a class="product_feedback_star_4" href="#">4</a>
-			<a class="product_feedback_star_5" href="#">5</a>
-		</span>
-	</p>
-	<textarea placeholder="Ваш отзыв"></textarea>
-	<button>ОТПРАВИТЬ</button>
-</div>
+<form class="product_feedback" onsubmit="return validateForm()" method="post">
+	{% csrf_token %}
+    <hr>
+    <div class="product_feedback_count">Отзывы ({{ review_count }})</div>
+    <div class="product_feedback_head">
+        Отзывы
+    </div>
+    {% if review_count == 0 %}
+    <div class="product_feedback_none">
+        <div class="product_feedback_none_1">
+            Отзывов пока нет.
+        </div>
+        <div class="product_feedback_none_2">
+            Будьте первым, кто оставил отзыв на “{{ product.product_name }}”
+        </div>
+    </div>
+    {% else %}
+    {% for review in reviews %}
+    	<div class="product_feedback_plus">
+    		<div class="product_feedback_plus_left"></div>
+    		<div class="product_feedback_plus_right">
+		    	<div class="product_feedback_username">{{ review.user_username }}</div>
+		    	<div class="product_feedback_rating">{{ review.rating }}</div>
+		    	<div class="product_feedback_feedback">{{ review.feedback }}</div>	
+    		</div>
+    	</div>
+    {% endfor %}
+    {% endif %}
+    <div class="product_feedback_none_2">
+        Добавьте отзыв
+    </div>
+    <p class="product_feedback_stars">
+        <span>
+            <a class="product_feedback_star" data-rating="1" href="#">1</a>
+            <a class="product_feedback_star" data-rating="2" href="#">2</a>
+            <a class="product_feedback_star" data-rating="3" href="#">3</a>
+            <a class="product_feedback_star" data-rating="4" href="#">4</a>
+            <a class="product_feedback_star" data-rating="5" href="#">5</a>
+        </span>
+    </p>
+	<div class="product_feedback_error-message" id="product_feedback_error-message"></div>
+    <!-- <textarea name="feedback" placeholder="Ваш отзыв *" required></textarea> -->
+    {{ review_form.feedback }}
+    {{ review_form.rating }}
+    <button type="submit" name="review_form_submit">ОТПРАВИТЬ</button>
+    
+</form>
 
 
 {% endblock %}

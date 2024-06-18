@@ -1358,6 +1358,7 @@ nav {
 
 .product_feedback {
 	padding: 40px 204px;
+	text-align: center;
 }
 
 .product_feedback hr {
@@ -1375,18 +1376,25 @@ nav {
 	font-size: 20px;
 	font-weight: 600;
 	margin-bottom: 40px;
+	text-align: left;
 }
 
 .product_feedback_none_1 {
 	font-size: 14px;
 	font-weight: 600;
 	margin-bottom: 14px;
+	text-align: left;
 }
 
 .product_feedback_none_2 {
 	font-size: 16px;
 	font-weight: 600;
 	margin-bottom: 18px;
+	text-align: left;
+}
+
+.product_feedback_stars {
+	text-align: left;
 }
 
 .product_feedback_stars a {
@@ -1395,51 +1403,81 @@ nav {
 	text-indent: -999em;
 	height: 1em;
 	width: 1em;
+	margin-bottom: 24px;
 }
 
-.product_feedback_star_1::before, .product_feedback_star_2::before, 
-.product_feedback_star_3::before, .product_feedback_star_4::before, 
-.product_feedback_star_5::before {
+.product_feedback_star::before {
 	font-family: WooCommerce;
 	content: "\e021";
 	color: #fcd800;
 	position: absolute;
 	display: block;
 	text-indent: 0;
-} 
+}
 
-.product_feedback_star_1:hover::before,
-.product_feedback_star_1:hover ~ .product_feedback_star_2::before,
-.product_feedback_star_1:hover ~ .product_feedback_star_3::before,
-.product_feedback_star_1:hover ~ .product_feedback_star_4::before,
-.product_feedback_star_1:hover ~ .product_feedback_star_5::before {
+.product_feedback_star.hover::before {
 	content: "\e020";
 }
 
-.product_feedback_star_2:hover::before,
-.product_feedback_star_2:hover ~ .product_feedback_star_3::before,
-.product_feedback_star_2:hover ~ .product_feedback_star_4::before,
-.product_feedback_star_2:hover ~ .product_feedback_star_5::before {
-	content: "\e020";
+.product_feedback_plus {
+	display: grid;
+	grid-template-columns: auto auto;
 }
 
-.product_feedback_star_3:hover::before,
-.product_feedback_star_3:hover ~ .product_feedback_star_4::before,
-.product_feedback_star_3:hover ~ .product_feedback_star_5::before {
-	content: "\e020";
+.product_feedback_username {
+	text-align: left;
+	font-weight: 600;
+	font-size: 24px;
+	margin-bottom: 10px;
 }
 
-.product_feedback_star_4:hover::before,
-.product_feedback_star_4:hover ~ .product_feedback_star_5::before {
-	content: "\e020";
+.product_feedback_rating {
+	text-align: left;
+	margin-bottom: 10px;
 }
 
-.product_feedback_star_5:hover::before {
-	content: "\e020";
+.product_feedback_feedback {
+	text-align: left;
+	font-size: 18px;
+	margin-bottom: 24px;
 }
 
 .product_feedback textarea {
-	width: 100%;
+	min-width: 100%;
+	font-size: 14px;
+	border: 1px solid #bbb;
+	color: #757575;
+	padding: 16px;
+	border-radius: 6px;
+	margin-bottom: 10px;
+}
+
+.product_feedback textarea::selection {
+	background-color: #ff3535;
+	color: white;
+}
+
+.product_feedback_error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.product_feedback button {
+	color: #222222;
+	font-size: 14px;
+	font-weight: 600;
+	background-color: #ffffff;
+	padding: 9px 25px;
+	border-radius: 6px;
+	border: 2px solid #ffffff;
+	box-shadow: 0 7px 50px 0 rgba(41,100,216,0.2);
+}
+
+.product_feedback button:hover {
+	cursor: pointer;
 }
 
 /*Конец блока product*/

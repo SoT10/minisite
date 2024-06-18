@@ -186,19 +186,77 @@ container.addEventListener('mouseleave', function() {
     zoomImage.style.transform = 'translate(0, 0) scale(1)'; 
 });
 
-function change_image(element) {
-	var mainImg = document.getElementById('product_main_img')
-	mainImg.src=element.src
+function validateForm() {
+    const stars = document.querySelectorAll('.product_feedback_star');
+    let ratingSelected = false;
+
+    stars.forEach(star => {
+        if (star.classList.contains('selected')) {
+            ratingSelected = true;
+        }
+    });
+
+    if (!ratingSelected) {
+        const errorMessage = document.getElementById('product_feedback_error-message');
+        errorMessage.textContent = 'Пожалуйста, выберите рейтинг отзыва.';
+        errorMessage.style.display = 'block';
+        return false; // Останавливаем отправку формы
+    }
+
+    return true; // Продолжаем отправку формы
 }
 
-function product_feedback_star_1_in() {
-	var product_feedback_star_1 = document.getElementById('product_feedback_star_1');
-	var product_feedback_star_2 = document.getElementById('product_feedback_star_2');
-	var product_feedback_star_3 = document.getElementById('product_feedback_star_3');
-	var product_feedback_star_4 = document.getElementById('product_feedback_star_4');
-	var product_feedback_star_5 = document.getElementById('product_feedback_star_5');
+document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.product_feedback_star');
+    
+    const setRating = (rating) => {
+        stars.forEach(star => {
+            const starRating = parseInt(star.getAttribute('data-rating'));
+            if (starRating <= rating) {
+                star.classList.add('selected', 'hover');
+                var id_rating=document.getElementById('id_rating')
+				id_rating.value=rating
+            } else {
+                star.classList.remove('selected', 'hover');
+            }
+        });
+    };
 
-	
-}
+    let savedRating = localStorage.getItem('product_rating');
+    if (savedRating) {
+        setRating(parseInt(savedRating));
+    }
 
+    stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+            const rating = star.getAttribute('data-rating');
+            stars.forEach(s => {
+                if (s.getAttribute('data-rating') <= rating) {
+                    s.classList.add('hover');
+                } else {
+                    s.classList.remove('hover');
+                }
+            });
+        });
+
+        star.addEventListener('mouseout', () => {
+            stars.forEach(s => {
+                s.classList.remove('hover');
+            });
+            if (savedRating) {
+                setRating(parseInt(savedRating));
+            }
+        });
+
+        star.addEventListener('click', (event) => {
+            event.preventDefault();
+            const rating = parseInt(star.getAttribute('data-rating'));
+            localStorage.setItem('product_rating', rating); 
+            savedRating = rating; 
+            setRating(rating);
+           	var id_rating=document.getElementById('id_rating')
+           	id_rating.value=rating 
+        });
+    });
+});
 /*Конец блока product*/
