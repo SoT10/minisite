@@ -1406,13 +1406,17 @@ nav {
 	margin-bottom: 24px;
 }
 
-.product_feedback_star::before {
+.product_feedback_star::before, .product_feedback_star_user::before {
 	font-family: WooCommerce;
 	content: "\e021";
 	color: #fcd800;
 	position: absolute;
 	display: block;
 	text-indent: 0;
+}
+
+.product_feedback_star_user:hover {
+	cursor: default;
 }
 
 .product_feedback_star.hover::before {

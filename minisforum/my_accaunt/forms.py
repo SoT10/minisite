@@ -8,6 +8,7 @@ from django.forms import ModelForm
 from .models import Adress
 from django.contrib.auth.forms import UserChangeForm
 from django.core.exceptions import ValidationError
+import re
 
 from .validators import CustomCommonPasswordValidator, CustomNumericPasswordValidator, CustomPasswordMinValidator
 
@@ -33,6 +34,8 @@ class UserRegisterForm(UserCreationForm):
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
+        if not re.match(r'^[\w]+$', username):
+            raise forms.ValidationError('Имя пользователя может содержать только буквы и цифры.')
         if User.objects.filter(username=username).exists():
             self.add_error('username', "Пользователь с таким именем уже существует. Пожалуйста, выберите другое имя.")
         return username

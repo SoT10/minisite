@@ -75,7 +75,68 @@
     		<img src="/static/assets/catalog/avatar.png">
     		<div class="product_feedback_plus_right">
 		    	<div class="product_feedback_username">{{ review.user_username }}</div>
-		    	<div class="product_feedback_rating">{{ review.rating }}</div>
+		    	<p class="product_feedback_stars">
+			        <span>
+			        	<style type="text/css">
+			        	{% if review.rating == 1 %}
+			        		#product_feedback_star_user1_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        	{% elif review.rating == 2 %}
+			        		#product_feedback_star_user1_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user2_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        	{% elif review.rating == 3 %}
+			        		#product_feedback_star_user1_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user2_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user3_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        	{% elif review.rating == 4 %}
+			        		#product_feedback_star_user1_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user2_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user3_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user4_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        	{% elif review.rating == 5 %}
+			        		#product_feedback_star_user1_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user2_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user3_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user4_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        		#product_feedback_star_user5_{{ review.user_username }}::before {
+			        			content: "\e020";
+			        		}
+			        	{% endif %}
+			        	</style>
+			            <a class="product_feedback_star_user" id="product_feedback_star_user1_{{ review.user_username }}" data-rating="1" href="#">1</a>
+			            <a class="product_feedback_star_user" id="product_feedback_star_user2_{{ review.user_username }}" data-rating="2" href="#">2</a>
+			            <a class="product_feedback_star_user" id="product_feedback_star_user3_{{ review.user_username }}" data-rating="3" href="#">3</a>
+			            <a class="product_feedback_star_user" id="product_feedback_star_user4_{{ review.user_username }}" data-rating="4" href="#">4</a>
+			            <a class="product_feedback_star_user" id="product_feedback_star_user5_{{ review.user_username }}" data-rating="5" href="#">5</a>
+			        </span>
+			    </p>
 		    	<div class="product_feedback_feedback">{{ review.feedback }}</div>	
     		</div>
     	</div>
@@ -94,7 +155,6 @@
         </span>
     </p>
 	<div class="product_feedback_error-message" id="product_feedback_error-message"></div>
-    <!-- <textarea name="feedback" placeholder="Ваш отзыв *" required></textarea> -->
     {{ review_form.feedback }}
     {{ review_form.rating }}
     <button type="submit" name="review_form_submit">ОТПРАВИТЬ</button>

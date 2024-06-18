@@ -186,6 +186,11 @@ container.addEventListener('mouseleave', function() {
     zoomImage.style.transform = 'translate(0, 0) scale(1)'; 
 });
 
+function change_image(element) {
+	var mainImg = document.getElementById('product_main_img')
+	mainImg.src=element.src
+}
+
 function validateForm() {
     const stars = document.querySelectorAll('.product_feedback_star');
     let ratingSelected = false;
@@ -256,6 +261,16 @@ document.addEventListener('DOMContentLoaded', () => {
             setRating(rating);
            	var id_rating=document.getElementById('id_rating')
            	id_rating.value=rating 
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.product_feedback_star_user');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function(event) {
+            event.preventDefault();
         });
     });
 });
