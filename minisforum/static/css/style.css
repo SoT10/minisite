@@ -1332,6 +1332,16 @@ nav {
 }
 /*Конец блока footer*/
 /*Начало блока Каталог*/
+.liked::before {
+	color: #FF0035;
+	border-color: #FF0035;
+}
+
+.liked:hover::before {
+	background-color: white;
+	color: #FF0035;
+}
+
 .catalog {
 	display: grid;
 	grid-template-columns: 1fr 3fr;

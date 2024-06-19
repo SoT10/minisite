@@ -195,17 +195,23 @@ function my_accaunt1_btns_wants() {
 const zoomImage = document.querySelector('.zoom-image');
 const container = document.querySelector('.zoom-container');
 
-container.addEventListener('mousemove', function(e) {
+try {
+	container.addEventListener('mousemove', function(e) {
     const { left, top, width, height } = container.getBoundingClientRect();
     const x = (e.clientX - left) / width * 100; 
     const y = (e.clientY - top) / height * 100;
 
     zoomImage.style.transform = `translate(-${x}%, -${y}%) scale(2)`; 
-});
+	});
 
-container.addEventListener('mouseleave', function() {
-    zoomImage.style.transform = 'translate(0, 0) scale(1)'; 
-});
+	container.addEventListener('mouseleave', function() {
+	    zoomImage.style.transform = 'translate(0, 0) scale(1)'; 
+	});
+}
+catch (error) {
+	console.log("")
+}
+
 
 function change_image(element) {
 	var mainImg = document.getElementById('product_main_img')
@@ -298,5 +304,51 @@ document.addEventListener('DOMContentLoaded', () => {
 /*Конец блока product*/
 
 /*Начало блока catalog*/
+document.addEventListener('DOMContentLoaded', function() {
+    var likeButtons = document.querySelectorAll('.like-btn');
+
+    likeButtons.forEach(function(btn) {
+
+        btn.addEventListener('click', function(e) {
+            e.preventDefault(); // Предотвращаем стандартное действие перехода по ссылке
+
+            var productId = this.getAttribute('data-product-id');
+
+            fetch('/catalog/add_to_favorites', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ 'product_id': productId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Обработка успешного ответа
+                var heartIcon = this;
+                heartIcon.classList.add('liked'); // Пример добавления класса при успешном добавлении в избранное
+            })
+            .catch(error => console.error('Ошибка:', error));
+        });
+    });
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+
+
+
 
 /*Конец блока catalog*/
