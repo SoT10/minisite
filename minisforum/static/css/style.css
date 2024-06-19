@@ -336,9 +336,77 @@
 	padding: 4px 15px;
 	background-color: #222222;
 	color: white;
+	background-color: white;
+	color: #222222;
+	transition: all 0.4s;
+}
+
+.un_auth_user_like_1:hover {
+	background-color: #2EA3F2;
+	border-color: #2EA3F2;
 }
 
 .un_auth_user_like_2 {
+	width: 100%;
+	margin-bottom: 10px;
+	border-radius: 6px;
+	border: 2px solid #767676;
+	font-size: 14px;
+	text-align: center;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 4px 15px;
+	transition: all 0.4s;
+	background-color: white;
+}
+
+.un_auth_user_like_2:hover {
+	border-color: #222222;
+}
+
+
+.un_auth_user_like_1:hover, .un_auth_user_like_2:hover {
+	cursor: pointer;
+}
+
+.auth_user_like_already {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	max-width: 360px;
+	padding: 40px;
+	border-radius: 6px;
+	box-shadow: 0 7px 50px 0 rgba(0, 0, 0, 0.08);
+	text-align: center;
+	overflow-y: auto;
+	overflow-x: hidden;
+	z-index: 9999;
+}
+
+.auth_user_like_already_krest {
+	color: #FF0035;
+	margin-bottom: 25px;
+	font-family: tinvwl-webfont;
+	font-weight: 400;
+	font-size: 60px;
+	speak: none;
+}
+
+.auth_user_like_already_krest::before {
+	content: "\e904";
+}
+
+.auth_user_like_already_text {
+	margin-bottom: 14px;
+	color: #222222;
+	font-weight: 500;
+	line-height: 1.7em;
+}
+
+.auth_user_like_already_1 {
 	width: 100%;
 	margin-bottom: 10px;
 	border-radius: 6px;
@@ -348,11 +416,38 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	padding: 4px 15px;
+	background-color: #222222;
+	color: white;
+	line-height: 1.7em;
+	transition: all 0.4s;
 	background-color: white;
 	color: #222222;
 }
 
-.un_auth_user_like_1:hover, .un_auth_user_like_2:hover {
+.auth_user_like_already_1:hover {
+	background-color: #2EA3F2;
+	border-color: #2EA3F2;
+}
+
+.auth_user_like_already_2 {
+	width: 100%;
+	margin-bottom: 10px;
+	border-radius: 6px;
+	border: 2px solid #767676;
+	font-size: 14px;
+	text-align: center;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 4px 15px;
+	transition: all 0.4s;
+	background-color: white;
+}
+
+.auth_user_like_already_2:hover {
+	border-color: #222222;
+}
+
+.auth_user_like_already_1:hover, .auth_user_like_already_2:hover {
 	cursor: pointer;
 }
 /*Конец блока всплывающего меню при лайкании*/

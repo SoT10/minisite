@@ -122,6 +122,7 @@ function close_shop() {
 	var shop=document.getElementById('shop');
 	var dark_back=document.getElementById('dark_back');
 	var un_auth_user_like=document.getElementById('un_auth_user_like')
+	var auth_user_like_already=document.getElementById('auth_user_like_already')
 	dark_back.style.opacity="0"
 	shop_cont.classList.remove('shop_slide_in')
 	shop_cont.classList.add("shop_slide_out")
@@ -130,6 +131,7 @@ function close_shop() {
 	shop.style.right="12px"
 	dark_back.style.display="none"
 	un_auth_user_like.style.display="none"
+	auth_user_like_already.style.display="none"
 }
 
 function close_popup() {
@@ -137,6 +139,13 @@ function close_popup() {
 	var un_auth_user_like=document.getElementById('un_auth_user_like')
 	dark_back.style.display="none"
 	un_auth_user_like.style.display="none"
+}
+
+function close_popup_2() {
+	var dark_back=document.getElementById('dark_back');
+	var auth_user_like_already=document.getElementById('auth_user_like_already')
+	dark_back.style.display="none"
+	auth_user_like_already.style.display="none"
 }
 
 function go_like() {
@@ -338,7 +347,15 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 // Обработка успешного ответа
                 var heartIcon = this;
-                heartIcon.classList.add('liked'); // Пример добавления класса при успешном добавлении в избранное
+                if (data.error) {
+                	auth_user_like_already=document.getElementById('auth_user_like_already')
+                	var dark_back=document.getElementById('dark_back');
+                	dark_back.style.display="block"
+                	dark_back.style.opacity=1
+                	auth_user_like_already.style.display='block'
+                } else {
+                	heartIcon.classList.add('liked'); // Пример добавления класса при успешном добавлении в избранное
+                }
             })
 
             .catch(error => {
