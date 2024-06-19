@@ -151,42 +151,44 @@
 	</div>
 
 	<form class="my_accaunt1_anketa" id="my_accaunt1_anketa" method="post" style="display: none;">
-	        {% csrf_token %}
-	        <label for="{{ anketa_form.email.id_for_label }}">Электронная почта</label>
-	        {{ anketa_form.email }}
-	        <label for="{{ anketa_form.username.id_for_label }}">Логин</label>
-	        {{ anketa_form.username }}
-	        <label for="{{ anketa_form.old_password.id_for_label }}">Введите старый пароль</label>
-	        {{ anketa_form.old_password }}
-	        <label for="{{ anketa_form.new_password1.id_for_label }}">Введите новый пароль</label>
-	        {{ anketa_form.new_password1 }}
-	        <label for="{{ anketa_form.new_password2.id_for_label }}">Повторите новый пароль</label>
-	        {{ anketa_form.new_password2 }}
-		    {% if anketa_form.errors %}
-			    <div class="error-messages">
-			        <ul>
-			            {% for field in anketa_form %}
-			                {% for error in field.errors %}
-			                    <li>{{ error }}</li>
-			                {% endfor %}
-			            {% endfor %}
-			            {% for error in anketa_form.non_field_errors %}
-			                <li>{{ error }}</li>
-			            {% endfor %}
-			        </ul>
-			    </div>
-			{% endif %}
-			{% if messages %}
-			    <ul>
-			        {% for message in messages %}
-			            <li>{{ message }}</li>
-			        {% endfor %}
-			    </ul>
-			{% endif %}
-        <button type="submit" name="anketa_form_submit">Сохранить изменения</button>
+        {% csrf_token %}
+        <label for="{{ anketa_form.email.id_for_label }}">Электронная почта</label>
+        {{ anketa_form.email }}
+        <label for="{{ anketa_form.username.id_for_label }}">Логин</label>
+        {{ anketa_form.username }}
+        <label for="{{ anketa_form.old_password.id_for_label }}">Введите старый пароль</label>
+        {{ anketa_form.old_password }}
+        <label for="{{ anketa_form.new_password1.id_for_label }}">Введите новый пароль</label>
+        {{ anketa_form.new_password1 }}
+        <label for="{{ anketa_form.new_password2.id_for_label }}">Повторите новый пароль</label>
+        {{ anketa_form.new_password2 }}
+	    {% if anketa_form.errors %}
+		    <div class="error-messages">
+		        <ul>
+		            {% for field in anketa_form %}
+		                {% for error in field.errors %}
+		                    <li>{{ error }}</li>
+		                {% endfor %}
+		            {% endfor %}
+		            {% for error in anketa_form.non_field_errors %}
+		                <li>{{ error }}</li>
+		            {% endfor %}
+		        </ul>
+		    </div>
+		{% endif %}
+		{% if messages %}
+		    <ul>
+		        {% for message in messages %}
+		            <li>{{ message }}</li>
+		        {% endfor %}
+		    </ul>
+		{% endif %}
+    	<button type="submit" name="anketa_form_submit">Сохранить изменения</button>
 	</form>
 </div>
-<div class="my_accaunt1_spisok">
+
+<form class="my_accaunt1_spisok" id="my_accaunt1_spisok" method="post">
+	{% csrf_token %}
 	<div class="spisok_text">
 		Список желаний
 	</div>
@@ -241,7 +243,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</form>
 {% endif %}
 
 

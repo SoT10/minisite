@@ -22,7 +22,6 @@ from about.views import about
 from blog.views import blog
 from catalog.views import catalog
 from contact.views import contact
-from howto.views import howto
 from my_accaunt.views import my_accaunt
 from . import views
 
@@ -33,7 +32,6 @@ urlpatterns = [
     path('blog/', include('blog.urls'), name='blog'),
     path('catalog/', include('catalog.urls'), name='catalog'),
     path('contact/', include('contact.urls'), name='contact'),
-    path('howto/', include('howto.urls'), name='howto'),
     path('my_accaunt/', include('my_accaunt.urls'), name='my_accaunt'),
 
 

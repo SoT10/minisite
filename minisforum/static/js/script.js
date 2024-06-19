@@ -135,20 +135,24 @@ function my_accaunt1_btns_zakazi(){
 	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
 	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
 	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
+	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
 
 	my_accaunt1_zakazi.style.display="grid";
 	my_accaunt1_adress.style.display="none";
 	my_accaunt1_anketa.style.display="none";
+	my_accaunt1_spisok.style.display="none";
 }
 
 function my_accaunt1_btns_adress(){
 	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
 	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
 	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
+	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
 
 	my_accaunt1_zakazi.style.display="none";
 	my_accaunt1_adress.style.display="block";
 	my_accaunt1_anketa.style.display="none";
+	my_accaunt1_spisok.style.display="none";
 }
 
 function show_adress() {
@@ -163,10 +167,26 @@ function my_accaunt1_btns_anketa() {
 	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
 	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
 	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
+	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
+
 
 	my_accaunt1_zakazi.style.display="none";
 	my_accaunt1_adress.style.display="none";
 	my_accaunt1_anketa.style.display="block";
+	my_accaunt1_spisok.style.display="none";
+}
+
+function my_accaunt1_btns_wants() {
+	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
+	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
+	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
+	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
+
+
+	my_accaunt1_zakazi.style.display="none";
+	my_accaunt1_adress.style.display="none";
+	my_accaunt1_anketa.style.display="none";
+	my_accaunt1_spisok.style.display="block";
 }
 /*Конец блока my_accaunt*/
 
