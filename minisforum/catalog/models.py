@@ -50,4 +50,10 @@ class Review(models.Model):
         verbose_name_plural = 'Отзывы'
 
 
+class LikedProduct(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'like_product'

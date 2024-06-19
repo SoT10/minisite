@@ -88,6 +88,7 @@ function add_to_korzina() {
 		shop.style.right="344px"
 	}
 }
+
 /*Конец блока home*/
 
 /*начало блока shop*/
@@ -295,3 +296,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 /*Конец блока product*/
+
+/*Начало блока catalog*/
+/*Конец блока catalog*/

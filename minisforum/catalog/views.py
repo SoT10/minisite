@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
-from .models import Product, Review
+from .models import Product, Review, LikedProduct
 from django.contrib.auth.models import User
 from .forms import NumberForm, ReviewForm
 from django.db.models import Avg
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.sessions.models import Session
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 
 def catalog(request):
     categories = Product.objects.values('category').annotate(count=Count('product_id'))
@@ -85,3 +88,7 @@ def update_product_rating(product):
 def update_product_rating_on_review_change(sender, instance, **kwargs):
     product = instance.product
     update_product_rating(product)
+
+
+
+

@@ -1368,7 +1368,7 @@ nav {
 	padding: 10px;
 }
 
-.catalog_right_product_1 img, .catalog_right_product_2 img, .catalog_right_product_3 img, .catalog_right_product_4 img, .catalog_right_product_5 img, .catalog_right_product_6 img, .catalog_right_product_7 img, .catalog_right_product_8 img, .catalog_right_product_9 img, .catalog_right_product_10 img,.catalog_right_product_11 img, .catalog_right_product_12 img, .catalog_right_product_13 img, .catalog_right_product_14 img, .catalog_right_product_15 img, .catalog_right_product_16 img, .catalog_right_product_17 img, .catalog_right_product_18 img {
+.catalog_right_product_1 img {
 	width: 100px;
 	height: 100px;
 	text-align: center;

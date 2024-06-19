@@ -138,3 +138,6 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 7 #куки на неделю
 SESSION_COOKIE_SECURE = True
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+SESSION_COOKIE_NAME = 'sessionid'
+SESSION_SAVE_EVERY_REQUEST = True

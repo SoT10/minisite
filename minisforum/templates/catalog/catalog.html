@@ -248,7 +248,7 @@
 
 
             {% for product in products %}
-            <div class="catalog_right_product_18">
+            <div class="catalog_right_product_1">
                 <div class="rotate-block">
                     <div class="change-img">
                         <div class="front-side-img"><img src="{{ product.image }}" alt=" {{ product.product_name }}"></div>
@@ -261,7 +261,7 @@
                 </div>
                 <div class="home3_tabl_card_icons">
                     <div class="home3_tabl_card_search"></div>
-                    <div class="home3_tabl_card_heart"></div>
+                    <a href=""><div class="home3_tabl_card_heart" id="like_poduct_id_{{ product.product_id }}"></div></a>
                     <div class="home3_tabl_card_shop" onclick="add_to_korzina()"></div>
                 </div>
             </div>
