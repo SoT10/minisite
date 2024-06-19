@@ -298,4 +298,5 @@ document.addEventListener('DOMContentLoaded', () => {
 /*Конец блока product*/
 
 /*Начало блока catalog*/
+
 /*Конец блока catalog*/
