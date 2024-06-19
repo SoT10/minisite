@@ -165,6 +165,10 @@
 	margin-bottom: 20px;
 }
 
+.full_shop_center_empty a {
+	text-align: center;
+}
+
 .full_shop_center_empty button {
 	font-size: 14px;
 	background-color: #222222;
@@ -173,7 +177,7 @@
 	transition: all 0.2s;
 	color: white;
 	border: none;
-	padding: 12px 0px;
+	padding: 12px 14px;
 }
 
 .full_shop_center_empty button:hover {
@@ -272,6 +276,7 @@ nav {
 	display: flex;
 	gap: 30px;
 	justify-content: center;
+	align-items: flex-start;
 }
 
 .navbar_logo {
