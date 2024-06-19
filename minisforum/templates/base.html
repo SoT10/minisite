@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% endblock %}
 </head>
-<body>
+<body class="{% if user.is_authenticated %}authenticated{% endif %}">
 
 {% block navbar %}
 <nav>
@@ -54,6 +54,13 @@
 <div class="shop" id="shop" onclick="show_close_shop()">
     <span class="count_want">0</span>
     <span class="xoo-wsc-icon-basket1"></span><!-- корзина -->
+</div>
+
+<div class="un_auth_user_like" id="un_auth_user_like">
+    <div class="un_auth_user_like_krest"></div>
+    <div class="un_auth_user_like_text">Только авторизированные пользователи могут добавлять товары в избранное</div>
+    <button class="un_auth_user_like_1" onclick="go_like()">Войти в кабинет</button>
+    <button class="un_auth_user_like_2" onclick="close_popup()">Закрыть</button>
 </div>
 
 <div class="dark_back" id="dark_back" onclick="close_shop()"></div>

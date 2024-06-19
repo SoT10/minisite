@@ -7,6 +7,7 @@ from .validators import CustomAuthenticationForm
 from .models import Zakazi, Adress
 from django.contrib.auth import update_session_auth_hash
 
+
 def my_accaunt(request):
     user = request.user
     reg_form = UserRegisterForm()
@@ -103,3 +104,6 @@ def my_accaunt(request):
         pass
     
     return render(request, 'my_accaunt/my_accaunt.html', context)
+
+
+

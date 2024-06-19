@@ -121,6 +121,7 @@ function close_shop() {
 	var full_shop=document.getElementById('full_shop');
 	var shop=document.getElementById('shop');
 	var dark_back=document.getElementById('dark_back');
+	var un_auth_user_like=document.getElementById('un_auth_user_like')
 	dark_back.style.opacity="0"
 	shop_cont.classList.remove('shop_slide_in')
 	shop_cont.classList.add("shop_slide_out")
@@ -128,6 +129,18 @@ function close_shop() {
 	full_shop.classList.add("shop_slide_out")
 	shop.style.right="12px"
 	dark_back.style.display="none"
+	un_auth_user_like.style.display="none"
+}
+
+function close_popup() {
+	var dark_back=document.getElementById('dark_back');
+	var un_auth_user_like=document.getElementById('un_auth_user_like')
+	dark_back.style.display="none"
+	un_auth_user_like.style.display="none"
+}
+
+function go_like() {
+	window.location.href = '/my_accaunt';
 }
 /*конец блока shop*/
 
@@ -211,7 +224,6 @@ try {
 catch (error) {
 	console.log("")
 }
-
 
 function change_image(element) {
 	var mainImg = document.getElementById('product_main_img')
@@ -328,7 +340,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 var heartIcon = this;
                 heartIcon.classList.add('liked'); // Пример добавления класса при успешном добавлении в избранное
             })
-            .catch(error => console.error('Ошибка:', error));
+
+            .catch(error => {
+	            // Обработка ошибки
+	            console.error('Ошибка:', error);
+
+	            // Изменяем стиль элемента при ошибке
+	            dark_back=document.getElementById('dark_back')
+	            un_auth_user_like=document.getElementById('un_auth_user_like')
+	            un_auth_user_like.style.display="block"
+            	dark_back.style.display="block"
+	            dark_back.style.display = "block";
+	            dark_back.style.opacity=1
+	        });
         });
     });
 
@@ -347,6 +371,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return cookieValue;
     }
 });
+
+
+
 
 
 
