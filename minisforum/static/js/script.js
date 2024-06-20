@@ -476,6 +476,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function clear_raiting() {
+	localStorage.removeItem('product_rating');
+}
 /*Конец блока product*/
 
 /*Начало блока catalog*/
