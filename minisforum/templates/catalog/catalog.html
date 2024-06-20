@@ -26,8 +26,9 @@
                 <li><a href="">Есть в наличии</a><div class="catalog_left_categories_img">2</div></li>
                 <li><a href="">Предзаказ</a><div class="catalog_left_categories_img">17</div></li>
                 <li><a href="">Все продукты minisforum</a><div class="catalog_left_categories_img">19</div></li> -->
+                <a href="/catalog"><li>Все товары</li></a>
                 {% for category in categories %}
-                <li><a href="?category={{ category.category }}">{{ category.category }}</a><div class="catalog_left_categories_img">{{ category.count }}</div></li>
+                <a href="?category={{ category.category }}"><li>{{ category.category }}<div class="catalog_left_categories_img">{{ category.count }}</div></li></a>
                 {% endfor %}
             </ul>
         </div>
@@ -250,11 +251,11 @@
             {% for product in products %}
             <div class="catalog_right_product_1">
                 <div class="rotate-block">
-                    <div class="change-img">
+                    <a href="product?product={{ product.product_name }}"><div class="change-img">
                         <div class="front-side-img"><img src="{{ product.image }}" alt=" {{ product.product_name }}"></div>
                         <div class="back-side-img"><img src="/static/assets/catalog/amd/Desk mini UM350 1.jpg" alt=""></div>
                     </div>
-                </div>                
+                </div></a>                
                 <div class="catalog_right_product_text">
                     <a href="product?product={{ product.product_name }}"><div class="gain-center">{{ product.product_name }}</div></a>
                     <div class="home3_tabl_card_price">{{ product.price }} ₽</div>

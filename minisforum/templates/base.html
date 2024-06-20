@@ -31,12 +31,10 @@
     </div>
     <div class="navbar_icons">
         <img src="/static/assets/navbar/search.svg">
-        <img src="/static/assets/navbar/shop.svg">
+        <a href="/catalog"><img src="/static/assets/navbar/shop.svg"></a>
         <a href="/my_accaunt"><img src="/static/assets/navbar/accaunt.svg"></a>
     </div>
 </nav>
-
-
 
 {% endblock %}
 
@@ -52,7 +50,7 @@
 {% block footer %}
 
 <div class="shop" id="shop" onclick="show_close_shop()">
-    <span class="count_want">0</span>
+    <!-- <span class="count_want">0</span> -->
     <span class="xoo-wsc-icon-basket1"></span><!-- корзина -->
 </div>
 
@@ -80,13 +78,13 @@
             </div>
         </div>
         <div class="full_shop_center">
-            <div class="full_shop_center_empty">
+            <div class="full_shop_center_empty" id="full_shop_center_empty">
                 <span>Ваша корзина пустая</span>
                 <a href="/catalog"><button>В магазин</button></a>
             </div>
-            <div class="full_shop_center_buy">
+            <!-- <div class="full_shop_center_buy">
                 <div class="full_shop_center_buy_img">
-                    <img src="/static/assets/catalog/intel/S100.png" alt="">
+                    <img class="full_shop_center_buy_img_1" src="/static/assets/catalog/intel/S100.png" alt="">
                 </div>
                 <div class="full_shop_center_buy_text">
                     <div class="full_shop_center_buy_text_product">
@@ -99,10 +97,13 @@
                 <div class="full_shop_center_buy_urna">
                     <span class="xoo-wsc-icon-trash"></span>
                 </div>
+            </div> -->
+            <div id="shoppingCartContainer">
+                <!-- Сюда будут добавляться элементы списка покупок -->
             </div>
         </div>
         <div class="full_shop_down">
-            <div class="full_shop_down_text">
+            <div class="full_shop_down_text" id="full_shop_down_text">
                 ОБЩАЯ СУММА: 100000000 Р.
             </div>
             <button>ПРОДОЛЖИТЬ ПОКУПКИ</button>

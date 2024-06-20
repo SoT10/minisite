@@ -15,8 +15,7 @@ def my_accaunt(request):
     login_form = AuthenticationForm()
     adress_form = AdressForm()
     anketa_form = AnketaForm()
-    liked_products = LikedProduct.objects.filter(user=request.user)
-    print(liked_products)
+    
 
     if request.method == 'POST':
         if 'register_form_submit' in request.POST:
@@ -99,8 +98,11 @@ def my_accaunt(request):
         'adress_form': adress_form,
         'user_orders': user_orders,
         'user_adress': user_adress,
-        'liked_products': liked_products
     }
+
+    if request.user.is_authenticated:
+        liked_products = LikedProduct.objects.filter(user=request.user)
+        context.update({'liked_products':liked_products})
 
     try:
         context.update({'anketa_form':anketa_form})

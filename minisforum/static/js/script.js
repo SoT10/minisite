@@ -89,6 +89,117 @@ function add_to_korzina() {
 	}
 }
 
+document.querySelectorAll('.home3_tabl_card_shop').forEach(button => {
+    button.addEventListener('click', addToCart);
+});
+
+function addToCart(event) {
+    const productElement = event.target.closest('.home3_tabl_card');
+    
+    const id = productElement.getAttribute('data-id');
+    const img = productElement.querySelector('.home3_tabl_card_img').getAttribute('src');
+    const product_name = productElement.querySelector('.gain-center').textContent;
+    const product_price = productElement.querySelector('.home3_tabl_card_price').textContent;
+    
+    let korzina = JSON.parse(localStorage.getItem('korzina')) || [];
+    
+    // Проверяем, есть ли уже товар с таким id в корзине
+    let found = false;
+    korzina.forEach(item => {
+        if (item.id === id) {
+            item.quantity = item.quantity ? item.quantity + 1 : 2; // Увеличиваем количество товара
+            found = true;
+        }
+    });
+    
+    // Если товара с таким id нет в корзине, добавляем его
+    if (!found) {
+        korzina.push({ id, img, product_name, product_price, quantity: 1 });
+    }
+    
+    localStorage.setItem('korzina', JSON.stringify(korzina));
+    displayShoppingCart();
+}
+
+function isCartEmpty() {
+    const korzina = JSON.parse(localStorage.getItem('korzina')) || [];
+    return korzina.length === 0;
+}
+
+function displayShoppingCart() {
+	if (!isCartEmpty()){
+		document.getElementById('full_shop_center_empty').style.display="none"
+	}
+    const cartItems = JSON.parse(localStorage.getItem('korzina')) || [];
+
+    const shoppingCartContainer = document.getElementById('shoppingCartContainer');
+    shoppingCartContainer.innerHTML = ''; // Очищаем контейнер перед обновлением списка
+    let resultSum=0
+    cartItems.forEach(item => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('full_shop_center_buy');
+
+        const imgDiv = document.createElement('div');
+        imgDiv.classList.add('full_shop_center_buy_img');
+        const img = document.createElement('img');
+        img.classList.add('full_shop_center_buy_img_1');
+        img.setAttribute('src', item.img);
+        img.setAttribute('alt', item.product_name);
+        imgDiv.appendChild(img);
+
+        const textDiv = document.createElement('div');
+        textDiv.classList.add('full_shop_center_buy_text');
+        const productNameDiv = document.createElement('div');
+        productNameDiv.classList.add('full_shop_center_buy_text_product');
+        productNameDiv.textContent = item.product_name;
+        const priceDiv = document.createElement('div');
+        priceDiv.classList.add('full_shop_center_buy_text_price');
+        priceString = item.product_price.replace(/\s/g, '').replace('₽', '');
+        let price = parseFloat(priceString.replace(',', '.'));
+        let sum = item.quantity * price
+        sum=sum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})
+        let zena_one = price
+        zena_one=zena_one.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})
+        priceDiv.textContent = `${item.quantity} X ${zena_one} = ${sum}`;
+        resultSum=resultSum+item.quantity * price;
+        textDiv.appendChild(productNameDiv);
+        textDiv.appendChild(priceDiv);
+
+        const urnaDiv = document.createElement('div');
+        urnaDiv.classList.add('full_shop_center_buy_urna');
+        const urnaIcon = document.createElement('span');
+        urnaIcon.classList.add('xoo-wsc-icon-trash');
+        urnaIcon.addEventListener('click', () => removeFromCart(item.id));
+        urnaDiv.appendChild(urnaIcon);
+
+        productDiv.appendChild(imgDiv);
+        productDiv.appendChild(textDiv);
+        productDiv.appendChild(urnaDiv);
+
+        shoppingCartContainer.appendChild(productDiv);
+    });
+    document.getElementById("full_shop_down_text").innerHTML= "ОБЩАЯ СУММА: " + resultSum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})
+}
+
+function removeFromCart(id) {
+    let korzina = JSON.parse(localStorage.getItem('korzina')) || [];
+    
+    // Фильтруем корзину, оставляя только те товары, у которых id не совпадает с переданным id
+    korzina = korzina.filter(item => item.id !== id);
+    
+    // Обновляем данные в локальном хранилище
+    localStorage.setItem('korzina', JSON.stringify(korzina));
+
+    if (isCartEmpty()){
+		document.getElementById('full_shop_center_empty').style.display="grid"
+	}
+    
+    // Перерисовываем список покупок
+    displayShoppingCart();
+}
+
+// Вызываем функцию для отображения списка покупок при загрузке страницы
+window.addEventListener('load', displayShoppingCart);
 /*Конец блока home*/
 
 /*начало блока shop*/
@@ -215,12 +326,14 @@ function my_accaunt1_btns_wants() {
 document.addEventListener('DOMContentLoaded', (event) => {
     const selectAllCheckbox = document.getElementById('select_all');
     const itemCheckboxes = document.querySelectorAll('.item_checkbox');
-
-    selectAllCheckbox.addEventListener('change', function() {
-        itemCheckboxes.forEach(checkbox => {
-            checkbox.checked = this.checked;
-        });
-    });
+    try {
+    	selectAllCheckbox.addEventListener('change', function() {
+	        itemCheckboxes.forEach(checkbox => {
+	            checkbox.checked = this.checked;
+	        });
+	    });
+    } catch (e) {}
+    
 });
 /*Конец блока my_accaunt*/
 
@@ -241,9 +354,7 @@ try {
 	    zoomImage.style.transform = 'translate(0, 0) scale(1)'; 
 	});
 }
-catch (error) {
-	console.log("")
-}
+catch (error) {}
 
 function change_image(element) {
 	var mainImg = document.getElementById('product_main_img')
@@ -346,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var productId = this.getAttribute('data-product-id');
 
-            fetch('/catalog/add_to_favorites', {
+            fetch('/add_to_favorites', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

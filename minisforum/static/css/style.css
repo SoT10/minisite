@@ -236,10 +236,12 @@
 }
 
 .full_shop_center_buy {
-    display: grid;
-    grid-template-columns: 1fr 2fr 0.5fr;
+    display: flex;
     gap: 15px;
-    padding: 10px;
+    padding: 20px 15px;
+    justify-items: center;
+    align-items: center;
+    border-top: 0.5px solid #EFEFEF;;
 }
 
 .full_shop_down {
@@ -259,7 +261,6 @@
     text-align: left;
     align-items: center;
     font-weight: 600;
-    gap: 5px;
 }
 
 .full_shop_down_text {
@@ -271,10 +272,15 @@
 
 .xoo-wsc-icon-trash {
 	color: #232323;
-	font-size: 30px;
+	font-size: 24px;
 }
 
-.xoo-wsc-icon-trash:before {
+.xoo-wsc-icon-trash:hover::before {
+	cursor: pointer;
+	color: #FF0035;
+}
+
+.xoo-wsc-icon-trash::before {
   content: "\e907";
   align-items: center;
 }
@@ -283,6 +289,16 @@
     display: flex;
     align-items: center;
     text-align: center;
+}
+
+.full_shop_center_buy_text_product {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.full_shop_center_buy_text_price {
+	font-size: 14px;
+	line-height: 1.4;
 }
 /*Конец блока shop*/
 
@@ -904,6 +920,11 @@ nav {
 	cursor: pointer;
 }
 
+.home3_tabl_card {
+	display: grid;
+	grid-template-rows: 1fr auto;
+}
+
 .home3 {
 	padding: 60px 200px;
 }
@@ -921,11 +942,11 @@ nav {
 }
 
 .home3_tabl_card_img {
-	background-image: url("/static/assets/home/card1.webp");
 	background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
     height: 300px;
+    margin-bottom: 10px;
 }
 
 .home3_tabl_card_text {
@@ -1646,8 +1667,7 @@ nav {
 
 .product_left img {
 	position: absolute;
-	width: 100%;
-	height: auto;
+	height: 100%;
 }
 
 .product_right {
@@ -1733,7 +1753,10 @@ nav {
 
 .product_right_want_text {
 	font-weight: 600;
-	color: black;
+	color: black;	
+}
+
+.product_right_want_text:hover {
 	text-decoration: underline;
 }
 

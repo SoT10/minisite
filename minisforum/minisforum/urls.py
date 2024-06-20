@@ -23,6 +23,7 @@ from blog.views import blog
 from catalog.views import catalog
 from contact.views import contact
 from my_accaunt.views import my_accaunt
+
 from . import views
 
 urlpatterns = [
@@ -33,7 +34,7 @@ urlpatterns = [
     path('catalog/', include('catalog.urls'), name='catalog'),
     path('contact/', include('contact.urls'), name='contact'),
     path('my_accaunt/', include('my_accaunt.urls'), name='my_accaunt'),
-
+    path('add_to_favorites', views.add_to_favorites, name='add_to_favorites'),
 
     
     # path('set_cookie/', views.set_cookie_view),

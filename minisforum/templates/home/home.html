@@ -10,7 +10,7 @@
 			<div class="home_slider1_text_2">ПЕРВЫЙ В МИРЕ ПЛАНШЕТ AMD 3-в-1<br>ОС Windows</div>
 			<div class="home_slider1_text_3">Лидер высокопроизводительных планшетов на базе Windows<br>Оснащен флагманским процессором AMD нового поколения Ryzen™ 7 8840U. Закажите сейчас и получите подарки от Minisforum!</div>	
 		</div>
-		<button>ЗАКАЗАТЬ</button>
+		<a href="/catalog"><button>ЗАКАЗАТЬ</button></a>
 	</div>
 	<div class="home_arrows">
 		<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(4)">
@@ -25,7 +25,7 @@
 			<div class="home_slider1_text_2">Процессор Intel 13-го поколения Core i9</div>
 			<div class="home_slider1_text_3">MS-01 оснащен процессорами Intel 13-го поколения Core i9-13900H, Core i9-12900H.</div>	
 		</div>
-		<button>ЗАКАЗАТЬ</button>
+		<a href="/catalog"><button>ЗАКАЗАТЬ</button></a>
 	</div>	
 	<div class="home_arrows">
 		<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(1)">
@@ -40,7 +40,7 @@
 			<div class="home_slider1_text_2">Идеальный выбор для геймеров и работы с графикой</div>
 			<div class="home_slider1_text_3">Данные модели обладают мощными процессорами AMD Ryzen™ и видеокартами AMD Radeon™ RX 6650M, что делает их идеальным выбором для геймеров и профессионалов в области редактирования видео и графики.</div>	
 		</div>
-		<button>ЗАКАЗАТЬ</button>
+		<a href="/catalog"><button>ЗАКАЗАТЬ</button></a>
 	</div>	
 	<div class="home_arrows">
 		<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(2)">
@@ -55,7 +55,7 @@
 			<div class="home_slider1_text_2">Стильный и мощный Мини-ПК</div>
 			<div class="home_slider1_text_3">Мини-ПК представляет собой компактное устройство с высокой производительностью благодаря процессору AMD Ryzen™ 9 7940HS с 8 ядрами и 16 потоками. Графические возможности обеспечиваются видеокартой AMD Radeon™ 780M с частотой 2800 МГц, что позволяет наслаждаться качественным изображением. Самая полулярная модель в России.</div>	
 		</div>
-		<button>ЗАКАЗАТЬ</button>
+		<a href="/catalog"><button>ЗАКАЗАТЬ</button></a>
 	</div>	
 	<div class="home_arrows">
 		<img id="arrow_left" src="/static/assets/home/arrow.svg" onclick="home_return_slide(3)">
@@ -70,53 +70,31 @@
 		<div class="home2_right_2">Команда Minisforum</div>
 		<div class="home2_right_3">Российское комьюнити:</div>
 		<a href="https://t.me/minisforum_community"><img src="/static/assets/home/tg_ico.png" width="64px" height="64px"></a><br>
-		<button>К товарам</button>
+		<a href="/catalog"><button>К товарам</button></a>
 	</div>
 </div>
 
 <div class="home3">
 	<div class="home3_header">Популярное</div>
 	<div class="home3_tabl">
-		<div class="home3_tabl_card">
-			<div class="home3_tabl_card_img"></div>
-			<div class="home3_tabl_card_text"><div class="gain-center">Мини-ПК Minisforum HX99G AMD Ryzen 9 6900HX AMD Radeon RX 6650M RAM DDR5 32GB 1TB SSD</div></div><hr>
-			<div class="home3_tabl_card_price">105,000.00 ₽</div>
-			<div class="home3_tabl_card_icons">
-				<div class="home3_tabl_card_search"></div>
-				<div class="home3_tabl_card_heart"></div>
-				<div class="home3_tabl_card_shop" onclick="add_to_korzina()"></div>
+		{% for product in top_products %}
+		<div class="home3_tabl_card" data-id="{{ product.product_id }}">
+			<div class="home3_tabl_card_parts">
+				<a href="/catalog/product?product={{ product.product_name }}"><img class="home3_tabl_card_img" src="{{ product.image }}"></a>
+				<a href="/catalog/product?product={{ product.product_name }}"><div class="home3_tabl_card_text"><div class="gain-center">{{ product.product_name }}</div></div></a>
+			</div>
+
+			<div class="home3_tabl_card_parts">
+				<hr>
+				<div class="home3_tabl_card_price">{{ product.price }} ₽</div>
+				<div class="home3_tabl_card_icons">
+					<a href="/catalog/product?product={{ product.product_name }}"><div class="home3_tabl_card_search"></div></a>
+					<a href="#" class="like-btn home3_tabl_card_heart {% if product.product_id in liked_products %}liked{% endif %}" data-product-id="{{ product.product_id }}"></a>
+					<div class="home3_tabl_card_shop" id="home3_tabl_card_shop" onclick="add_to_korzina()"></div>
+				</div>
 			</div>
 		</div>
-		<div class="home3_tabl_card">
-			<div class="home3_tabl_card_img"></div>
-			<div class="home3_tabl_card_text"><div class="gain-center">Мини-ПК Minisforum HX99G AMD Ryzen 9 6900HX AMD Radeon RX 6650M RAM DDR5 32GB 1TB SSD</div></div><hr>
-			<div class="home3_tabl_card_price">105,000.00 ₽</div>
-			<div class="home3_tabl_card_icons">
-				<div class="home3_tabl_card_search"></div>
-				<div class="home3_tabl_card_heart"></div>
-				<div class="home3_tabl_card_shop" onclick="add_to_korzina()"></div>
-			</div>
-		</div>
-		<div class="home3_tabl_card">
-			<div class="home3_tabl_card_img"></div>
-			<div class="home3_tabl_card_text"><div class="gain-center">Мини-ПК Minisforum HX99G AMD Ryzen 9 6900HX AMD Radeon RX 6650M RAM DDR5 32GB 1TB SSD</div></div><hr>
-			<div class="home3_tabl_card_price">105,000.00 ₽</div>
-			<div class="home3_tabl_card_icons">
-				<div class="home3_tabl_card_search"></div>
-				<div class="home3_tabl_card_heart"></div>
-				<div class="home3_tabl_card_shop" onclick="add_to_korzina()"></div>
-			</div>
-		</div>
-		<div class="home3_tabl_card">
-			<div class="home3_tabl_card_img"></div>
-			<div class="home3_tabl_card_text"><div class="gain-center">Мини-ПК Minisforum HX99G AMD Ryzen 9 6900HX AMD Radeon RX 6650M RAM DDR5 32GB 1TB SSD</div></div><hr>
-			<div class="home3_tabl_card_price">105,000.00 ₽</div>
-			<div class="home3_tabl_card_icons">
-				<div class="home3_tabl_card_search"></div>
-				<div class="home3_tabl_card_heart"></div>
-				<div class="home3_tabl_card_shop" onclick="add_to_korzina()"></div>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
 </div>
 
