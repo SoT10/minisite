@@ -546,11 +546,107 @@ document.addEventListener('DOMContentLoaded', function() {
         return cookieValue;
     }
 });
-
-
-
-
-
-
-
 /*Конец блока catalog*/
+
+/*Начало блока cart*/
+function go_to_cart() {
+	window.location.href = '/cart';
+}
+
+function displayCartItems() {
+	if (isCartEmpty() && window.location.pathname=="/cart/") {
+		window.location.href = '/';
+	}
+
+    const cartItems = JSON.parse(localStorage.getItem('korzina')) || [];
+    const cartTableContainer = document.getElementById('cartTableContainer');
+    
+    if (!cartTableContainer) {
+        return;
+    }
+    
+    cartTableContainer.innerHTML = '';
+    let resultSum=0
+    cartItems.forEach(item => {
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('cart_table_second_row');
+        
+        const text1Div = document.createElement('div');
+        text1Div.classList.add('cart_table_second_row_text_1');
+        
+        const cartContDiv = document.createElement('div');
+        cartContDiv.classList.add('cart_cont');
+        
+        const delCartDiv = document.createElement('div');
+        delCartDiv.classList.add('del_cart1');
+        delCartDiv.setAttribute('data-id', item.id);
+        
+        const imgDiv = document.createElement('div');
+        imgDiv.classList.add('cart_table_second_row_text_1_img');
+        const img = document.createElement('img');
+        img.setAttribute('src', item.img);
+        img.setAttribute('alt', item.product_name);
+        imgDiv.appendChild(img);
+        
+        const textDiv = document.createElement('div');
+        textDiv.classList.add('cart_table_second_row_text_1_text');
+        textDiv.textContent = item.product_name;
+        
+        cartContDiv.appendChild(delCartDiv);
+        cartContDiv.appendChild(imgDiv);
+        cartContDiv.appendChild(textDiv);
+        
+        text1Div.appendChild(cartContDiv);
+        
+        const text2Div = document.createElement('div');
+        text2Div.classList.add('cart_table_second_row_text_2');
+        text2Div.textContent = item.product_price;
+        
+        const text3Div = document.createElement('div');
+        text3Div.classList.add('cart_table_second_row_text');
+        text3Div.textContent = item.quantity;
+        
+        const text4Div = document.createElement('div');
+        text4Div.classList.add('cart_table_second_row_text');
+        const icon = document.createElement('i');
+        let cleanedString = item.product_price.replace(/[^\d,.-]/g, '');
+        cleanedString = cleanedString.replace(',', '.');
+        let priceNumber = parseFloat(cleanedString);
+        tovar_sum=cleanedString * item.quantity;
+        resultSum=resultSum+tovar_sum
+        icon.textContent = tovar_sum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'});
+        text4Div.appendChild(icon);
+        
+        rowDiv.appendChild(text1Div);
+        rowDiv.appendChild(text2Div);
+        rowDiv.appendChild(text3Div);
+        rowDiv.appendChild(text4Div);
+        
+        cartTableContainer.appendChild(rowDiv);
+    });
+    document.getElementById('cart_table_third_row_left').innerHTML="Итого: " + resultSum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'});
+
+    document.querySelectorAll('.del_cart1').forEach(button => {
+        button.addEventListener('click', removeFromCart1);
+    });
+}
+
+function removeFromCart1(event) {
+	const productId = event.target.getAttribute('data-id');
+    let cartItems = JSON.parse(localStorage.getItem('korzina')) || [];
+    
+    cartItems = cartItems.filter(item => item.id !== productId);
+    
+    localStorage.setItem('korzina', JSON.stringify(cartItems));
+    
+    displayCartItems();
+}
+
+window.addEventListener('DOMContentLoaded', displayCartItems);
+/*Конец блока cart*/
+
+/*Начало блока shop*/
+function go_to_shop() {
+	window.location.href="/buy"
+}
+/*Конец блока shop*/

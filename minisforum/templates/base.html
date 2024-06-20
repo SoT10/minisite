@@ -23,8 +23,8 @@
     <div class="navbar_links">
         <ul>
             <li><a href="/">ГЛАВНАЯ</a></li>
-            <li><a href="/about">О НАС</a></li>
-            <li><a href="/blog">БЛОГ</a></li>
+            <!-- <li><a href="/about">О НАС</a></li>
+            <li><a href="/blog">БЛОГ</a></li> -->
             <li><a href="/catalog">КАТАЛОГ</a></li>
             <li><a href="/contact">КОНТАКТЫ</a></li>
         </ul>
@@ -106,9 +106,9 @@
             <div class="full_shop_down_text" id="full_shop_down_text">
                 ОБЩАЯ СУММА: 100000000 Р.
             </div>
-            <button>ПРОДОЛЖИТЬ ПОКУПКИ</button>
-            <button>К КОРЗИНЕ</button>
-            <button style="background-color: black; color: white;">К ЗАКАЗУ</button>
+            <button  onclick="show_close_shop()">ПРОДОЛЖИТЬ ПОКУПКИ</button>
+            <button onclick="go_to_cart()">К КОРЗИНЕ</button>
+            <button style="background-color: black; color: white;" onclick="go_to_shop()">К ЗАКАЗУ</button>
         </div>
     </div>
 </div>

@@ -3,6 +3,42 @@
 {% endblock %}
 {% block content %}
 
-<div>Товары в корзине</div>
+<form class="cart" method="post">
+	{% csrf_token %}
+	<div class="cart_text">
+		Товары в корзине
+	</div>
+	<div class="cart_table">
+		<div class="cart_table_first_row">
+			<div class="cart_table_first_row_text">
+				Товар
+			</div>
+			<div class="cart_table_first_row_text">
+				Цена
+			</div>
+			<div class="cart_table_first_row_text">
+				Количество
+			</div>
+			<div class="cart_table_first_row_text">
+				Итог
+			</div>
+		</div>
+		<div id="cartTableContainer">
+		    <div class="cart_table_second_row">
+		        <!-- Содержимое будет динамически добавляться сюда -->
+		    </div>
+		</div>
 
+		<div class="cart_table_third_row">
+			<div class="cart_table_third_row_left" id="cart_table_third_row_left">
+				Итого: 213231
+			</div>
+			<div class="cart_table_third_row_right">
+				<button>ОФОРМИТЬ ЗАКАЗ</button>
+			</div>
+		</div>
+	</div>
+</form>
 {% endblock %}
+
+Товары в корзине
