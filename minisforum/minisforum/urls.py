@@ -23,6 +23,8 @@ from blog.views import blog
 from catalog.views import catalog
 from contact.views import contact
 from my_accaunt.views import my_accaunt
+from cart.views import cart
+from buy.views import buy
 
 from . import views
 
@@ -34,6 +36,8 @@ urlpatterns = [
     path('catalog/', include('catalog.urls'), name='catalog'),
     path('contact/', include('contact.urls'), name='contact'),
     path('my_accaunt/', include('my_accaunt.urls'), name='my_accaunt'),
+    path('cart/', include('cart.urls'), name='cart'),
+    path('buy/', include('buy.urls'), name='buy'),
     path('add_to_favorites', views.add_to_favorites, name='add_to_favorites'),
 
     
