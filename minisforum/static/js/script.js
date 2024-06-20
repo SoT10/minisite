@@ -211,6 +211,17 @@ function my_accaunt1_btns_wants() {
 	my_accaunt1_anketa.style.display="none";
 	my_accaunt1_spisok.style.display="block";
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const selectAllCheckbox = document.getElementById('select_all');
+    const itemCheckboxes = document.querySelectorAll('.item_checkbox');
+
+    selectAllCheckbox.addEventListener('change', function() {
+        itemCheckboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+        });
+    });
+});
 /*Конец блока my_accaunt*/
 
 /*Начало блока product*/

@@ -195,7 +195,7 @@
 	<div class="spisok_table">
 		<div class="spisok_table_first_row">
 			<div class="spisok_table_first_row_galka">
-				<input type="checkbox">
+				<input type="checkbox" id="select_all">
 			</div>
 			<div class="spisok_table_first_row_text">
 				Наименование
@@ -210,28 +210,30 @@
 				Статус склада
 			</div>
 		</div>
-		<div class="spisok_table_second_row">
-			<div class="spisok_table_second_row_galka">
-				<input type="checkbox">
-			</div>
-			<div class="spisok_table_second_row_text_1">
-				<div class="spisok_table_second_row_text_1_img">
-					<img src="/static/assets/catalog/intel/S100.png" alt="">
+		{% for liked_product in liked_products %}
+			<div class="spisok_table_second_row">
+				<div class="spisok_table_second_row_galka">
+					<input type="checkbox" class="item_checkbox">
 				</div>
-				<div class="spisok_table_second_row_text_1_text">
-					Мини-ПК minisforum и какой то очень большой текст чтобы посмотреть ширину столбца
+				<div class="spisok_table_second_row_text_1">
+					<div class="spisok_table_second_row_text_1_img">
+						<img src="{{ liked_product.product.image }}" alt="">
+					</div>
+					<div class="spisok_table_second_row_text_1_text">
+						{{ liked_product.product.product_name }}
+					</div>
+				</div>
+				<div class="spisok_table_second_row_text_2">
+					{{ liked_product.product.price }} ₽
+				</div>
+				<div class="spisok_table_second_row_text">
+					{{ liked_product.date_added }}
+				</div>
+				<div class="spisok_table_second_row_text">
+					<i class="">{{ liked_product.product.kolvo }}</i>
 				</div>
 			</div>
-			<div class="spisok_table_second_row_text_2">
-				105000 р.
-			</div>
-			<div class="spisok_table_second_row_text">
-				18.06.2024
-			</div>
-			<div class="spisok_table_second_row_text">
-				<i class=""></i>В наличии/отсутствует
-			</div>
-		</div>
+		{% endfor %}
 		<div class="spisok_table_third_row">
 			<div class="spisok_table_third_row_delete">
 					<button>Удалить выбранное из корзины</button>

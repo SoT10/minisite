@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from .forms import UserRegisterForm, AdressForm, AnketaForm
 from .validators import CustomAuthenticationForm
 from .models import Zakazi, Adress
+from catalog.models import LikedProduct
 from django.contrib.auth import update_session_auth_hash
 
 
@@ -14,6 +15,8 @@ def my_accaunt(request):
     login_form = AuthenticationForm()
     adress_form = AdressForm()
     anketa_form = AnketaForm()
+    liked_products = LikedProduct.objects.filter(user=request.user)
+    print(liked_products)
 
     if request.method == 'POST':
         if 'register_form_submit' in request.POST:
@@ -95,7 +98,8 @@ def my_accaunt(request):
         'login_form': login_form,
         'adress_form': adress_form,
         'user_orders': user_orders,
-        'user_adress': user_adress
+        'user_adress': user_adress,
+        'liked_products': liked_products
     }
 
     try:
