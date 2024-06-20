@@ -249,10 +249,10 @@
 
 
             {% for product in products %}
-            <div class="catalog_right_product_1">
+            <div class="catalog_right_product_1" data-id="{{ product.product_id }}">
                 <div class="rotate-block">
                     <a href="product?product={{ product.product_name }}"><div class="change-img">
-                        <div class="front-side-img"><img src="{{ product.image }}" alt=" {{ product.product_name }}"></div>
+                        <div class="front-side-img"><img class="front-side-img1" src="{{ product.image }}" alt=" {{ product.product_name }}"></div>
                         <div class="back-side-img"><img src="/static/assets/catalog/amd/Desk mini UM350 1.jpg" alt=""></div>
                     </div>
                 </div></a>                

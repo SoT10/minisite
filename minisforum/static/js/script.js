@@ -93,11 +93,43 @@ document.querySelectorAll('.home3_tabl_card_shop').forEach(button => {
     button.addEventListener('click', addToCart);
 });
 
+document.querySelectorAll('.home3_tabl_card_shop').forEach(button => {
+    button.addEventListener('click', addToCart1);
+});
+
 function addToCart(event) {
     const productElement = event.target.closest('.home3_tabl_card');
     
     const id = productElement.getAttribute('data-id');
     const img = productElement.querySelector('.home3_tabl_card_img').getAttribute('src');
+    const product_name = productElement.querySelector('.gain-center').textContent;
+    const product_price = productElement.querySelector('.home3_tabl_card_price').textContent;
+    
+    let korzina = JSON.parse(localStorage.getItem('korzina')) || [];
+    
+    // Проверяем, есть ли уже товар с таким id в корзине
+    let found = false;
+    korzina.forEach(item => {
+        if (item.id === id) {
+            item.quantity = item.quantity ? item.quantity + 1 : 2; // Увеличиваем количество товара
+            found = true;
+        }
+    });
+    
+    // Если товара с таким id нет в корзине, добавляем его
+    if (!found) {
+        korzina.push({ id, img, product_name, product_price, quantity: 1 });
+    }
+    
+    localStorage.setItem('korzina', JSON.stringify(korzina));
+    displayShoppingCart();
+}
+
+function addToCart1(event) {
+    const productElement = event.target.closest('.catalog_right_product_1');
+    
+    const id = productElement.getAttribute('data-id');
+    const img = productElement.querySelector('.front-side-img1').getAttribute('src');
     const product_name = productElement.querySelector('.gain-center').textContent;
     const product_price = productElement.querySelector('.home3_tabl_card_price').textContent;
     
