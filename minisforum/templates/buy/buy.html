@@ -3,7 +3,27 @@
 {% endblock %}
 {% block content %}
 
+<div class="buy">
+	<div class="buy_header">Оформление заказа</div>
+	<form class="buy_cont">
+		{% csrf_token %}
+		<div class="buy_cont_left">
+			{{ buy_form.as_p }}
+			<label for="id_phone">Телефон</label>
+			<input type="text" name="phone" id="id_phone">
+			<div class="buy_cont_left_details">
+				<div class="buy_cont_left_details_header">Детали</div>
+				<label for="id_details">Примечание к заказу (необязательно)</label>
+				<textarea id="id_details" placeholder="Примечания к вашему заказу, например особые пожелания отделу доставки"></textarea>
+			</div>
+		</div>
+		<div class="buy_cont_right">
+			
+			<button>ПОДТВЕРДИТЬ ЗАКАЗ</button>
+		</div>
 
+	</form>
+</div>
 
 
 {% endblock %}

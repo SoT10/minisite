@@ -1831,6 +1831,15 @@ nav {
 	padding: 0px 40px;
 }
 
+.product_feedback_plus{
+    border-bottom: 0.5px solid grey;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+.product_left {
+    justify-content: flex-start;
+}
+
 .product_right_title, .product_right_price {
     word-wrap: break-word;
     font-weight: 600;
@@ -2056,11 +2065,11 @@ nav {
 }
 
 .product_feedback_error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-    text-align: left;
-    margin-bottom: 5px;
+	color: red;
+	font-size: 14px;
+	margin-top: 5px;
+	text-align: left;
+	margin-bottom: 5px;
 }
 
 .product_feedback button {
@@ -2079,6 +2088,85 @@ nav {
 }
 
 /*Конец блока product*/
+
+/*Начало блока buy*/
+.buy {
+	padding: 80px 208px;
+	text-align: center;
+}
+
+.buy_header {
+	font-size: 37px;
+	font-weight: 600;
+	margin-bottom: 25px;
+}
+
+.buy_cont {
+	gap: 40px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.buy_cont label {
+	text-align: left;
+	width: 100%;
+	display: block;
+	margin-bottom: 6px;
+	font-size: 14px;
+}
+
+.buy_cont input {
+    border-radius: 6px;
+    color: #757575;
+    border: solid 1px #efefef;
+    box-shadow: none;
+    font-size: 14px;
+    line-height: 45px;
+    padding: 0px 16px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.buy_cont button {
+	width: 100%;
+	text-align: center;
+  cursor: pointer;
+  background-color: #222222;
+  font-weight: 600;
+  padding: 15px 25px;
+  text-transform: uppercase;
+  font-size: 14px;
+  box-shadow: 0 7px 50px 0 rgba(41, 100, 216, 0.2);
+  transition: all 0.2s;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  min-width: 130px;
+  margin-top: 24px;
+  transition: background-color 0.5s;
+}
+
+.buy_cont button:hover {
+	background-color: #2EA3F2;
+}
+
+.buy_cont_left_details_header {
+	text-align: left;
+	font-size: 21px;
+	margin-bottom: 24px;
+	font-weight: 600;
+}
+
+.buy_cont_left_details textarea {
+	min-width: 100%;
+  font-size: 14px;
+  border: 1px solid #bbb;
+  color: #757575;
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+/*Конец блока buy*/
 
 /* Блок картинки */
 .rotate-block {

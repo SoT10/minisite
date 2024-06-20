@@ -93,4 +93,3 @@ def update_product_rating(product):
 def update_product_rating_on_review_change(sender, instance, **kwargs):
     product = instance.product
     update_product_rating(product)
-
