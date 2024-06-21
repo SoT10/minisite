@@ -8,6 +8,7 @@
 	<form class="buy_cont">
 		{% csrf_token %}
 		<div class="buy_cont_left">
+			<div class="buy_cont_left_header">Детали оплаты</div>
 			{{ buy_form.as_p }}
 			<label for="id_phone">Телефон</label>
 			<input type="text" name="phone" id="id_phone">
@@ -18,7 +19,35 @@
 			</div>
 		</div>
 		<div class="buy_cont_right">
-			
+			<div class="buy_cont_right_header">Ваш заказ</div>
+			<div class="buy_cont_right_check_header">
+				<div class="buy_cont_right_check_header_text">Товар</div>
+				<div class="buy_cont_right_check_header_text">Подытог</div>
+			</div>
+			<div class="buy_cont_right_korzina">
+				<div class="buy_cont_right_korzina_name">
+					Мини-ПК Minisforum EliteMini UM780 XTX Ryzen 7 7840HS RAM DDR5 32GB 1TB SSD  × 3
+				</div>
+				<div class="buy_cont_right_korzina_kolvo">
+					249,000.00₽
+				</div>
+			</div>
+			<div class="buy_cont_right_korzina">
+				<div class="buy_cont_right_korzina_name">
+					Мини-ПК Minisforum EliteMini UM780 XTX Ryzen 7 7840HS RAM DDR5 32GB 1TB SSD  × 3
+				</div>
+				<div class="buy_cont_right_korzina_kolvo">
+					249,000.00₽
+				</div>
+			</div>
+			<div class="buy_cont_right_itogo">
+				<div class="buy_cont_right_itogo_text">
+					Итого
+				</div>
+				<div class="buy_cont_right_itogo_sum">
+					364,000.00₽
+				</div>
+			</div>
 			<button>ПОДТВЕРДИТЬ ЗАКАЗ</button>
 		</div>
 
