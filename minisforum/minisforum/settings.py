@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'my_accaunt',
     'catalog',
+    'buy',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,5 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 SESSION_COOKIE_NAME = 'sessionid'
 SESSION_SAVE_EVERY_REQUEST = True
+
+LOGIN_URL = '/my_accaunt/'

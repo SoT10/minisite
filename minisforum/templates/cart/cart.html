@@ -3,8 +3,7 @@
 {% endblock %}
 {% block content %}
 
-<form class="cart" method="post">
-	{% csrf_token %}
+<div class="cart" method="post">
 	<div class="cart_text">
 		Товары в корзине
 	</div>
@@ -34,11 +33,11 @@
 				Итого: 213231
 			</div>
 			<div class="cart_table_third_row_right">
-				<button>ОФОРМИТЬ ЗАКАЗ</button>
+				<a href="/buy"><button>ОФОРМИТЬ ЗАКАЗ</button></a>
 			</div>
 		</div>
 	</div>
-</form>
+</div>
 {% endblock %}
 
 Товары в корзине

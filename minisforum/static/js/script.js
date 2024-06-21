@@ -226,11 +226,9 @@ function removeFromCart(id) {
 		document.getElementById('full_shop_center_empty').style.display="grid"
 	}
     
-    // Перерисовываем список покупок
     displayShoppingCart();
 }
 
-// Вызываем функцию для отображения списка покупок при загрузке страницы
 window.addEventListener('load', displayShoppingCart);
 /*Конец блока home*/
 
@@ -645,8 +643,128 @@ function removeFromCart1(event) {
 window.addEventListener('DOMContentLoaded', displayCartItems);
 /*Конец блока cart*/
 
-/*Начало блока shop*/
+/*Начало блока buy*/
 function go_to_shop() {
-	window.location.href="/buy"
+	window.location.href="/buy"	
 }
-/*Конец блока shop*/
+
+function displayKorzinaItems() {
+	if (window.location.pathname=="/buy/") {
+	    const cartItems = JSON.parse(localStorage.getItem('korzina')) || [];
+	    const korzinaContainer = document.getElementById('korzinaContainer');
+	    
+	    if (!korzinaContainer) {
+	        console.error('Элемент korzinaContainer не найден в DOM.');
+	        return;
+	    }
+	    
+	    // Очищаем контейнер перед добавлением новых элементов
+	    korzinaContainer.innerHTML = '';
+	    let resultSum=0
+	    cartItems.forEach(item => {
+	        const korzinaDiv = document.createElement('div');
+	        korzinaDiv.classList.add('buy_cont_right_korzina');
+	        
+	        const nameDiv = document.createElement('div');
+	        nameDiv.classList.add('buy_cont_right_korzina_name');
+	        nameDiv.textContent = `${item.product_name} × ${item.quantity}`;
+	        
+	        const priceDiv = document.createElement('div');
+	        priceDiv.classList.add('buy_cont_right_korzina_kolvo');
+	        let cleanedString = item.product_price.replace(/[^\d,.-]/g, '');
+	        cleanedString = cleanedString.replace(',', '.');
+	        let priceNumber = parseFloat(cleanedString);
+	        tovar_sum=cleanedString * item.quantity;
+	        resultSum=resultSum+tovar_sum
+
+	        priceDiv.textContent = tovar_sum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'});
+	        
+
+	        korzinaDiv.appendChild(nameDiv);
+	        korzinaDiv.appendChild(priceDiv);
+	        
+	        korzinaContainer.appendChild(korzinaDiv);
+	    });
+	    document.getElementById('buy_cont_right_itogo_sum').innerHTML=resultSum.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'});
+	}
+}
+
+window.addEventListener('DOMContentLoaded', displayKorzinaItems);
+
+document.addEventListener('DOMContentLoaded', function () {
+	if (window.location.pathname=="/buy/") {
+		const phoneInput = document.getElementById('id_phone');
+
+	    phoneInput.addEventListener('input', function () {
+	        const currentValue = phoneInput.value;
+	        const numbers = currentValue.replace(/\D/g, '');
+
+	        let formattedValue = '+7 (';
+	        if (numbers.length > 1) {
+	            formattedValue += numbers.substring(1, 4);
+	        }
+	        if (numbers.length >= 5) {
+	            formattedValue += ') ' + numbers.substring(4, 7);
+	        }
+	        if (numbers.length >= 8) {
+	            formattedValue += '-' + numbers.substring(7, 9);
+	        }
+	        if (numbers.length >= 10) {
+	            formattedValue += '-' + numbers.substring(9, 11);
+	        }
+
+	        phoneInput.value = formattedValue;
+	    });
+
+	    phoneInput.addEventListener('focus', function () {
+	        if (phoneInput.value === '') {
+	            phoneInput.value = '+7 (';
+	        }
+	    });
+
+	    phoneInput.addEventListener('blur', function () {
+	        if (phoneInput.value === '+7 (') {
+	            phoneInput.value = '';
+	        }
+	    });
+	}	
+});
+
+function make_buy() {
+    // Получаем CSRF токен из cookies
+    const csrftoken = getCookie('csrftoken');
+    
+    // Отправляем запрос с CSRF токеном
+    fetch('/buy/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken  // Добавляем CSRF токен в заголовок запроса
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+// Функция для получения CSRF токена из cookies
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+/*Конец блока buy*/
