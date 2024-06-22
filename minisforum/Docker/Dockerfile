@@ -1,7 +1,10 @@
 FROM postgres:13.3
 
-# Копирование init-скрипта
-COPY server.sql /docker-entrypoint-initdb.d/
+# Установка рабочего каталога
+WORKDIR /docker-entrypoint-initdb.d/
 
-# Установка рабочей базы данных (опционально)
+# Копирование init-скрипта в рабочий каталог
+COPY Server.sql /docker-entrypoint-initdb.d/
+
+# Опционально установка рабочей базы данных
 ENV POSTGRES_DB=minisite

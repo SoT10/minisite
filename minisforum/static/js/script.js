@@ -516,6 +516,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             .catch(error => {
 	            // Обработка ошибки
+	            alert(error)
 	            console.error('Ошибка:', error);
 
 	            // Изменяем стиль элемента при ошибке
@@ -731,29 +732,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function make_buy() {
-    // Получаем CSRF токен из cookies
     const csrftoken = getCookie('csrftoken');
     let data = JSON.parse(localStorage.getItem('korzina'));
-    // Отправляем запрос с CSRF токеном
+    
     fetch('/buy/get_json_from_storage', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken  // Добавляем CSRF токен в заголовок запроса
+            'X-CSRFToken': csrftoken 
         },
         body: JSON.stringify(data)
-
     })
     .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
 }
 
-// Функция для получения CSRF токена из cookies
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {

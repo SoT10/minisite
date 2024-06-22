@@ -1,9 +1,10 @@
 from django import forms
 from my_accaunt.models import Adress
+from .models import Order
 
-class AdressForm(forms.ModelForm):
+class OrderForm(forms.ModelForm):
     class Meta:
-        model = Adress
+        model = Order
         fields = ['first_name', 'last_name', 'oblast', 'city', 'adress', 'postal_code']
         labels = {
             'first_name': 'Имя',

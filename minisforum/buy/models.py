@@ -13,15 +13,15 @@ class Order(models.Model):
     last_name = models.CharField(max_length=30)
     oblast = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
-    address = models.CharField(max_length=255)
+    adress = models.CharField(max_length=255)
     postal_code = models.CharField(max_length=20)
     phone = models.CharField(max_length=20)
     details = models.TextField(blank=True, null=True)
     email = models.EmailField()
     product_name = models.CharField(max_length=255)
-    quantity = models.PositiveIntegerField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
-    total = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.PositiveIntegerField()    # Цена товара за единицу товара
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending') #статус доставки
+    total = models.DecimalField(max_digits=10, decimal_places=2) #Итоговая сумма заказа
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
 

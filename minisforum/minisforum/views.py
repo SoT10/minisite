@@ -13,7 +13,6 @@ from django.views.decorators.csrf import csrf_protect
 @login_required  # Гарантирует, что пользователь авторизован
 def add_to_favorites(request):
     if request.method == 'POST':
-
         try:
             data = json.loads(request.body)
 
