@@ -39,7 +39,6 @@ urlpatterns = [
     path('cart/', include('cart.urls'), name='cart'),
     path('buy/', include('buy.urls'), name='buy'),
     path('add_to_favorites', views.add_to_favorites, name='add_to_favorites'),
-    path('get_json_from_storage', views.get_json_from_storage, name='get_json_from_storage'),
 
     
     # path('set_cookie/', views.set_cookie_view),

@@ -735,7 +735,7 @@ function make_buy() {
     const csrftoken = getCookie('csrftoken');
     let data = JSON.parse(localStorage.getItem('korzina'));
     // Отправляем запрос с CSRF токеном
-    fetch('/get_json_from_storage', {
+    fetch('/buy/get_json_from_storage', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

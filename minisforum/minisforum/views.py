@@ -40,17 +40,3 @@ def add_to_favorites(request):
 
     return JsonResponse({'success': False, 'error': 'Invalid request'})
 
-@csrf_protect
-@require_POST
-def get_json_from_storage(request):
-
-    data = json.loads(request.body)
-
-    # Обработка данных
-    # Например, извлечение и использование id, product_name, quantity
-    for item in data:
-        id = item.get('id')
-        product_name = item.get('product_name')
-        quantity = item.get('quantity')
-
-    return JsonResponse({'success': True})
