@@ -733,15 +733,16 @@ document.addEventListener('DOMContentLoaded', function () {
 function make_buy() {
     // Получаем CSRF токен из cookies
     const csrftoken = getCookie('csrftoken');
-    
+    let data = JSON.parse(localStorage.getItem('korzina'));
     // Отправляем запрос с CSRF токеном
-    fetch('/buy/', {
+    fetch('/get_json_from_storage', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken  // Добавляем CSRF токен в заголовок запроса
         },
         body: JSON.stringify(data)
+
     })
     .then(response => response.json())
     .then(data => {

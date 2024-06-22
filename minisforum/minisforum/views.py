@@ -4,6 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from catalog.models import Product, LikedProduct
 from django.contrib.auth import authenticate, login
+import json
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
 
 @csrf_exempt
 @login_required  # Гарантирует, что пользователь авторизован
@@ -23,8 +27,7 @@ def add_to_favorites(request):
                 product = Product.objects.get(pk=product_id)
             except Product.DoesNotExist:
                 return JsonResponse({'success': False, 'error': 'Product does not exist'})
-            print(1)
-            # Проверка на дублирование
+
             liked_product, created = LikedProduct.objects.get_or_create(user=user, product=product)
 
             if created:
@@ -36,3 +39,18 @@ def add_to_favorites(request):
             return JsonResponse({'success': False, 'error': str(e)})
 
     return JsonResponse({'success': False, 'error': 'Invalid request'})
+
+@csrf_protect
+@require_POST
+def get_json_from_storage(request):
+
+    data = json.loads(request.body)
+
+    # Обработка данных
+    # Например, извлечение и использование id, product_name, quantity
+    for item in data:
+        id = item.get('id')
+        product_name = item.get('product_name')
+        quantity = item.get('quantity')
+
+    return JsonResponse({'success': True})

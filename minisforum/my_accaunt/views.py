@@ -110,6 +110,3 @@ def my_accaunt(request):
         pass
     
     return render(request, 'my_accaunt/my_accaunt.html', context)
-
-
-
