@@ -2230,6 +2230,19 @@ nav {
 	padding: 25px 5px;
 	
 }
+
+.buy_cont_right_policy {
+	font-size: 14px;
+	margin-bottom: 20px;
+	line-height: 1.7;
+	color: #232323;
+	text-align: left;
+	font-weight: 600;
+}
+
+.buy_cont_right_policy a {
+	color: #767676;
+}
 /*Конец блока buy*/
 
 /* Блок картинки */

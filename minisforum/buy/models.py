@@ -19,7 +19,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=20)
     details = models.TextField(blank=True, null=True)
     email = models.EmailField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending') #статус доставки
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='processing') #статус доставки
     total = models.DecimalField(max_digits=10, decimal_places=2) #Итоговая сумма заказа
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
