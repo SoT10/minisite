@@ -33,7 +33,7 @@ def my_accaunt(request):
                 user = authenticate(request, username=username, password=password)
                 login(request, user)
                 request.session['username'] = username
-                return redirect('/my_accaunt')
+                return redirect('/my_accaunt/?href=zakazi')
         elif 'adress_form_submit' in request.POST:
             adress_form = AdressForm(request.POST)
             if adress_form.is_valid():
@@ -49,7 +49,7 @@ def my_accaunt(request):
                         'adress': adress_data['adress'],
                         'postal_code': adress_data['postal_code']
                     })
-                return redirect('/my_accaunt')
+                return redirect('/my_accaunt/?href=address')
         elif 'anketa_form_submit' in request.POST:
             anketa_form = AnketaForm(request.POST, instance=request.user)
             if anketa_form.is_valid():
@@ -73,7 +73,7 @@ def my_accaunt(request):
                 messages.success(request, 'Электронная почта и логин успешно обновлены')
                 user.save()
 
-                return redirect('/my_accaunt')
+                return redirect('/my_accaunt/?href=anketa')
                 
     else:
         reg_form = UserRegisterForm()

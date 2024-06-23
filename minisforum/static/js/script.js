@@ -1,5 +1,46 @@
-/*Начало блока home*/
+/*Начало блока nav и sub_navbar*/
+const texts = [
+	"Доставка по всей России",
+	"Гарантия от одного года",
+	"Каталог товаров MINISFORUM",
+	"Качество, мощность, стиль, мобильность"
+]
 
+let currentIndex = 0;
+function sub_navbar_change_text() {
+    const sub_navbar_text = document.getElementById('sub_navbar_text');
+    sub_navbar_text.textContent = texts[currentIndex];
+    currentIndex = (currentIndex + 1) % texts.length;
+}
+
+setInterval(sub_navbar_change_text, 1347)
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname !== "/") {
+        let sub_navbar = document.getElementById('sub_navbar');
+        sub_navbar.style.display = "block";
+    }
+});
+
+document.getElementById('down_menu_show').addEventListener("click", function() {
+	var nav=document.getElementById("down_menu_panel");
+	var img_show=document.getElementById("down_menu_show");
+	var img_close=document.getElementById("down_menu_close");
+	nav.style.height="234px";
+	img_show.style.display="none";
+	img_close.style.display="block";
+})
+
+document.getElementById('down_menu_close').addEventListener("click", function() {
+	var nav=document.getElementById("down_menu_panel");
+	var img_show=document.getElementById("down_menu_show");
+	var img_close=document.getElementById("down_menu_close");
+	nav.style.height="0px";
+	img_show.style.display="block";
+	img_close.style.display="none";
+})
+/*Конец блока nav и sub_navbar*/
+/*Начало блока home*/
 const home_next = document.getElementById('arrow_right');
 const home_return = document.getElementById('arrow_left');
 
@@ -295,6 +336,57 @@ function go_like() {
 /*конец блока shop*/
 
 /*Начало блока my_accaunt*/
+window.onload = function() {
+    function getQueryParam(param) {
+        let urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    let hrefParam = getQueryParam('href');
+
+    var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
+	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
+	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
+	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
+
+    if (hrefParam=="zakazi") {
+		my_accaunt1_zakazi.style.display="grid";
+		my_accaunt1_adress.style.display="none";
+		my_accaunt1_anketa.style.display="none";
+		my_accaunt1_spisok.style.display="none";
+    } else if (hrefParam=="address") {
+    	my_accaunt1_zakazi.style.display="none";
+		my_accaunt1_adress.style.display="block";
+		my_accaunt1_anketa.style.display="none";
+		my_accaunt1_spisok.style.display="none";
+    } else if (hrefParam=="anketa") {
+    	my_accaunt1_zakazi.style.display="none";
+		my_accaunt1_adress.style.display="none";
+		my_accaunt1_anketa.style.display="block";
+		my_accaunt1_spisok.style.display="none";
+    } else if (hrefParam=="favorite") {
+    	my_accaunt1_zakazi.style.display="none";
+		my_accaunt1_adress.style.display="none";
+		my_accaunt1_anketa.style.display="none";
+		my_accaunt1_spisok.style.display="block";
+    }
+};
+
+function my_accaunt1_btns_zakazi(){
+	window.location.href="/my_accaunt/?href=zakazi"
+}
+
+function my_accaunt1_btns_adress(){
+	window.location.href="/my_accaunt/?href=address"
+}
+
+function my_accaunt1_btns_anketa() {
+	window.location.href="/my_accaunt/?href=anketa"
+}
+
+function my_accaunt1_btns_wants() {
+	window.location.href="/my_accaunt/?href=favorite"
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     // Выбираем все элементы с классом 'my_accaunt1_zakazi_element_total'
@@ -317,29 +409,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-function my_accaunt1_btns_zakazi(){
-	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
-	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
-	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
-	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
-
-	my_accaunt1_zakazi.style.display="grid";
-	my_accaunt1_adress.style.display="none";
-	my_accaunt1_anketa.style.display="none";
-	my_accaunt1_spisok.style.display="none";
-}
-
-function my_accaunt1_btns_adress(){
-	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
-	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
-	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
-	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
-
-	my_accaunt1_zakazi.style.display="none";
-	my_accaunt1_adress.style.display="block";
-	my_accaunt1_anketa.style.display="none";
-	my_accaunt1_spisok.style.display="none";
-}
 
 function show_adress() {
 	var my_accaunt1_adress_none_adress = document.getElementById('my_accaunt1_adress_none-adress')
@@ -349,31 +418,9 @@ function show_adress() {
 	my_accaunt1_adress_none_adress.style.display = "none"
 }
 
-function my_accaunt1_btns_anketa() {
-	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
-	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
-	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
-	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
 
 
-	my_accaunt1_zakazi.style.display="none";
-	my_accaunt1_adress.style.display="none";
-	my_accaunt1_anketa.style.display="block";
-	my_accaunt1_spisok.style.display="none";
-}
 
-function my_accaunt1_btns_wants() {
-	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
-	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
-	var my_accaunt1_anketa=document.getElementById('my_accaunt1_anketa');
-	var my_accaunt1_spisok=document.getElementById('my_accaunt1_spisok');
-
-
-	my_accaunt1_zakazi.style.display="none";
-	my_accaunt1_adress.style.display="none";
-	my_accaunt1_anketa.style.display="none";
-	my_accaunt1_spisok.style.display="block";
-}
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const selectAllCheckbox = document.getElementById('select_all');

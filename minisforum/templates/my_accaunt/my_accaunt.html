@@ -2,10 +2,7 @@
 {% block title %}
 {% endblock %}
 {% block content %}
-
 {% if not request.user.is_authenticated %}
-
-
 <div class="my_accaunt">
 	<form method="POST" class="my_accaunt_login">
 	    {% csrf_token %}

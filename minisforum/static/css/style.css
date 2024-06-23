@@ -488,7 +488,7 @@ nav {
 	justify-items: center;
 	align-items: center;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 }
 
 .navbar_links a {
@@ -502,6 +502,16 @@ nav {
 .navbar_links a:hover {
 	text-decoration: underline;
 	color: #87C232;
+}
+
+.navbar_icons a img {
+	width: 31px;
+	height: 31px;
+}
+
+.navbar_icons a {
+	display: flex;
+	align-items: center;
 }
 
 .navbar_icons {
@@ -527,11 +537,102 @@ nav {
   text-align: center;
   height: 75px;
   width: 250px;
+} 
+
+.down_menu {
+	display: none;
 }
+
+.down_menu::before {
+	font-family: tinvwl-webfont;
+  font-weight: 400;
+  font-size: 20px;
+  color: white;
+  background-color: #111111;
+  border: 0.5px solid white;
+  padding: 5px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+#down_menu_show::before {
+	content: "\e900";
+}
+
+#down_menu_close::before {
+	content: "\e903";
+}
+
+.down_menu_panel {
+	z-index: 10000;
+	width: 30%;
+	background-color: #111111;
+	position: absolute;
+	right: 0px;
+	overflow: hidden;
+	height: 0px;
+	transition: height 0.5s ease-in-out;
+}
+
+.down_menu_panel a {
+	color: white;
+}
+
+.down_menu_panel ul {
+	padding-right: 35px;
+	text-align: right;
+	list-style-type: none;
+}
+
+@media screen and (max-width: 920px) {
+  #down_menu_show {
+  	display: block;
+  }
+
+  .navbar_icons a {
+  	display: none;
+  }
+
+  .navbar_links {
+  	display: none;
+  }
+
+  nav {
+  	display: flex;
+  	justify-content: space-between;
+  	padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+	.down_menu_panel {
+		width: 100%;
+	}
+}
+
 
 /*Конец блока хедер*/
 
+/*Начало блока sub_navbar*/
+.sub_navbar {
+	background-image: url(/static/assets/navbar/header.jpg);
+	height: 575px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: RGBA(255, 255, 255, 0);
+	position: relative;
+}
 
+.sub_navbar_text {
+	color: white;
+	position: absolute;
+	font-weight: bold;
+	font-size: 30px;
+	padding: 0px 200px;
+	top: 60%;
+}
+/*Конец блока sub_navbar*/
 
 
 /*Начало блока блог*/
@@ -1006,17 +1107,16 @@ nav {
 }
 
 .home3_tabl_card_shop::before {
-	font-family: tinvwl-webfont;;
-  	content: "\e913";
-  	font-weight: 400;
-  	color: black;
-  	font-size: 25px;
-  	border-radius: 100%;
-  	border: solid 1px black;
-  	padding: 10px;
-  	transition: all 0.4s;
+	font-family: tinvwl-webfont;
+	content: "\e913";
+	font-weight: 400;
+	color: black;
+	font-size: 25px;
+	border-radius: 100%;
+	border: solid 1px black;
+	padding: 10px;
+	transition: all 0.4s;
 }
-
 /*Конец блока home*/
 
 /*начало блока контакты*/
@@ -1045,6 +1145,10 @@ nav {
 
 .contact2_right {
 	text-align: right;
+}
+
+.contact2_right button:hover {
+	cursor: pointer;
 }
 
 .contact2_1 {
@@ -1745,6 +1849,7 @@ nav {
 	display: grid;
 	grid-template-columns: 4fr 1fr;
 	margin-bottom: 10px;
+	align-items: center;
 }
 
 .catalog_left_categories {
