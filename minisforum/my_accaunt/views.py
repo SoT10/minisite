@@ -4,7 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from .forms import UserRegisterForm, AdressForm, AnketaForm
 from .validators import CustomAuthenticationForm
-from .models import Zakazi, Adress
+from .models import Adress
+from buy.models import Order
 from catalog.models import LikedProduct
 from django.contrib.auth import update_session_auth_hash
 
@@ -82,11 +83,12 @@ def my_accaunt(request):
         except AttributeError as e:
             pass
 
-    user_orders = Zakazi.objects.filter(username=request.user.username)
+    
     user_adress_instance = Adress.objects.filter(username=request.user.username).first()
 
     if user_adress_instance:
         adress_form = AdressForm(instance=user_adress_instance)
+
         user_adress = f"Адрес заказчика: {user_adress_instance.first_name} {user_adress_instance.last_name}, {user_adress_instance.oblast}, {user_adress_instance.city}, {user_adress_instance.adress}, {user_adress_instance.postal_code}<hr>"
     else:
         user_adress = "Вы еще не добавили ваш адрес доставки. <button onclick='show_adress()'>Добавить?</button>"
@@ -96,13 +98,14 @@ def my_accaunt(request):
         'reg_form': reg_form,
         'login_form': login_form,
         'adress_form': adress_form,
-        'user_orders': user_orders,
         'user_adress': user_adress,
     }
 
     if request.user.is_authenticated:
         liked_products = LikedProduct.objects.filter(user=request.user)
         context.update({'liked_products':liked_products})
+        user_orders = Order.objects.filter(user=user).order_by('-date')
+        context.update({'user_orders':user_orders})
 
     try:
         context.update({'anketa_form':anketa_form})

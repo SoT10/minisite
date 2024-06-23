@@ -295,6 +295,28 @@ function go_like() {
 /*конец блока shop*/
 
 /*Начало блока my_accaunt*/
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Выбираем все элементы с классом 'my_accaunt1_zakazi_element_total'
+    var elements = document.querySelectorAll('.my_accaunt1_zakazi_element_total');
+    
+    // Перебираем каждый элемент
+    elements.forEach(function(element) {
+        // Получаем текстовое содержимое элемента
+        var sum = element.innerHTML;
+        
+        // Заменяем запятую на точку (если нужно)
+        sum = sum.replace(',', '.');
+        
+        // Форматируем текст в виде валюты
+        var formattedSum = parseFloat(sum).toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' });
+        
+        // Заменяем содержимое элемента отформатированным значением
+        element.innerHTML = formattedSum;
+    });
+});
+
+
 function my_accaunt1_btns_zakazi(){
 	var my_accaunt1_zakazi=document.getElementById('my_accaunt1_zakazi');
 	var my_accaunt1_adress=document.getElementById('my_accaunt1_adress');
@@ -744,6 +766,15 @@ function make_buy() {
         body: JSON.stringify(data)
     })
     .then(response => response.json())
+    .then(data => {
+    	/*alert(data)*/
+        console.log('Success:', data);
+        // Далее можно использовать данные data.data для дальнейшей обработки
+    })
+    .catch(error => {
+    	/*alert(error)*/
+        console.error('Error:', error);
+    });
 }
 
 function getCookie(name) {

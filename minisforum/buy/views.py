@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import OrderForm  
 from my_accaunt.models import Adress  
-from .models import Order
+from catalog.models import Product  
+from .models import Order, OrderItem
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_protect
 import json
 from django.http import JsonResponse
+from decimal import Decimal
 
 @csrf_protect
 @login_required
@@ -17,29 +19,64 @@ def buy(request):
     if request.method == 'POST':
         buy_form = OrderForm(request.POST)
         if buy_form.is_valid():       
-            tovar_list = get_json_from_storage(request)
-            print(type(tovar_list))
-            adress_instance = buy_form.save(commit=False)
-            adress_instance.username = request.user.username
-            adress_instance.user_id = request.user.id
-            adress_instance.save()
+            tovar_list = request.session['tovar_list']
+            tovar_dict = {index: tovar for index, tovar in enumerate(tovar_list)}
+
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
+            oblast = request.POST.get('oblast')
+            city = request.POST.get('city')
+            adress = request.POST.get('adress')
+            postal_code = request.POST.get('postal_code')
+            phone = request.POST.get('phone')
+            details = request.POST.get('details', '')
+            email = request.user.email
+
+            order = Order.objects.create(
+                first_name=first_name,
+                last_name=last_name,
+                oblast=oblast,
+                city=city,
+                adress=adress,
+                postal_code=postal_code,
+                phone=phone,
+                details=details,
+                email=email,
+                total=0, 
+                user=request.user  
+            )
+
+            total_amount = 0
+
+            for key, product_data in tovar_dict.items():
+                product_id = product_data['id']
+                quantity = int(product_data['quantity']) 
+
+                product = Product.objects.get(pk=product_id)
+
+                product_price_str = product_data['product_price']
+                cleaned_price_str = ''.join(filter(lambda x: x.isdigit() or x == '.', product_price_str))
+                cleaned_price_str = cleaned_price_str.replace(',', '.')
+
+                unit_price = Decimal(cleaned_price_str)  
+                
+                order_item = OrderItem.objects.create(
+                    order=order,
+                    product=product,
+                    quantity=quantity,
+                    unit_price=unit_price/100
+                )
+                
+                # Обновляем total заказа
+                total_amount += order_item.subtotal()
             
+            order.total = total_amount
+            order.save()
+
+            clear_storage_data(request)
 
             
-            
-            # if isinstance(tovar_list, list):
-            #     print(tovar_list)
-            #     for tovar_data in tovar_list:
-            #         Order.objects.create(
-            #             username=request.user.username,
-            #             product_name=tovar_data.get('product_name'),
-            #             quantity=tovar_data.get('quantity'),
-            #         )
-
-            # clear_storage_data(request)
-
-            
-            return redirect('/buy') 
+            return redirect('/buy/clear_storage_data') 
         else:
             print(buy_form.errors.as_json())
             print(buy_form.errors)
@@ -64,120 +101,12 @@ def get_json_from_storage(request):
         for data in data_list:
             if data:
                 result.append(data)
-        
-        return JsonResponse({'data': result}, safe=False)  # Возврат JSON-ответа с результатом
+
+        request.session['tovar_list'] = result        
+        return JsonResponse({'data': result}, safe=False) 
     except json.JSONDecodeError as e:
-        return JsonResponse({'error': 'Invalid JSON'}, status=400)  # Возврат JSON-ответа с ошибкой
+        return JsonResponse({'error': 'Invalid JSON'}, status=400)
 
 
 def clear_storage_data(request):
-    pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# from django.shortcuts import render, redirect
-# from django.contrib.auth.decorators import login_required
-# from .forms import OrderForm  
-# from my_accaunt.models import Adress  
-# from .models import Order
-# from django.views.decorators.http import require_POST
-# from django.views.decorators.csrf import csrf_protect
-# import json
-# from django.http import JsonResponse
-
-# @csrf_protect
-# @login_required
-# def buy(request):
-#     user_adress_instance = Adress.objects.filter(username=request.user.username).first()
-#     buy_form = OrderForm(instance=user_adress_instance)
-
-#     if request.method == 'POST':
-#         buy_form = OrderForm(request.POST)
-#         if buy_form.is_valid():
-#             # Сохраняем форму адреса, если данные валидны
-#             adress_instance = buy_form.save(commit=False)
-#             adress_instance.username = request.user.username
-#             adress_instance.user_id = request.user.id
-#             adress_instance.save()
-
-#             # Получаем данные о товарах из сессии или локального хранилища
-#             tovar_list = get_json_from_storage(request)
-#             if isinstance(tovar_list, list):  # Проверяем, что получен список товаров
-#                 for tovar_data in tovar_list:
-#                     print(tovar_data)
-#                     # Создаем запись в таблице Order для каждого товара
-#                     Order.objects.create(
-#                         username=request.user.username,
-#                         product_name=tovar_data.get('product_name'),
-#                         quantity=tovar_data.get('quantity'),
-#                         # Другие поля, которые могут быть необходимы
-#                     )
-
-#             # Очищаем данные из сессии или локального хранилища
-#             clear_storage_data(request)
-
-#             # После сохранения данных редиректим на страницу подтверждения покупки или другую страницу
-#             return redirect('/buy')  # Замените на свой URL
-
-#     context = {
-#         'title': 'Покупка',
-#         'buy_form': buy_form
-#     }
-#     template_name = 'buy/buy.html'
-#     return render(request, template_name, context)
-
-# @csrf_protect
-# @require_POST
-# def get_json_from_storage(request):
-#     try:
-#         data_list = json.loads(request.body)
-#         result = []  # Создаем пустой список для сохранения данных
-
-#         for data in data_list:
-#             # Проверяем, что есть данные для загрузки
-#             if data:
-#                 result.append(data)
-#             else:
-#                 pass
-        
-#         return result  # Возвращаем список собранных данных
-#     except json.JSONDecodeError as e:
-#         pass
-
-# def clear_storage_data(request):
-#     # Реализуйте функцию для очистки данных из сессии или локального хранилища, если это необходимо
-#     pass
+    return render(request, 'buy/clear_storage_data.html')
