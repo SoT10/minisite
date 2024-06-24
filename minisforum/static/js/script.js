@@ -75,6 +75,50 @@ function home_next_slide(number){
 	}
 };
 
+let start_number = 2
+
+function home_next_slide_timer() {
+	try {
+		var slide1=document.getElementById("home_slider1")
+		var slide2=document.getElementById("home_slider2")
+		var slide3=document.getElementById("home_slider3")
+		var slide4=document.getElementById("home_slider4")
+		if (start_number==1) {
+			slide1.style.display="block"
+			slide2.style.display="none"
+			slide3.style.display="none"
+			slide4.style.display="none"
+		}
+		if (start_number==2) {
+			slide1.style.display="none"
+			slide2.style.display="block"
+			slide3.style.display="none"
+			slide4.style.display="none"
+		}
+		if (start_number==3) {
+			slide1.style.display="none"
+			slide2.style.display="none"
+			slide3.style.display="block"
+			slide4.style.display="none"
+		}
+		if (start_number==4) {
+			slide1.style.display="none"
+			slide2.style.display="none"
+			slide3.style.display="none"
+			slide4.style.display="block"
+		}
+
+	} catch (error) {
+
+	}
+	start_number = start_number + 1
+	if (start_number > 4) {
+        start_number = 1;
+    }
+}
+
+setInterval(home_next_slide_timer, 4000)
+
 function home_return_slide(number){
 	var slide1=document.getElementById("home_slider1")
 	var slide2=document.getElementById("home_slider2")
@@ -331,7 +375,7 @@ function close_popup_2() {
 }
 
 function go_like() {
-	window.location.href = '/my_accaunt';
+	window.location.href = '/my_accaunt/?href=favorite';
 }
 /*конец блока shop*/
 

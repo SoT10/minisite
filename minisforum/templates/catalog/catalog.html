@@ -20,12 +20,6 @@
                     Категории
                     <div class="cherta"><hr></div>                    
                 </div>
-                <!-- <li><a href="">Для игр</a><div class="catalog_left_categories_img">8</div></li>
-                <li><a href="">Серия AMD</a><div class="catalog_left_categories_img">10</div></li>
-                <li><a href="">Серия Intel</a><div class="catalog_left_categories_img">9</div></li>
-                <li><a href="">Есть в наличии</a><div class="catalog_left_categories_img">2</div></li>
-                <li><a href="">Предзаказ</a><div class="catalog_left_categories_img">17</div></li>
-                <li><a href="">Все продукты minisforum</a><div class="catalog_left_categories_img">19</div></li> -->
                 <a href="/catalog"><li>Все товары</li></a>
                 {% for category in categories %}
                 <a href="?category={{ category.category }}"><li>{{ category.category }}<div class="catalog_left_categories_img">{{ category.count }}</div></li></a>
@@ -35,242 +29,24 @@
     </div>
     <div class="catalog_right">
         <div class="catalog_right_product">
-            <!-- <div class="catalog_right_product_1">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/S100.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/Atom man X7 TI 2.jpg" alt=""></div>
-                    </div>
-                </div>
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">AtomMan X7 TI</div></a>
-                    <div class="home3_tabl_card_price">105,000.00₽</div>
-                </div>
-            </div>
-            <div class="catalog_right_product_2">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                    </div>
-                </div>
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">MINISFORUM UN100D</div></a>
-                </div>                
-            </div>
-            <div class="catalog_right_product_3">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/S100.png" alt=""></div>
-                    </div>
-                </div>
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum S100</div></a>
-                </div>                
-            </div>
-            <div class="catalog_right_product_4">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/MinisforumMS-01_1.jpg" alt=""></div>
-                    </div>
-                </div>
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum MS-01</div></a>
-                </div>                
-            </div>
-            <div class="catalog_right_product_5">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/UN100L_1.jpg" alt=""></div>
-                    </div>
-                </div>
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum UN100L</div></a>
-                </div> 
-            </div>
-            <div class="catalog_right_product_6">                
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/AR900i_1.jpg" alt=""></div>
-                    </div>
-                </div>
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">MINISFORUM AR900I</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_7">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/UN1265-1.jpg" alt=""></div>
-                    </div>
-                </div>                 
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum UN1265</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_8">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/NAB6_lite_NAB7_1.jpg" alt=""></div>
-                    </div>
-                </div>                
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum NAB6/NAB9/NAB6 Lite/NAB7</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_9">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/NAD-9_1.jpg" alt=""></div>
-                    </div>
-                </div>                
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum NAD9</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_10">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/intel/N40_mini_pc.jpg" alt=""></div>
-                    </div>
-                </div>                 
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum N40 Mini PC</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_11">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/minisforum um690 pro 1.jpg" alt=""></div>
-                    </div>
-                </div>                 
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum UM690 Pro</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_12">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/EliteMini UM780 xtx 1.jpg" alt=""></div>
-                    </div>
-                </div>                 
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">EliteMini UM780 XTX</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_13">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/BD770i BD 790i 1.jpg" alt=""></div>
-                    </div>
-                </div>                 
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum BD770i/BD790i</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_14">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/minisforum UM690S 1.jpg" alt=""></div>
-                    </div>
-                </div>                
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum UM690S</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_15">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/EM680 EM780 1.jpg" alt=""></div>
-                    </div>
-                </div>                
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum EM680/EM780</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_16">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/UM790Pro 1.jpg" alt=""></div>
-                    </div>
-                </div>                
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Venus UM790 Pro</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_17">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/UM773 Lite 1.jpg" alt=""></div>
-                    </div>
-                </div>                
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Minisforum UM773 Lite</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_18">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/HX99G HX100G1.jpg" alt=""></div>
-                    </div>
-                </div>                
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">Neptune HX99G/HX100G</div></a>
-                </div>
-            </div>
-            <div class="catalog_right_product_18">
-                <div class="rotate-block">
-                    <div class="change-img">
-                        <div class="front-side-img"><img src="/static/assets/catalog/intel/UN100D.png" alt=""></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/Desk mini UM350 1.jpg" alt=""></div>
-                    </div>
-                </div>                
-                <div class="catalog_right_product_text">
-                    <a href="product1"><div class="gain-center">DeskMini UM350</div></a>
-                </div>
-            </div> -->
-
-
-
             {% for product in products %}
-            <div class="catalog_right_product_1" data-id="{{ product.product_id }}">
-                <div class="rotate-block">
-                    <a href="product?product={{ product.product_name }}"><div class="change-img">
-                        <div class="front-side-img"><img class="front-side-img1" src="{{ product.image }}" alt=" {{ product.product_name }}"></div>
-                        <div class="back-side-img"><img src="/static/assets/catalog/amd/Desk mini UM350 1.jpg" alt=""></div>
-                    </div>
-                </div></a>                
-                <div class="catalog_right_product_text">
-                    <a href="product?product={{ product.product_name }}"><div class="gain-center">{{ product.product_name }}</div></a>
-                    <div class="home3_tabl_card_price">{{ product.price }} ₽</div>
+            <div class="home3_tabl_card" data-id="{{ product.product_id }}">
+                <div class="home3_tabl_card_parts">
+                    <a href="/catalog/product?product={{ product.product_name }}"><img class="home3_tabl_card_img" src="{{ product.image }}"></a>
+                    <a href="/catalog/product?product={{ product.product_name }}"><div class="home3_tabl_card_text"><div class="gain-center">{{ product.product_name }}</div></div></a>
                 </div>
-                <div class="home3_tabl_card_icons">
-                    <div class="home3_tabl_card_search"></div>
-                    <a href="#" class="like-btn home3_tabl_card_heart {% if product.product_id in liked_products %}liked{% endif %}" data-product-id="{{ product.product_id }}"></a>
-                    <div class="home3_tabl_card_shop" onclick="add_to_korzina()"></div>
+
+                <div class="home3_tabl_card_parts">
+                    <hr>
+                    <div class="home3_tabl_card_price">{{ product.price }} ₽</div>
+                    <div class="home3_tabl_card_icons">
+                        <a href="/catalog/product?product={{ product.product_name }}"><div class="home3_tabl_card_search"></div></a>
+                        <a href="#" class="like-btn home3_tabl_card_heart {% if product.product_id in liked_products %}liked{% endif %}" data-product-id="{{ product.product_id }}"></a>
+                        <div class="home3_tabl_card_shop" id="home3_tabl_card_shop" onclick="add_to_korzina()"></div>
+                    </div>
                 </div>
             </div>
             {% endfor %}
-
-
-
-
         </div>
     </div>
 </div>
