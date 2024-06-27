@@ -2359,8 +2359,8 @@ nav {
 
 .product_img-mini {
 	padding: 25px 204px;
-	display: grid;
-	grid-template-columns: repeat(4, auto);
+	display: flex;
+	flex-wrap: wrap;
 	gap: 30px;
 	justify-content: start;
 }
@@ -2559,10 +2559,6 @@ nav {
 }
 
 @media screen and (max-width: 470px) {
-	.product_img-mini {
-		grid-template-columns: repeat(2, auto);
-	}
-
 	.product_do_buy button, .product_do_buy input {
 		width: 100%;
 	}
