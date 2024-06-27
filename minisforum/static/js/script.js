@@ -486,16 +486,18 @@ const container = document.querySelector('.zoom-container');
 
 try {
 	container.addEventListener('mousemove', function(e) {
-    const { left, top, width, height } = container.getBoundingClientRect();
-    const x = (e.clientX - left) / width * 100; 
-    const y = (e.clientY - top) / height * 100;
+      const { left, top, width, height } = container.getBoundingClientRect();
+      const x = (e.clientX - left) / width * 100; 
+      const y = (e.clientY - top) / height * 100;
 
-    zoomImage.style.transform = `translate(-${x}%, -${y}%) scale(2)`; 
-	});
+      zoomImage.style.transformOrigin = `${x}% ${y}%`;
+      zoomImage.style.transform = 'scale(2)';
+    });
 
-	container.addEventListener('mouseleave', function() {
-	    zoomImage.style.transform = 'translate(0, 0) scale(1)'; 
-	});
+    container.addEventListener('mouseleave', function() {
+      zoomImage.style.transform = 'scale(1)'; 
+      zoomImage.style.transformOrigin = 'center center';
+    });
 }
 catch (error) {}
 
