@@ -98,23 +98,23 @@
                 <span class="full_shop_header_top_text">Ваша корзина</span>
             </div>
         </div>
-        <div class="full_shop_center">
-            <div class="full_shop_center_empty" id="full_shop_center_empty">
-                <span>Ваша корзина пустая</span>
-                <a href="/catalog"><button>В магазин</button></a>
+            <div style="display: flex; justify-content: space-between; flex-direction: column; height: 100%;">
+                <div class="full_shop_center">
+                    <div class="full_shop_center_empty" id="full_shop_center_empty">
+                        <span>Ваша корзина пустая</span>
+                        <a href="/catalog"><button>В магазин</button></a>
+                    </div>
+                    <div id="shoppingCartContainer">
+                        <!-- Сюда будут добавляться элементы списка покупок -->
+                    </div>
+                </div>
+                <div class="full_shop_down">
+                    <div class="full_shop_down_text" id="full_shop_down_text"></div>
+                    <button  onclick="show_close_shop()">ПРОДОЛЖИТЬ ПОКУПКИ</button>
+                    <button onclick="go_to_cart()">К КОРЗИНЕ</button>
+                    <button style="background-color: black; color: white;" onclick="go_to_shop()">К ЗАКАЗУ</button>
+                </div>
             </div>
-            <div id="shoppingCartContainer">
-                <!-- Сюда будут добавляться элементы списка покупок -->
-            </div>
-        </div>
-        <div class="full_shop_down">
-            <div class="full_shop_down_text" id="full_shop_down_text">
-                ОБЩАЯ СУММА: 100000000 Р.
-            </div>
-            <button  onclick="show_close_shop()">ПРОДОЛЖИТЬ ПОКУПКИ</button>
-            <button onclick="go_to_cart()">К КОРЗИНЕ</button>
-            <button style="background-color: black; color: white;" onclick="go_to_shop()">К ЗАКАЗУ</button>
-        </div>
     </div>
 </div>
 
@@ -144,8 +144,8 @@
                 <b>Информация</b>
                 <li><a href="/">О нас</a></li>
                 <li><a href="/about">Контакты</a></li>
-                <li><a href="/blog">Политика конфиденциальности</a></li>
-                <li><a href="/blog">Пользовательское соглашение</a></li>
+                <li><a href="/my_accaunt/privacy_policy">Политика конфиденциальности</a></li>
+                <li><a href="/my_accaunt/user_agreement">Пользовательское соглашение</a></li>
             </ul>
         </div>
         <div class="Support">

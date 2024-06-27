@@ -13,14 +13,14 @@
 		<div class="product_right_discription">{{ product.description }}</div>
 		<hr>
 
-		<form method="post">
+		<form class="product_do_buy" method="post">
 			{% csrf_token %}
 			{{ product_form.number }}
 			<button type="submit" name="product_form_submit">В КОРЗИНУ</button>
 		</form>
 
-		<div class="product_right_want">
-			<div class="product_right_want_heart"></div>
+		<div class="product_right_want like-btn" data-product-id="{{ product.product_id }}">
+			<div class="product_right_want_heart {% if product.product_id in liked_products %}liked1{% endif %}"></div>
 			<div class="product_right_want_text">Добавить в список желаний</div>
 		</div>
 	</div>

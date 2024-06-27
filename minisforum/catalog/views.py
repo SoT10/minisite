@@ -66,6 +66,10 @@ def product(request):
         product_form=NumberForm()
         review_form=ReviewForm()
 
+    liked_products = []
+    if request.user.is_authenticated:
+        liked_products = LikedProduct.objects.filter(user=request.user).values_list('product_id', flat=True)
+
     context = {
         'title': 'Продукт',
         'product_form': product_form,
@@ -73,6 +77,7 @@ def product(request):
         'product': product,
         'review_count': review_count,
         'reviews': reviews,
+        'liked_products': liked_products
     }
     template_name = 'catalog/product.html'
     return render(request, template_name, context)

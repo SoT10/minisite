@@ -8,5 +8,6 @@ app_name = 'my_accaunt'
 urlpatterns = [
     path('', views.my_accaunt, name='my_accaunt'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/my_accaunt'), name='logout'),
+    path('user_agreement', views.user_agreement, name='user_agreement'),
+    path('privacy_policy', views.privacy_policy, name='privacy_policy'),
 ]
-

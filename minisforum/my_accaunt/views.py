@@ -113,3 +113,18 @@ def my_accaunt(request):
         pass
     
     return render(request, 'my_accaunt/my_accaunt.html', context)
+
+def user_agreement(request):
+    context = {
+        'title': 'Пользовательское соглашение',
+    }
+    template_name = 'my_accaunt/user_agreement.html'
+    return render(request, template_name, context)
+
+def privacy_policy(request):
+    context = {
+        'title': 'Политика конфиденциальности',
+    }
+    template_name = 'my_accaunt/privacy_policy.html'
+    return render(request, template_name, context)
+    

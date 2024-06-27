@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
     likeButtons.forEach(function(btn) {
 
         btn.addEventListener('click', function(e) {
-            e.preventDefault(); // Предотвращаем стандартное действие перехода по ссылке
+            e.preventDefault();
 
             var productId = this.getAttribute('data-product-id');
 
@@ -614,7 +614,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.json())
             .then(data => {
-                // Обработка успешного ответа
                 var heartIcon = this;
                 if (data.error) {
                 	auth_user_like_already=document.getElementById('auth_user_like_already')
@@ -623,16 +622,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 	dark_back.style.opacity=1
                 	auth_user_like_already.style.display='block'
                 } else {
-                	heartIcon.classList.add('liked'); // Пример добавления класса при успешном добавлении в избранное
+                	heartIcon.classList.add('liked');
                 }
             })
-
             .catch(error => {
-	            // Обработка ошибки
-	            alert(error)
-	            console.error('Ошибка:', error);
-
-	            // Изменяем стиль элемента при ошибке
 	            dark_back=document.getElementById('dark_back')
 	            un_auth_user_like=document.getElementById('un_auth_user_like')
 	            un_auth_user_like.style.display="block"
