@@ -2247,9 +2247,7 @@ nav {
 }
 
 .product_left img {
-	position: absolute;
 	width: 100%;
-	aspect-ratio: 1/1;
 }
 
 .product_right {
