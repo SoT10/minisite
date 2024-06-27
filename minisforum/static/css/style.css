@@ -1330,6 +1330,64 @@ nav {
 	font-weight: 600;
 	background-color: white;
 }
+
+@media screen and (max-width: 1100px) {
+	.contact1_up {
+		margin-bottom: 60px;
+	}
+
+	.contact1 {
+		padding: 50px 100px;
+	}
+
+	.contact2 {
+		padding: 50px 100px;
+	}
+
+	.contact2_left {
+		padding: 30px 60px;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.contact2 {
+		grid-template-columns: 1fr;
+	}
+}
+
+.@media screen and (max-width: 600px) {
+	.contact1_up {
+		margin-bottom: 40px;
+		font-size: 30px;
+	}
+
+	.contact1 {
+		padding: 40px 60px;
+	}
+
+	.contact2 {
+		padding: 40px 60px;
+	}
+}
+
+@media screen and (max-width: 470px) {
+	.contact1_up {
+		font-size: 25px;
+		margin-bottom: 20px;
+	}
+
+	.contact1 {
+		padding: 10px;
+	}
+
+	.contact2 {
+		padding: 10px;
+	}
+
+	.contact2_left {
+		padding: 10px;
+	}
+}
 /*конец блока контакты*/
 
 /*Начало блока my_accaunt*/
@@ -1605,6 +1663,7 @@ nav {
     grid-template-rows: 2fr 2.5fr 2fr;
     border: 0.5px solid #EFEFEF;
     padding: -100px;
+    overflow-x: auto;
 }
 
 .spisok_table_first_row {
@@ -1615,6 +1674,7 @@ nav {
     font-size: 20px;
     padding: 10px;
     background-color: #EFEFEF;
+    gap: 10px;
 }
 
 .spisok_table_second_row {
@@ -1627,6 +1687,7 @@ nav {
     border: 0.5px solid #EFEFEF;
     border-right: 0px;
     border-left: 0px;
+    gap: 10px;
 }
 
 .spisok_table_third_row {
@@ -1635,6 +1696,7 @@ nav {
     padding-top: 1px;
     background-color: #EFEFEF;
     padding-bottom: 15px;
+    gap: 10px;
 }
 
 .spisok_table_first_row_text {
@@ -1673,6 +1735,7 @@ nav {
     gap: 10px;
     justify-content: flex-start;
     padding-left: 10px;
+    flex-wrap: wrap;
 }
 
 .spisok_table_third_row_delete button {
@@ -1704,6 +1767,7 @@ nav {
     gap: 5px;
     padding-right: 10px;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .spisok_table_third_row_add button {
@@ -1747,6 +1811,94 @@ nav {
     width: 25px;
     height: 25px;
 }
+
+@media screen and (max-width: 1300px) {
+	.my_accaunt {
+		gap: 70px;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.my_accaunt {
+		gap: 40px;
+		padding: 36px 130px;
+	}
+
+	.my_accaunt1 {
+		padding: 36px 130px;
+	}
+}
+
+@media screen and (max-width: 950px) {
+	.my_accaunt {
+		gap: 30px;
+		padding: 30px 80px
+	}
+
+	.my_accaunt1 {
+		padding: 30px 80px;
+	}
+
+	.my_accaunt1_spisok {
+		padding: 0px 50px;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.my_accaunt {
+		grid-template-columns: 1fr;
+	}
+
+	.my_accaunt1_zakazi, .my_accaunt1_btns {
+		gap: 15px;
+	}
+
+	.my_accaunt1_btns {
+		margin-bottom: 25px;
+	}
+
+	.my_accaunt1_btns button {
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.my_accaunt {
+		padding: 30px;
+	}
+
+	.my_accaunt1_spisok {
+		padding: 0px 30px;
+	}
+
+	.my_accaunt1_zakazi {
+		overflow-x: auto;
+	}
+
+	.my_accaunt_registration_up, .my_accaunt_login_up {
+		font-size: 40px;
+	}
+
+	.my_accaunt1 {
+		padding: 30px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.my_accaunt1_btns {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 330px) {
+	.my_accaunt {
+		padding: 10px;
+	}
+
+	.my_accaunt1_spisok {
+		padding: 0px 10px;
+	}
+}
 /*Конец блока my_accaunt*/
 
 /*Начало блока cart*/
@@ -1763,8 +1915,8 @@ nav {
 }
 
 .cart_table {
+	overflow-x: auto;
     display: grid;
-    /*grid-template-rows: 2fr 2.5fr 2fr;*/
     border: 0.5px solid #EFEFEF;
     padding: -100px;
 }
@@ -1865,7 +2017,6 @@ nav {
     padding-left: 10px;
 }
 
-
 .cart_table_third_row_add {
     display: flex;
     gap: 5px;
@@ -1903,9 +2054,18 @@ nav {
 	background-color: #2EA3F2;
 }
 
+@media screen and (max-width: 780px) {
+	.cart {
+		padding: 0px 40px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.cart {
+		padding: 0px 10px;
+	}
+}
 /*Конец блока cart*/
-
-
 
 /*Начало блока footer*/
 
@@ -2062,11 +2222,17 @@ nav {
 	.catalog_right_product {
 		grid-template-columns: 1fr;
 	}
-}
 
-@media screen and (max-width: 550px) {
 	.catalog {
 		grid-template-columns: 1fr;
+	}
+
+	.catalog_select select {
+		width: 100%;
+	}
+
+	.catalog_select {
+		padding-left: 50px;
 	}
 }
 /*Конец блока Каталог*/
@@ -2506,6 +2672,34 @@ nav {
 
 .buy_cont_right_policy a {
 	color: #767676;
+}
+
+@media screen and (max-width: 1000px) {
+	.buy {
+		padding: 40px 104px;
+	}
+
+	.buy_cont {
+		gap: 20px;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.buy {
+		padding: 30px 60px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.buy_cont {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.buy {
+		padding: 10px;
+	}
 }
 /*Конец блока buy*/
 
