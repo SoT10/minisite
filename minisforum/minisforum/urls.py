@@ -25,6 +25,7 @@ from contact.views import contact
 from my_accaunt.views import my_accaunt
 from cart.views import cart
 from buy.views import buy
+from django.contrib.auth import views as auth_views
 
 from . import views
 
@@ -39,9 +40,8 @@ urlpatterns = [
     path('cart/', include('cart.urls'), name='cart'),
     path('buy/', include('buy.urls'), name='buy'),
     path('add_to_favorites', views.add_to_favorites, name='add_to_favorites'),
-
-    
-    # path('set_cookie/', views.set_cookie_view),
-    # path('get_cookie/', views.get_cookie_view),
-    # path('delete_cookie/', views.delete_cookie_view),
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='my_accaunt/password_reset_form.html'), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='my_accaunt/password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='my_accaunt/password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='my_accaunt/password_reset_complete.html'), name='password_reset_complete'),
 ]

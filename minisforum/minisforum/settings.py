@@ -144,3 +144,5 @@ SESSION_COOKIE_NAME = 'sessionid'
 SESSION_SAVE_EVERY_REQUEST = True
 
 LOGIN_URL = '/my_accaunt/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

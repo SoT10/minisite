@@ -1397,6 +1397,11 @@ nav {
 	text-align: center;
 }
 
+.my_accaunt_registration ul, .my_accaunt_login ul {
+	margin-top: 20px;
+	list-style-type: none;
+}
+
 .my_accaunt_registration_up, .my_accaunt_login_up {
 	font-weight: 600;
 	font-size: 50px;
@@ -1463,6 +1468,18 @@ nav {
 
 .my_accaunt_login button:hover, .my_accaunt_registration button:hover {
 	background-color: #2EA3F2;
+}
+
+.forget_password {
+	display: flex;
+	margin-top: 20px;
+	justify-content: center;
+	transition: all 0.4s;
+}
+
+.forget_password:hover {
+	color: #2EA3F2;
+	cursor: pointer;
 }
 
 .error-messages ul li {
@@ -1894,6 +1911,114 @@ nav {
 	}
 }
 /*Конец блока my_accaunt*/
+
+/*Начало блока password_reset*/
+.password_reset {
+		padding: 64px 204px;
+}
+
+.password_reset_head {
+		font-size: 60px;
+		font-weight: 600;
+		text-align: center;
+		margin-bottom: 20px;
+}
+
+.password_reset_form {
+	text-align: center;
+}
+
+.password_reset_form label {
+	  display: block;
+    margin-bottom: 6px;
+}
+
+.password_reset p {
+	font-size: 20px;
+}
+
+.password_reset a {
+	text-decoration: underline;
+	font-size: 20px;
+	transition: all 0.4s;
+}
+
+.password_reset a:hover {
+	color: #2EA3F2;
+	cursor: pointer;
+}
+
+.password_reset_form input {
+		border-radius: 6px;
+	  color: #757575;
+	  border: solid 1px #efefef;
+	  box-shadow: none;
+	  font-size: 14px;
+	  line-height: 45px;
+	  padding: 0px 16px;
+	  margin-bottom: 15px;
+	  width: 60%;
+}
+
+.password_reset_form ul {
+	display: none;
+}
+
+.password_reset_form button {
+		text-align: center;
+    cursor: pointer;
+    background-color: #222222;
+    font-weight: 600;
+    padding: 15px 25px;
+    text-transform: uppercase;
+    font-size: 14px;
+    box-shadow: 0 7px 50px 0 rgba(41, 100, 216, 0.2);
+    transition: all 0.2s;
+    border-radius: 6px;
+    color: white;
+    border: none;
+    min-width: 130px;
+}
+
+.password_reset_form button:hover {
+	  background-color: #2EA3F2;
+	  cursor: pointer;
+}
+
+@media screen and (max-width: 1110px) {
+	.password_reset_head {
+		font-size: 30px;
+	}
+
+	.password_reset {
+		padding: 64px 102px;
+	}
+
+	.password_reset_form input {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.password_reset {
+		padding: 64px 60px;
+	}
+
+	.password_reset_form input {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.password_reset_head {
+		font-size: 24px;
+	}
+
+	.password_reset {
+		padding: 30px;
+	}
+}
+/*Конец блока password_reset*/
 
 /*Начало блока cart*/
 .cart{
