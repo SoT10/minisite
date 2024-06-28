@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
@@ -8,7 +8,8 @@ from .models import Adress
 from buy.models import Order
 from catalog.models import LikedProduct
 from django.contrib.auth import update_session_auth_hash
-
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 def my_accaunt(request):
     user = request.user
@@ -128,3 +129,55 @@ def privacy_policy(request):
     template_name = 'my_accaunt/privacy_policy.html'
     return render(request, template_name, context)
     
+@login_required
+def view_order(request):
+    template_name = 'my_accaunt/view_order.html'
+    
+    order_id = request.GET.get('id')
+    if not order_id:
+        context = {
+            'title': 'Просмотр заказа',
+            'error': 'Не задан номер заказа'
+        }
+        return render(request, template_name, context)
+
+    try:
+        order_id = int(order_id)
+    except ValueError:
+        context = {
+            'title': 'Просмотр заказа',
+            'error': 'Некорректный номер заказа'
+        }
+        return render(request, template_name, context)
+
+    try:
+        order = get_object_or_404(Order, id=order_id)
+    except Http404:
+        context = {
+            'title': 'Просмотр заказа',
+            'error': 'Данного заказа не существует'
+        }
+        return render(request, template_name, context)
+
+    if not order.can_view_order(request.user):
+        context = {
+            'title': 'Просмотр заказа',
+            'error': 'У вас нет прав на просмотр этого заказа'
+        }
+        return render(request, template_name, context)
+
+    order_items = order.items.all()
+
+    items_details = [{
+        'product_name': item.product.product_name,
+        'quantity': item.quantity,
+        'unit_price': item.unit_price,
+        'total_price': item.quantity * item.unit_price,
+    } for item in order_items]
+
+    context = {
+        'title': 'Просмотр заказа',
+        'order': order,
+        'items_details': items_details
+    }
+    return render(request, template_name, context)

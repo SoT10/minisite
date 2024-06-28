@@ -309,6 +309,100 @@
 }
 /*Конец блока shop*/
 
+/*Начало блока view_order*/
+.view_order_error {
+	padding: 60px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.view_order {
+	padding: 64px 300px;
+}
+
+.view_order_header {
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.view_order_tabl {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 40px;
+}
+
+.view_order_tabl_left_header, .view_order_tabl_right_header {
+	font-size: 26px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.view_order_border {
+	border-bottom: 0.5px solid #CACACA;
+}
+
+.view_order_tabl_left_flex_text1 {
+	padding: 25px 5px;
+	font-size: 14px;
+	line-height: 1.5em;
+	font-weight: 600;
+
+}
+
+.view_order_tabl_left_flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.view_order_tabl_left_flex_text {
+	color: #757575;
+	font-weight: 600;
+	padding: 10px 5px;
+	font-size: 16px;
+}
+
+.view_order_tabl_right_address {
+	font-size: 14px;
+	opacity: 0.8;
+	color: #757575;
+	left: 1.7em;
+	font-weight: 500;
+}
+
+@media screen and (max-width: 1400px) {
+	.view_order {
+		padding: 64px 100px;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.view_order_tabl {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 680px) {
+	.view_order {
+		padding: 64px 60px;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.view_order {
+		padding: 30px;
+	}
+
+	.view_order_tabl_left_header, .view_order_tabl_right_header {
+		font-size: 24px;
+	}
+}
+@media screen and (max-width: 430px) {
+	.view_order {
+		padding: 10px;
+	}
+}
+/*Конец блока view_order*/
+
 /*Начало блока всплывающего меню при лайкании*/
 .un_auth_user_like {
 	display: none;

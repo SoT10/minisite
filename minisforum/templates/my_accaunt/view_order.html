@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock %}
+{% block content %}
+
+{% if error %}
+<div class="view_order_error">{{ error }}</div>
+{% else %}
+<div class="view_order">
+	<div class="view_order_header">Заказ <b>№ {{ order.id }}</b> был оформлен <b>{{ order.date }}</b> и находится в статусе <b>{{ order.status }}</b>.</div>
+	<div class="view_order_tabl">
+		<div class="view_order_tabl_left">
+			<div class="view_order_tabl_left_header">Информация о заказе</div>
+			<div class="view_order_tabl_left_flex">
+				<div class="view_order_tabl_left_flex_text">Товар</div>
+				<div class="view_order_tabl_left_flex_text">Итого</div>
+			</div>
+			<div class="view_order_border">
+				{% for item in items_details %}
+					<div class="view_order_tabl_left_flex">
+						<div class="view_order_tabl_left_flex_text1">{{ item.product_name }} x {{ item.quantity }} ({{ item.unit_price }} ₽)</div>
+						<div class="view_order_tabl_left_flex_text1">{{ item.total_price }}</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="view_order_tabl_left_flex">
+				<div class="view_order_tabl_left_flex_text">Итого:</div>
+				<div class="view_order_tabl_left_flex_text">{{ order.total }} ₽</div>
+			</div>
+		</div>
+		<div class="view_order_tabl_right">
+			<div class="view_order_tabl_right_header">Платёжный адрес</div>
+			<address class="view_order_tabl_right_address">{{ order.first_name }} {{ order.last_name }}, {{ order.oblast }}, {{ order.city }}, {{ order.adress }}, {{ order.postal_code }}, {{ order.phone }}, {% if order.details %} {{ order.details }}, {% endif %} {{ order.email }}, {{ order.status }}</address>
+		</div>
+	</div>
+</div>
+{% endif %}
+{% endblock %}

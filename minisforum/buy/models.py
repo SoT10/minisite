@@ -4,10 +4,10 @@ from catalog.models import Product
 
 class Order(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Доставка'),
-        ('processing', 'В процессе отправки'),
-        ('completed', 'Доставлено'),
-        ('cancelled', 'Отменено'),
+        ('Отправка', 'Отправка'),
+        ('В процессе отправки', 'В процессе отправки'),
+        ('Доставлено', 'Доставлено'),
+        ('Отменено', 'Отменено'),
     ]
 
     first_name = models.CharField(max_length=30)
@@ -19,7 +19,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=20)
     details = models.TextField(blank=True, null=True)
     email = models.EmailField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='processing') #статус доставки
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='В процессе отправки') #статус доставки
     total = models.DecimalField(max_digits=10, decimal_places=2) #Итоговая сумма заказа
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
@@ -32,6 +32,9 @@ class Order(models.Model):
         db_table = 'order'  
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+
+    def can_view_order(self, user):
+        return user == self.user
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
