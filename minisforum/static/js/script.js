@@ -172,6 +172,17 @@ function add_to_korzina() {
 		full_shop.classList.add("shop_slide_in")
 		shop.style.right="344px"
 	}
+
+	let spisok_tovarov = document.getElementById('full_shop_center_empty')
+	let korzina_btn = document.getElementById('korzina_btn')
+	let zakaz_btn = document.getElementById('zakaz_btn')
+    if (spisok_tovarov.style.display!="none") {
+		korzina_btn.style.display="none"
+		zakaz_btn.style.display="none"
+	} else {
+		korzina_btn.style.display="block"
+		zakaz_btn.style.display="block"
+	}
 }
 
 document.querySelectorAll('.home3_tabl_card_shop').forEach(button => {
@@ -205,9 +216,20 @@ function addToCart(event) {
     if (!found) {
         korzina.push({ id, img, product_name, product_price, quantity: 1 });
     }
-    
+
     localStorage.setItem('korzina', JSON.stringify(korzina));
     displayShoppingCart();
+    
+    let spisok_tovarov = document.getElementById('full_shop_center_empty')
+	let korzina_btn = document.getElementById('korzina_btn')
+	let zakaz_btn = document.getElementById('zakaz_btn')
+    if (spisok_tovarov.style.display!="none") {
+		korzina_btn.style.display="none"
+		zakaz_btn.style.display="none"
+	} else {
+		korzina_btn.style.display="block"
+		zakaz_btn.style.display="block"
+	}
 }
 
 function addToCart1(event) {
@@ -236,6 +258,18 @@ function addToCart1(event) {
     
     localStorage.setItem('korzina', JSON.stringify(korzina));
     displayShoppingCart();
+
+    let spisok_tovarov = document.getElementById('full_shop_center_empty')
+	let korzina_btn = document.getElementById('korzina_btn')
+	let zakaz_btn = document.getElementById('zakaz_btn')
+    
+    if (spisok_tovarov.style.display!="none") {
+		korzina_btn.style.display="none"
+		zakaz_btn.style.display="none"
+	} else {
+		korzina_btn.style.display="block"
+		zakaz_btn.style.display="block"
+	}
 }
 
 function isCartEmpty() {
@@ -310,8 +344,20 @@ function removeFromCart(id) {
     if (isCartEmpty()){
 		document.getElementById('full_shop_center_empty').style.display="grid"
 	}
-    
+
     displayShoppingCart();
+
+	let spisok_tovarov = document.getElementById('full_shop_center_empty')
+	let korzina_btn = document.getElementById('korzina_btn')
+	let zakaz_btn = document.getElementById('zakaz_btn')
+    
+    if (spisok_tovarov.style.display!="none") {
+		korzina_btn.style.display="none"
+		zakaz_btn.style.display="none"
+	} else {
+		korzina_btn.style.display="block"
+		zakaz_btn.style.display="block"
+	}
 }
 
 window.addEventListener('load', displayShoppingCart);
@@ -340,6 +386,18 @@ function show_close_shop() {
 		full_shop.classList.add("shop_slide_in")
 		shop.style.right="344px"
 	}
+	
+	let spisok_tovarov = document.getElementById('full_shop_center_empty')
+	let korzina_btn = document.getElementById('korzina_btn')
+	let zakaz_btn = document.getElementById('zakaz_btn')
+
+	if (spisok_tovarov.style.display!="none") {
+		korzina_btn.style.display="none"
+		zakaz_btn.style.display="none"
+	} else {
+		korzina_btn.style.display="block"
+		zakaz_btn.style.display="block"
+	}
 }
 
 function close_shop() {
@@ -358,6 +416,17 @@ function close_shop() {
 	dark_back.style.display="none"
 	un_auth_user_like.style.display="none"
 	auth_user_like_already.style.display="none"
+
+	let spisok_tovarov = document.getElementById('full_shop_center_empty')
+	let korzina_btn = document.getElementById('korzina_btn')
+	let zakaz_btn = document.getElementById('zakaz_btn')
+    if (spisok_tovarov.style.display!="none") {
+		korzina_btn.style.display="none"
+		zakaz_btn.style.display="none"
+	} else {
+		korzina_btn.style.display="block"
+		zakaz_btn.style.display="block"
+	}
 }
 
 function close_popup() {
@@ -438,16 +507,12 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Перебираем каждый элемент
     elements.forEach(function(element) {
-        // Получаем текстовое содержимое элемента
         var sum = element.innerHTML;
         
-        // Заменяем запятую на точку (если нужно)
         sum = sum.replace(',', '.');
         
-        // Форматируем текст в виде валюты
         var formattedSum = parseFloat(sum).toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' });
         
-        // Заменяем содержимое элемента отформатированным значением
         element.innerHTML = formattedSum;
     });
 });
@@ -461,10 +526,6 @@ function show_adress() {
 	my_accaunt1_adress_add.style.display = "block"
 	my_accaunt1_adress_none_adress.style.display = "none"
 }
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const selectAllCheckbox = document.getElementById('select_all');
@@ -520,10 +581,10 @@ function validateForm() {
         const errorMessage = document.getElementById('product_feedback_error-message');
         errorMessage.textContent = 'Пожалуйста, выберите рейтинг отзыва.';
         errorMessage.style.display = 'block';
-        return false; // Останавливаем отправку формы
+        return false;
     }
 
-    return true; // Продолжаем отправку формы
+    return true;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -745,8 +806,19 @@ function removeFromCart1(event) {
     cartItems = cartItems.filter(item => item.id !== productId);
     
     localStorage.setItem('korzina', JSON.stringify(cartItems));
-    
+
     displayCartItems();
+    
+    let spisok_tovarov = document.getElementById('full_shop_center_empty')
+	let korzina_btn = document.getElementById('korzina_btn')
+	let zakaz_btn = document.getElementById('zakaz_btn')
+    if (spisok_tovarov.style.display!="none") {
+		korzina_btn.style.display="none"
+		zakaz_btn.style.display="none"
+	} else {
+		korzina_btn.style.display="block"
+		zakaz_btn.style.display="block"
+	}
 }
 
 window.addEventListener('DOMContentLoaded', displayCartItems);
@@ -767,7 +839,6 @@ function displayKorzinaItems() {
 	        return;
 	    }
 	    
-	    // Очищаем контейнер перед добавлением новых элементов
 	    korzinaContainer.innerHTML = '';
 	    let resultSum=0
 	    cartItems.forEach(item => {
@@ -852,14 +923,9 @@ function make_buy() {
         body: JSON.stringify(data)
     })
     .then(response => response.json())
-    .then(data => {
-    	/*alert(data)*/
-        console.log('Success:', data);
-        // Далее можно использовать данные data.data для дальнейшей обработки
+    .then(data => {    
     })
     .catch(error => {
-    	/*alert(error)*/
-        console.error('Error:', error);
     });
 }
 
