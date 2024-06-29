@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name='robots' content='max-image-preview:large, noindex, follow' />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title|title }}</title>
     {% block css %}
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
@@ -18,7 +18,7 @@
 {% block navbar %}
 <nav>
     <div class="navbar_logo">
-        <a href="/"><img src="/static/assets/logo-minisforum2.png"></a>
+        <a href="/"><img src="/static/assets/logo-minisforum2.png" alt="Минисфорум"></a>
     </div>
     <div class="navbar_links">
         <ul>
@@ -30,9 +30,9 @@
         </ul>
     </div>
     <div class="navbar_icons">
-        <a href="#"><img src="/static/assets/navbar/search.svg"></a>
-        <a href="/catalog"><img src="/static/assets/navbar/shop.svg"></a>
-        <a href="/my_accaunt"><img src="/static/assets/navbar/accaunt.svg"></a>
+        <a href="#"><img src="/static/assets/navbar/search.svg" alt="Поиск"></a>
+        <a href="/catalog"><img src="/static/assets/navbar/shop.svg" alt="Каталог"></a>
+        <a href="/my_accaunt"><img src="/static/assets/navbar/accaunt.svg" alt="Мой аккаунт"></a>
         <div id="down_menu_show" class="down_menu"></div>
         <div id="down_menu_close" class="down_menu"></div>
     </div>
