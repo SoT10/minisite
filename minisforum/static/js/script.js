@@ -286,20 +286,21 @@ function displayShoppingCart() {
     shoppingCartContainer.innerHTML = ''; // Очищаем контейнер перед обновлением списка
     let resultSum=0
     cartItems.forEach(item => {
-        const productDiv = document.createElement('a');
-        productDiv.setAttribute('href', `/catalog/product?product=${item.product_name}`);
+        const productDiv = document.createElement('div');
         productDiv.classList.add('full_shop_center_buy');
 
-        const imgDiv = document.createElement('div');
+        const imgDiv = document.createElement('a');
         imgDiv.classList.add('full_shop_center_buy_img');
+        imgDiv.setAttribute('href', `/catalog/product?product=${item.product_name}`);
         const img = document.createElement('img');
         img.classList.add('full_shop_center_buy_img_1');
         img.setAttribute('src', item.img);
         img.setAttribute('alt', item.product_name);
         imgDiv.appendChild(img);
 
-        const textDiv = document.createElement('div');
+        const textDiv = document.createElement('a');
         textDiv.classList.add('full_shop_center_buy_text');
+        textDiv.setAttribute('href', `/catalog/product?product=${item.product_name}`);
         const productNameDiv = document.createElement('div');
         productNameDiv.classList.add('full_shop_center_buy_text_product');
         productNameDiv.textContent = item.product_name;
