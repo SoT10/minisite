@@ -12,6 +12,8 @@
     {% block css %}
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/artem.css">
+    <link rel="manifest" href="{% static 'assets/favicon/site.webmanifest' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon/favicon.ico' %}">
     {% endblock %}
     <body class="{% if user.is_authenticated %}authenticated{% endif %}">
 </head>
