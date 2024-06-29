@@ -10,13 +10,31 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session
 
 def catalog(request):
-    categories = Product.objects.values('category').annotate(count=Count('product_id'))
-    category_name = request.GET.get('category')
-    if category_name:
-        products = Product.objects.filter(category=category_name)
-    else:
-        products = Product.objects.all()
+    # Получаем параметры запроса
+    sort = request.GET.get('sort', 'default')
+    category_name = request.GET.get('category', 'default')
 
+    # Получаем все продукты
+    products = Product.objects.all()
+
+    # Фильтрация по категории, если указана
+    if category_name and category_name != 'default':
+        products = products.filter(category=category_name)
+
+    # Сортировка продуктов
+    if sort == 'rating':
+        products = products.order_by('-rating')
+    elif sort == 'newest':
+        products = products.order_by('-date_added')
+    elif sort == 'price_asc':
+        products = products.order_by('price')
+    elif sort == 'price_desc':
+        products = products.order_by('-price')
+
+    # Подсчет количества продуктов в каждой категории
+    categories = Product.objects.values('category').annotate(count=Count('product_id'))
+
+    # Получение списка понравившихся продуктов для авторизованного пользователя
     liked_products = []
     if request.user.is_authenticated:
         liked_products = LikedProduct.objects.filter(user=request.user).values_list('product_id', flat=True)
@@ -25,7 +43,9 @@ def catalog(request):
         'title': 'Каталог',
         'products': products,
         'categories': categories,
-        'liked_products': liked_products
+        'liked_products': liked_products,
+        'sort': sort,
+        'category_name': category_name,
     }
     template_name = 'catalog/catalog.html'
     return render(request, template_name, context)

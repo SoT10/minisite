@@ -3,14 +3,16 @@
 {% endblock %}
 {% block content %}
 <div class="catalog_select">
-    <select name="" id="">
-        <option value="">По умолчанию</option>
-        <option value="">По популярности</option>
-        <option value="">По рейтингу</option>
-        <option value="">По новизне</option>
-        <option value="">По возрастанию цены</option>
-        <option value="">По убыванию цены</option>
-    </select>
+    <form method="get" action="">
+        <select name="sort" id="sort" onchange="this.form.submit()">
+            <option value="default" {% if sort == 'default' %}selected{% endif %}>По умолчанию</option>
+            <option value="rating" {% if sort == 'rating' %}selected{% endif %}>По рейтингу</option>
+            <option value="newest" {% if sort == 'newest' %}selected{% endif %}>По новизне</option>
+            <option value="price_asc" {% if sort == 'price_asc' %}selected{% endif %}>По возрастанию цены</option>
+            <option value="price_desc" {% if sort == 'price_desc' %}selected{% endif %}>По убыванию цены</option>
+        </select>
+        <input type="hidden" name="category" value="{{ category_name }}">
+    </form>
 </div>
 <div class="catalog">
     <div class="catalog_left">
@@ -18,11 +20,11 @@
             <ul>
                 <div class="catalog_left_categories_text">
                     Категории
-                    <div class="cherta"><hr></div>                    
+                    <div class="cherta"><hr></div>
                 </div>
-                <a href="/catalog"><li>Все товары</li></a>
+                <a href="?sort={{ sort }}"><li>Все товары</li></a>
                 {% for category in categories %}
-                <a href="?category={{ category.category }}"><li>{{ category.category }}<div class="catalog_left_categories_img">{{ category.count }}</div></li></a>
+                <a href="?category={{ category.category }}&sort={{ sort }}"><li>{{ category.category }}<div class="catalog_left_categories_img">{{ category.count }}</div></li></a>
                 {% endfor %}
             </ul>
         </div>
@@ -35,7 +37,6 @@
                     <a href="/catalog/product?product={{ product.product_name }}"><img class="home3_tabl_card_img" src="{{ product.image }}"></a>
                     <a href="/catalog/product?product={{ product.product_name }}"><div class="home3_tabl_card_text"><div class="gain-center">{{ product.product_name }}</div></div></a>
                 </div>
-
                 <div class="home3_tabl_card_parts">
                     <hr>
                     <div class="home3_tabl_card_price">{{ product.price }} ₽</div>
