@@ -3,7 +3,7 @@
 {% endblock %}
 {% block content %}
 
-<div class="product">
+<div class="product" data-id="{{ product.product_id }}">
 	<div class="product_left zoom-container">
 		<img src="{{ product.image }}" class="zoom-image" id="product_main_img">
 	</div>
@@ -12,13 +12,8 @@
 		<div class="product_right_price">{{ product.price }} ₽</div>
 		<div class="product_right_discription">{{ product.description }}</div>
 		<hr>
-
-		<form class="product_do_buy" method="post">
-			{% csrf_token %}
-			{{ product_form.number }}
-			<button type="submit" name="product_form_submit">В КОРЗИНУ</button>
-		</form>
-
+		{{ product_form.number }}
+		<button type="submit" name="product_form_submit" class="product_form_submit" onclick="add_to_korzina()">В КОРЗИНУ</button>
 		<div class="product_right_want like-btn" data-product-id="{{ product.product_id }}">
 			<div class="product_right_want_heart {% if product.product_id in liked_products %}liked1{% endif %}"></div>
 			<div class="product_right_want_text">Добавить в список желаний</div>

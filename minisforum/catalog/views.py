@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Count
 from .models import Product, Review, LikedProduct
 from django.contrib.auth.models import User
@@ -8,9 +8,9 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session
+import json
 
 def catalog(request):
-    # Получаем параметры запроса
     sort = request.GET.get('sort', 'default')
     category_name = request.GET.get('category', 'default')
 
@@ -31,10 +31,8 @@ def catalog(request):
     elif sort == 'price_desc':
         products = products.order_by('-price')
 
-    # Подсчет количества продуктов в каждой категории
     categories = Product.objects.values('category').annotate(count=Count('product_id'))
 
-    # Получение списка понравившихся продуктов для авторизованного пользователя
     liked_products = []
     if request.user.is_authenticated:
         liked_products = LikedProduct.objects.filter(user=request.user).values_list('product_id', flat=True)
@@ -43,9 +41,9 @@ def catalog(request):
         'title': 'Каталог',
         'products': products,
         'categories': categories,
-        'liked_products': liked_products,
         'sort': sort,
         'category_name': category_name,
+        'liked_products': liked_products
     }
     template_name = 'catalog/catalog.html'
     return render(request, template_name, context)
@@ -104,10 +102,8 @@ def product(request):
 
 
 def update_product_rating(product):
-    # Вычисляем средний рейтинг для данного продукта
     avg_rating = Review.objects.filter(product=product).aggregate(Avg('rating'))['rating__avg']
     
-    # Обновляем рейтинг продукта
     if avg_rating is not None:
         product.rating = avg_rating
         product.save()

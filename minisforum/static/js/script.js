@@ -189,7 +189,7 @@ document.querySelectorAll('.home3_tabl_card_shop').forEach(button => {
     button.addEventListener('click', addToCart);
 });
 
-document.querySelectorAll('.home3_tabl_card_shop').forEach(button => {
+document.querySelectorAll('.product_form_submit').forEach(button => {
     button.addEventListener('click', addToCart1);
 });
 
@@ -233,12 +233,16 @@ function addToCart(event) {
 }
 
 function addToCart1(event) {
-    const productElement = event.target.closest('.catalog_right_product_1');
-    
+	const product_quantity = parseInt(document.getElementById('id_number').value);
+	if (product_quantity<1 || product_quantity>999 || isNaN(product_quantity)) {
+		alert("Введите корректное значение")
+		return
+	}
+    const productElement = event.target.closest('.product');
     const id = productElement.getAttribute('data-id');
-    const img = productElement.querySelector('.front-side-img1').getAttribute('src');
-    const product_name = productElement.querySelector('.gain-center').textContent;
-    const product_price = productElement.querySelector('.home3_tabl_card_price').textContent;
+    const img = productElement.querySelector('.zoom-image').getAttribute('src');
+    const product_name = productElement.querySelector('.product_right_title').textContent;
+    const product_price = productElement.querySelector('.product_right_price').textContent;
     
     let korzina = JSON.parse(localStorage.getItem('korzina')) || [];
     
@@ -246,23 +250,22 @@ function addToCart1(event) {
     let found = false;
     korzina.forEach(item => {
         if (item.id === id) {
-            item.quantity = item.quantity ? item.quantity + 1 : 2; // Увеличиваем количество товара
+            item.quantity = item.quantity ? item.quantity + product_quantity : 2; // Увеличиваем количество товара
             found = true;
         }
     });
     
     // Если товара с таким id нет в корзине, добавляем его
     if (!found) {
-        korzina.push({ id, img, product_name, product_price, quantity: 1 });
+        korzina.push({ id, img, product_name, product_price, quantity: product_quantity });
     }
-    
+
     localStorage.setItem('korzina', JSON.stringify(korzina));
     displayShoppingCart();
-
+    
     let spisok_tovarov = document.getElementById('full_shop_center_empty')
 	let korzina_btn = document.getElementById('korzina_btn')
 	let zakaz_btn = document.getElementById('zakaz_btn')
-    
     if (spisok_tovarov.style.display!="none") {
 		korzina_btn.style.display="none"
 		zakaz_btn.style.display="none"
@@ -714,6 +717,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return cookieValue;
     }
 });
+
+function get_product_name(product_name) {
+	document.getElementById('auth_user_like_already_text').innerHTML = product_name + " уже в списке желаний"
+}
 /*Конец блока catalog*/
 
 /*Начало блока cart*/
