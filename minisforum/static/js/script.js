@@ -203,16 +203,14 @@ function addToCart(event) {
     
     let korzina = JSON.parse(localStorage.getItem('korzina')) || [];
     
-    // Проверяем, есть ли уже товар с таким id в корзине
     let found = false;
     korzina.forEach(item => {
         if (item.id === id) {
-            item.quantity = item.quantity ? item.quantity + 1 : 2; // Увеличиваем количество товара
+            item.quantity = item.quantity ? item.quantity + 1 : 2; 
             found = true;
         }
     });
     
-    // Если товара с таким id нет в корзине, добавляем его
     if (!found) {
         korzina.push({ id, img, product_name, product_price, quantity: 1 });
     }
@@ -246,16 +244,14 @@ function addToCart1(event) {
     
     let korzina = JSON.parse(localStorage.getItem('korzina')) || [];
     
-    // Проверяем, есть ли уже товар с таким id в корзине
     let found = false;
     korzina.forEach(item => {
         if (item.id === id) {
-            item.quantity = item.quantity ? item.quantity + product_quantity : 2; // Увеличиваем количество товара
+            item.quantity = item.quantity ? item.quantity + product_quantity : 2; 
             found = true;
         }
     });
-    
-    // Если товара с таким id нет в корзине, добавляем его
+
     if (!found) {
         korzina.push({ id, img, product_name, product_price, quantity: product_quantity });
     }
@@ -452,6 +448,210 @@ function go_like() {
 /*конец блока shop*/
 
 /*Начало блока my_accaunt*/
+function delete_checked_product() {
+    const checkboxes = document.querySelectorAll('.item_checkbox');
+    const productsToDelete = [];
+
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            const productId = checkbox.getAttribute('data-product-id');
+            productsToDelete.push(productId);
+        }
+    });
+
+    if (productsToDelete.length === 0 ) {
+    	return
+    }
+
+    fetch('/my_accaunt/delete_products', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ products: productsToDelete })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        location.reload();
+    })
+    .catch(error => {
+    });
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+}
+
+function delete_all_product() {
+    const checkboxes = document.querySelectorAll('.item_checkbox');
+    const productsToDelete = [];
+
+    checkboxes.forEach(function(checkbox) {
+        const productId = checkbox.getAttribute('data-product-id');
+        productsToDelete.push(productId);
+    });
+
+    fetch('/my_accaunt/delete_products', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ products: productsToDelete })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        location.reload();
+    })
+    .catch(error => {
+    });
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+}
+
+function addToCart2() {
+    const checkboxes = document.querySelectorAll('.item_checkbox');
+    const productsToCart = [];
+
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            const productId = checkbox.getAttribute('data-product-id');
+            productsToCart.push(productId);
+        }
+    });
+
+    // Если корзина пуста, можно вывести сообщение об ошибке или предупреждение
+    if (productsToCart.length === 0) {
+        alert('Выберите товары для добавления в корзину');
+        return;
+    }
+
+    let korzina = JSON.parse(localStorage.getItem('korzina')) || [];
+
+    productsToCart.forEach(productId => {
+        const productElement = document.querySelector(`.spisok_table_second_row[data-product-id="${productId}"]`);
+        const id = productId;
+        const img = productElement.querySelector('.spisok_table_second_row_text_1_img_photo').getAttribute('src');
+        const product_name = productElement.querySelector('.spisok_table_second_row_text_1_text').textContent.trim();
+        const product_price = productElement.querySelector('.spisok_table_second_row_text_2').textContent.trim();
+
+        let found = false;
+        korzina.forEach(item => {
+            if (item.id === id) {
+                item.quantity = item.quantity ? item.quantity + 1 : 2;
+                found = true;
+            }
+        });
+
+        if (!found) {
+            korzina.push({ id, img, product_name, product_price, quantity: 1 });
+        }
+    });
+
+    localStorage.setItem('korzina', JSON.stringify(korzina));
+    displayShoppingCart();
+    add_to_korzina()
+
+    let spisok_tovarov = document.getElementById('full_shop_center_empty');
+    let korzina_btn = document.getElementById('korzina_btn');
+    let zakaz_btn = document.getElementById('zakaz_btn');
+    if (spisok_tovarov.style.display != "none") {
+        korzina_btn.style.display = "none";
+        zakaz_btn.style.display = "none";
+    } else {
+        korzina_btn.style.display = "block";
+        zakaz_btn.style.display = "block";
+    }
+}
+
+function addToCart3() {
+    const checkboxes = document.querySelectorAll('.item_checkbox');
+    const productsToCart = [];
+
+    checkboxes.forEach(function(checkbox) {
+        const productId = checkbox.getAttribute('data-product-id');
+        productsToCart.push(productId);
+    });
+
+    if (productsToCart.length === 0) {
+        alert('Выберите товары для добавления в корзину');
+        return;
+    }
+
+    let korzina = JSON.parse(localStorage.getItem('korzina')) || [];
+
+    productsToCart.forEach(productId => {
+        const productElement = document.querySelector(`.spisok_table_second_row[data-product-id="${productId}"]`);
+        const id = productId;
+        const img = productElement.querySelector('.spisok_table_second_row_text_1_img_photo').getAttribute('src');
+        const product_name = productElement.querySelector('.spisok_table_second_row_text_1_text').textContent.trim();
+        const product_price = productElement.querySelector('.spisok_table_second_row_text_2').textContent.trim();
+
+        let found = false;
+        korzina.forEach(item => {
+            if (item.id === id) {
+                item.quantity = item.quantity ? item.quantity + 1 : 2;
+                found = true;
+            }
+        });
+
+        if (!found) {
+            korzina.push({ id, img, product_name, product_price, quantity: 1 });
+        }
+    });
+
+    localStorage.setItem('korzina', JSON.stringify(korzina));
+    displayShoppingCart();
+    add_to_korzina()
+
+    let spisok_tovarov = document.getElementById('full_shop_center_empty');
+    let korzina_btn = document.getElementById('korzina_btn');
+    let zakaz_btn = document.getElementById('zakaz_btn');
+    if (spisok_tovarov.style.display != "none") {
+        korzina_btn.style.display = "none";
+        zakaz_btn.style.display = "none";
+    } else {
+        korzina_btn.style.display = "block";
+        zakaz_btn.style.display = "block";
+    }
+}
+
+
 window.onload = function() {
     function getQueryParam(param) {
         let urlParams = new URLSearchParams(window.location.search);

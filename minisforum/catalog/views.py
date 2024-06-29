@@ -8,7 +8,6 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session
-import json
 
 def catalog(request):
     sort = request.GET.get('sort', 'default')

@@ -187,7 +187,7 @@
 	</form>
 </div>
 
-<form class="my_accaunt1_spisok" id="my_accaunt1_spisok" method="post" style="display: none;">
+<div class="my_accaunt1_spisok" id="my_accaunt1_spisok" style="display: none;">
 	{% csrf_token %}
 	<div class="spisok_text">
 		Список желаний
@@ -211,41 +211,41 @@
 			</div>
 		</div>
 		{% for liked_product in liked_products %}
-			<div class="spisok_table_second_row">
-				<div class="spisok_table_second_row_galka">
-					<input type="checkbox" class="item_checkbox">
-				</div>
-				<div class="spisok_table_second_row_text_1">
-					<div class="spisok_table_second_row_text_1_img">
-						<img src="{{ liked_product.product.image }}" alt="">
-					</div>
-					<div class="spisok_table_second_row_text_1_text">
-						{{ liked_product.product.product_name }}
-					</div>
-				</div>
-				<div class="spisok_table_second_row_text_2">
-					{{ liked_product.product.price }} ₽
-				</div>
-				<div class="spisok_table_second_row_text">
-					{{ liked_product.date_added }}
-				</div>
-				<div class="spisok_table_second_row_text">
-					<i class="">{{ liked_product.product.kolvo }}</i>
-				</div>
+			<div class="spisok_table_second_row" data-product-id="{{ liked_product.product.product_id }}">
+			    <div class="spisok_table_second_row_galka">
+			        <input type="checkbox" class="item_checkbox" data-product-id="{{ liked_product.product.product_id }}">
+			    </div>
+			    <div class="spisok_table_second_row_text_1">
+			        <div class="spisok_table_second_row_text_1_img">
+			            <img class="spisok_table_second_row_text_1_img_photo" src="{{ liked_product.product.image }}" alt="">
+			        </div>
+			        <div class="spisok_table_second_row_text_1_text">
+			            {{ liked_product.product.product_name }}
+			        </div>
+			    </div>
+			    <div class="spisok_table_second_row_text_2">
+			        {{ liked_product.product.price }} ₽
+			    </div>
+			    <div class="spisok_table_second_row_text">
+			        {{ liked_product.date_added }}
+			    </div>
+			    <div class="spisok_table_second_row_text">
+			        <i class="">{{ liked_product.product.kolvo }}</i>
+			    </div>
 			</div>
 		{% endfor %}
 		<div class="spisok_table_third_row">
 			<div class="spisok_table_third_row_delete">
-					<button>Удалить выбранное из корзины</button>
-					<button>Удалить все из корзины</button>
+					<button type="submit" onclick="delete_checked_product()">Удалить выбранное из корзины</button>
+					<button type="submit" onclick="delete_all_product()">Удалить все из корзины</button>
 			</div>
 			<div class="spisok_table_third_row_add">
-				<button>Добавить выбранное в корзину</button>
-				<button>Добавить все в корзину</button>
+				<button type="submit" onclick="addToCart2()">Добавить выбранное в корзину</button>
+				<button type="submit" onclick="addToCart3()">Добавить все в корзину</button>
 			</div>
 		</div>
 	</div>
-</form>
+</div>
 
 
 

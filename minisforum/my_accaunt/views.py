@@ -10,6 +10,8 @@ from catalog.models import LikedProduct
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+import json
+from django.http import JsonResponse
 
 def my_accaunt(request):
     user = request.user
@@ -17,7 +19,6 @@ def my_accaunt(request):
     login_form = AuthenticationForm()
     adress_form = AdressForm()
     anketa_form = AnketaForm()
-    
 
     if request.method == 'POST':
         if 'register_form_submit' in request.POST:
@@ -181,3 +182,26 @@ def view_order(request):
         'items_details': items_details
     }
     return render(request, template_name, context)
+
+def delete_products(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            products_to_delete = data.get('products', [])
+            user_id = request.user.id
+            
+            for product_id in products_to_delete:
+                liked_product = get_object_or_404(LikedProduct, user_id=user_id, product_id=product_id)
+                liked_product.delete()
+            
+            # Возвращаем успешный JSON ответ
+            return JsonResponse({'message': 'Товары успешно удалены'}, status=200)
+        
+        except json.JSONDecodeError as e:
+            return JsonResponse({'error': 'Неверный формат JSON данных'}, status=400)
+        
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    else:
+        return JsonResponse({'error': 'Метод не разрешен'}, status=405)
