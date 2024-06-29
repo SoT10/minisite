@@ -286,7 +286,8 @@ function displayShoppingCart() {
     shoppingCartContainer.innerHTML = ''; // Очищаем контейнер перед обновлением списка
     let resultSum=0
     cartItems.forEach(item => {
-        const productDiv = document.createElement('div');
+        const productDiv = document.createElement('a');
+        productDiv.setAttribute('href', `/catalog/product?product=${item.product_name}`);
         productDiv.classList.add('full_shop_center_buy');
 
         const imgDiv = document.createElement('div');

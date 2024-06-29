@@ -1479,6 +1479,9 @@ nav {
 /*конец блока контакты*/
 
 /*Начало блока my_accaunt*/
+.item_checkbox:hover, #select_all:hover {
+	cursor: pointer;
+}
 
 .my_accaunt {
 	display: grid;

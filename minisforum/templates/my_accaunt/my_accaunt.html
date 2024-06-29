@@ -216,12 +216,14 @@
 			        <input type="checkbox" class="item_checkbox" data-product-id="{{ liked_product.product.product_id }}">
 			    </div>
 			    <div class="spisok_table_second_row_text_1">
-			        <div class="spisok_table_second_row_text_1_img">
-			            <img class="spisok_table_second_row_text_1_img_photo" src="{{ liked_product.product.image }}" alt="">
-			        </div>
-			        <div class="spisok_table_second_row_text_1_text">
+			        <a href="/catalog/product?product={{ liked_product.product.product_name }}">
+			        	<div class="spisok_table_second_row_text_1_img">
+				            <img class="spisok_table_second_row_text_1_img_photo" src="{{ liked_product.product.image }}" alt="">
+				        </div>
+			    	</a>
+			        <a href="/catalog/product?product={{ liked_product.product.product_name }}" class="spisok_table_second_row_text_1_text">
 			            {{ liked_product.product.product_name }}
-			        </div>
+			        </a>
 			    </div>
 			    <div class="spisok_table_second_row_text_2">
 			        {{ liked_product.product.price }} ₽
