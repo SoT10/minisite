@@ -9,6 +9,8 @@ from django.views.decorators.csrf import csrf_protect
 import json
 from django.http import JsonResponse
 from decimal import Decimal
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 @csrf_protect
 @login_required
@@ -18,7 +20,7 @@ def buy(request):
 
     if request.method == 'POST':
         buy_form = OrderForm(request.POST)
-        if buy_form.is_valid():       
+        if buy_form.is_valid():
             tovar_list = request.session['tovar_list']
             tovar_dict = {index: tovar for index, tovar in enumerate(tovar_list)}
 
@@ -42,15 +44,16 @@ def buy(request):
                 phone=phone,
                 details=details,
                 email=email,
-                total=0, 
-                user=request.user  
+                total=0,
+                user=request.user
             )
 
             total_amount = 0
+            ordered_items = []
 
             for key, product_data in tovar_dict.items():
                 product_id = product_data['id']
-                quantity = int(product_data['quantity']) 
+                quantity = int(product_data['quantity'])
 
                 product = Product.objects.get(pk=product_id)
 
@@ -58,31 +61,52 @@ def buy(request):
                 cleaned_price_str = ''.join(filter(lambda x: x.isdigit() or x == '.', product_price_str))
                 cleaned_price_str = cleaned_price_str.replace(',', '.')
 
-                unit_price = Decimal(cleaned_price_str)  
-                
+                unit_price = Decimal(cleaned_price_str)
+
                 order_item = OrderItem.objects.create(
                     order=order,
                     product=product,
                     quantity=quantity,
-                    unit_price=unit_price/100
+                    unit_price=unit_price / 100
                 )
-                
-                # Обновляем total заказа
+
                 total_amount += order_item.subtotal()
-            
+                ordered_items.append({
+                    'product_name': product.product_name,
+                    'quantity': quantity,
+                    'unit_price': unit_price / 100,
+                    'subtotal': order_item.subtotal()
+                })
+
             order.total = total_amount
             order.save()
 
+            subject = 'Ваш заказ принят'
+            from_email = 'minisforum-russia@yandex.ru'
+            recipient_list = [email]
+
+            adress_full = f'{oblast}, {city}, {adress}, {postal_code}'
+            html_message = render_to_string('buy/order_email.html', {
+                'name': first_name,
+                'order_id': order.id,
+                'order_date': order.date.strftime('%d.%m.%Y'),
+                'ordered_items': ordered_items,
+                'total_amount': total_amount,
+                'adress': adress_full,
+            })
+
+            message = EmailMultiAlternatives(subject, '', from_email, recipient_list)
+            message.attach_alternative(html_message, "text/html")
+            message.send()
+
             clear_storage_data(request)
 
-            
-            return redirect('/buy/clear_storage_data') 
+            return redirect('/buy/clear_storage_data')
         else:
             print(buy_form.errors.as_json())
             print(buy_form.errors)
             for field, errors in buy_form.errors.items():
                 print(f"Поле '{field}': {', '.join(errors)}")
-    
 
     context = {
         'title': 'Покупка',

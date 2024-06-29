@@ -1,0 +1,102 @@
+<!-- templates/buy/order_email.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение вашего заказа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #0073e6;
+            color: white;
+        }
+        .order-details {
+            margin: 20px 0;
+        }
+        .order-details h2 {
+            margin: 0;
+        }
+        .order-summary {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .order-summary th, .order-summary td {
+            padding: 10px;
+            border: 1px solid #dddddd;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.8em;
+            color: #666666;
+        }
+        .footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Подтверждение вашего заказа</h1>
+        </div>
+        <div class="content">
+            <p>Здравствуйте, {{ name }}!</p>
+            <p>Спасибо за ваш заказ! Мы рады подтвердить его и сообщить вам подробности.</p>
+            <div class="order-details">
+                <h2>Детали заказа</h2>
+                <p><strong>Номер заказа:</strong> {{ order_id }}</p>
+                <p><strong>Дата заказа:</strong> {{ order_date }}</p>
+            </div>
+            <table class="order-summary">
+                <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Количество</th>
+                        <th>Цена за единицу</th>
+                        <th>Общая стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in ordered_items %}
+                    <tr>
+                        <td>{{ item.product_name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.unit_price }} ₽</td>
+                        <td>{{ item.subtotal }} ₽</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p><strong>Общая стоимость:</strong> {{ total_amount }} ₽</p>
+            <p><strong>Адрес доставки:</strong> {{ adress }}</p>
+            <p>Мы постараемся доставить ваш заказ как можно скорее. Обычно доставка занимает 30 рабочих суток.</p>
+            <p>Если у вас есть какие-либо вопросы или возникли проблемы с заказом, пожалуйста, не стесняйтесь <a href="http://127.0.0.1:8000/contact">связаться с нами</a>.</p>
+            <p>С уважением,<br>Команда MINISFORUM RUSSIA</p>
+        </div>
+        <div class="footer">
+            <p>Вы можете посмотреть статус вашего заказа в личном кабинете или по <a href="http://127.0.0.1:8000/my_accaunt/view_order?id={{ order_id }}">ссылке</a></p>
+            <p>Вы получили это письмо, потому что сделали заказ в нашем магазине. Если вы не совершали заказ, пожалуйста, <a href="http://127.0.0.1:8000/contact">сообщите нам</a>.</p>
+            <p>© 2024 MINISFORUM RUSSIA. Все права защищены.</p>
+        </div>
+    </div>
+</body>
+</html>
